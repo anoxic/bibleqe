@@ -1,0 +1,4 @@
+[ ] Use a multi-line input, with one verse per line.
+[x] Create an index (as an array first) capturing word frequencies
+[ ] In the index, catch the line number + word number (in verse)
+[ ] Create a "table of contents" telling us which lines (in the original input) are each book/chapter.
