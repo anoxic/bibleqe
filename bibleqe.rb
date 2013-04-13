@@ -11,8 +11,3 @@ get_frequencies(verse, frequencies)
 frequencies = frequencies.sort_by { |k, v| v }
 frequencies.reverse!
 frequencies.each { |word, freq| puts "#{word}: #{freq}" }
-
-## For the index:
-# <word> <frequency> <lineno>,<wordno> ...
-# i.e.:
-# was 3 1,8 1,18 1,24
