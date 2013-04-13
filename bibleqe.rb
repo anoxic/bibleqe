@@ -1,6 +1,6 @@
 def get_frequencies(line,array)
     line.downcase!
-    line.tr!(".,;()?!", "")
+    line.tr!(".,;:()?!", "")
     words = line.split
     words.each { |word| array[word] += 1 }
 end
