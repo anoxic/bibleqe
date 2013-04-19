@@ -1,5 +1,5 @@
 class Index
-    def initialize(file)
+	def initialize(file)
 		index = Hash.new { |hash,key| hash[key] = {:occ=>[],:freq=>0} }
 		file.each { |verse| self.index(verse, file.lineno, index) }
 		puts self.compile(index)
