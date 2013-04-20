@@ -46,7 +46,25 @@ Given the following verse:
 BibleQE generates this index:
 
     ! BibleQE Index: NIV test
-    ! version 1
-    was 3 1,8 1,18 1,24
-    that 2 1,5 1,14
-    what 2 1,15 1,23
+	! version 1
+	at 1 1,10 
+	by 1 1,1 
+	command 1 1,12 
+	faith 1 1,2 
+	formed 1 1,9 
+	god's 1 1,11 
+	is 1 1,16 
+	made 1 1,20 
+	not 1 1,19 
+	of 1 1,22 
+	out 1 1,21 
+	seen 1 1,17 
+	so 1 1,13 
+	that 2 1,5 1,14 
+	the 1 1,6 
+	understand 1 1,4 
+	universe 1 1,7 
+	visible 1 1,25 
+	was 3 1,8 1,18 1,24 
+	we 1 1,3 
+	what 2 1,15 1,23 

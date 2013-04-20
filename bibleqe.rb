@@ -2,7 +2,10 @@ class Index
 	def initialize(file,bibleversion)
 		index = Hash.new { |hash,key| hash[key] = {:occ=>"",:freq=>0} }
 		file.each { |verse| self.index(verse, file.lineno, index) }
-		puts self.compile(index,bibleversion)
+		
+		File.open("out.txt", "w") do |f|
+			f.puts self.compile(index,bibleversion)
+		end
 	end
 
 	def index(line, lineno, hash)
