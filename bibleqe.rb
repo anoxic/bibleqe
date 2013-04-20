@@ -1,8 +1,8 @@
 class Index
-	def initialize(file)
-		index = Hash.new { |hash,key| hash[key] = {:occ=>[],:freq=>0} }
+	def initialize(file,bibleversion)
+		index = Hash.new { |hash,key| hash[key] = {:occ=>"",:freq=>0} }
 		file.each { |verse| self.index(verse, file.lineno, index) }
-		puts self.compile(index)
+		puts self.compile(index,bibleversion)
 	end
 
 	def index(line, lineno, hash)
@@ -10,21 +10,19 @@ class Index
 		line.tr!(".,;()?!", "")
 		words = line.split
 		words.each_index { |ind|
-			hash[words[ind].to_sym][:occ] << "#{lineno},#{ind + 1}";
+			hash[words[ind].to_sym][:occ] << "#{lineno},#{ind + 1} ";
 			hash[words[ind].to_sym][:freq] += 1
 		}
 	end
 
-	def compile(index)
-		out = []
+	def compile(index,bibleversion)
+		out = "! BibleQE Index: #{bibleversion}\n! version 1\n"
 		index = index.sort_by {|k, v| k }
 		index.each { |word, props|
-			occs = ""
-			props[:occ].each {|o| occs += o + " " }
-			out << "#{word} #{props[:freq]} #{occs}"
+			out << "#{word} #{props[:freq]} #{props[:occ]}\n"
 		}
 		return out
 	end
 end
 
-Index.new(File.new("faith.txt"))
+Index.new(File.new("faith.txt"),"NIV test")
