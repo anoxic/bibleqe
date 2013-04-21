@@ -39,9 +39,30 @@ class Index
 end
 
 class Search
-	def initialize(index)
-		@index = File.new(index)
+	def initialize(version)
+		@index = File.new(version.to_s + ".index")
+		@text  = File.new(version.to_s + ".txt")
+	end
+	
+	def word(word)
+		word.downcase!
+		@index.each do |line|
+			if line.match(/^#{word} /) 
+				occ = line.split
+				count = occ[1].to_i
+				puts "Found #{count} occurances of `#{word}'" if count > 1
+				puts "Found #{count} occurance of `#{word}'" if count == 1
+				occ = occ.drop(2)
+				occ.each { |w|
+					w.gsub!(/,.*/,'')
+					puts @text.readlines[w.to_i - 1]
+				}
+			end
+		end
 	end
 end
 
 #Index.new("faith.txt","KJV test").write
+
+search = Search.new(:kjv)
+search.word "be"
