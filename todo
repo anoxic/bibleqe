@@ -2,5 +2,4 @@
 [x] Create an index (as an array first) capturing word frequencies
 [x] In the index, catch the line number + word number (in verse)
 [x] Ignore comment lines when creating index
-[ ] Use a "label" in the source on each line that tells the book, verse, chapter (ignore label)
-[ ] Create a "table of contents" telling us which lines (in the original input) are each book/chapter.
+[x] Use a "label" in the source on each line that tells the book, verse, chapter (ignore label)
