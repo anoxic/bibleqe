@@ -4,19 +4,9 @@ class Index
 		@index = self.compile(self.index(file), bibleversion)
 	end
 	
-	def put
-		print @index
-	end
-	
-	def write
-		File.open("out.txt", "w") do |file|
-			file << @index
-		end
-	end
-
-	def delim(f)
-		f.each { |l| return l[8,10].strip if l.match '! delim ' }
-	end
+	def put; print @index; end
+	def write; File.open("out.txt", "w") { |f| f << @index }; end
+	def delim(f); f.each { |l| return l[8,10].strip if l.match '! delim ' }; end
 	
 	def index(f)
 		index = Hash.new { |hash,key| hash[key] = {:occ=>"",:freq=>0} }
@@ -27,7 +17,7 @@ class Index
 	def line(line, lineno, index)
 		line.slice!(/.*#{@delim} */)
 		line.downcase!
-		line.delete!(".,;:()[]{}?!")
+		line.delete!(".,:;()[]{}?!")
 		words = line.split
 		words.each_index { |ind|
 			index[words[ind].to_sym][:occ] << " #{lineno},#{ind + 1}";
@@ -47,4 +37,4 @@ end
 
 ind = Index.new(File.new("faith.txt"),"NIV test")
 ind.put
-#ind.write
+ind.write
