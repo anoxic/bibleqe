@@ -46,6 +46,7 @@ class Search
 	
 	def word(word)
 		word.downcase!
+		lines = @text.readlines
 		@index.each do |line|
 			if line.match(/^#{word} /) 
 				occ = line.split
@@ -55,7 +56,7 @@ class Search
 				occ = occ.drop(2)
 				occ.each { |w|
 					w.gsub!(/,.*/,'')
-					puts @text.readlines[w.to_i - 1]
+					puts lines[w.to_i - 1]
 				}
 			end
 		end
@@ -65,4 +66,4 @@ end
 #Index.new("faith.txt","KJV test").write
 
 search = Search.new(:kjv)
-search.word "be"
+search.word "Nicodemus"

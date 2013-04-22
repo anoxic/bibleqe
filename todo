@@ -4,4 +4,4 @@
 [x] Ignore comment lines when creating index
 [x] Use a "label" in the source on each line that tells the book, verse, chapter (ignore label)
 [ ] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text
-[ ] Basic search functions
+[x] Basic search functions
