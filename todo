@@ -6,4 +6,4 @@
 [ ] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text
 [x] Basic search functions
 [ ] Handle results with nothing
-[ ] Allow sidenotes (marked with >) and headings (marked with #) in the text
+[x] Allow sidenotes (marked with >) and headings (marked with #) in the text
