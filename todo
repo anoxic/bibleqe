@@ -3,7 +3,10 @@
 [x] In the index, catch the line number + word number (in verse)
 [x] Ignore comment lines when creating index
 [x] Use a "label" in the source on each line that tells the book, verse, chapter (ignore label)
-[ ] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text
 [x] Basic search functions
-[ ] Handle results with nothing
 [x] Allow sidenotes (marked with >) and headings (marked with #) in the text
+[ ] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text
+[ ] Handle results with nothing
+[ ] Multi-word search
+[ ] Prompt
+[ ] Web version
