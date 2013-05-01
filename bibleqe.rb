@@ -6,7 +6,6 @@ class Index
 		@indexversion = 1
 		@delim = self.delim
 		@index = self.compile(self.index)
-		puts @text.path
 	end
 	
 	def put; print @index; end
@@ -16,7 +15,7 @@ class Index
 	def index
 		index = Hash.new { |hash,key| hash[key] = {:occ=>"",:freq=>0} }
 		@text.each { |line| 
-			self.line(line, @text.lineno, index) unless line[0].match(/!|>|\#/) 
+			self.line(line, @text.lineno, index) unless line.start_with?('!','>','#') 
 		}
 		return index
 	end
@@ -43,27 +42,14 @@ class Index
 end
 
 class Search
-	attr_accessor :matches, :count
-	
-	def initialize(version)
-		@index = File.new(version.to_s + ".index")
-		@text  = File.new(version.to_s + ".txt")
-	end
-	
-	def search(word)
-		@word = word
-		self.word
-	end
-	
-	def word
-		@word.downcase!
+	attr_accessor :matches
+	def initialize(version, word)
+		index = File.new(version.to_s + ".index")
+		word.downcase!
 		matches = []
-		count = 0
-		@index.each do |line|
-			if line.match(/^#{@word} /) 
-				x = line.split
-				count = x[1].to_i
-				refs = x.drop(2)
+		index.each do |line|
+			if line.match(/^#{word} /) 
+				refs = line.split.drop(2)
 				refs.each { |r|
 					r.gsub!(/,.*/,'')
 					matches << r.to_i - 1
@@ -72,21 +58,37 @@ class Search
 			end
 		end
 		@matches = matches
-		@count = count 
+	end
+end
+
+class Result
+	attr_accessor :count, :matches, :verses
+	def initialize(version, query)
+		results = []
+		result = []
+		query.split.each { |w|
+			search = Search.new(version,w)
+			results += search.matches
+		}
+		results.each { |r|
+			count = results.select { |num| num == r }.count
+			result += [r] if count > 1
+		}
+		@text  = File.new(version.to_s + ".txt")
+		@count = result.count
+		@matches = result.uniq
+		@verses = result.uniq.count
 	end
 	
-	def output
+	def put
 		verse = @text.readlines
 		puts "Found #{@count} occurances of `#{@word}'" if @count > 1
 		puts "Found #{@count} occurance of `#{@word}'" if @count == 1
-		@matches.each { |match|
-			puts verse.fetch(match)
-		}
+		@matches.each { |match| puts verse.fetch(match) }
 	end
 end
 
 #Index.new(:kjv,"KJV test").write
 
-search = Search.new(:kjv)
-search.search "Nicodemus"
-search.output
+result = Result.new(:kjv, "nicodemus saith")
+result.put
