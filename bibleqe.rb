@@ -92,16 +92,17 @@ class Result
 	def put
 		verse = @text.readlines
 		words = @words.map {|w| "`#{w}'"}.join(", ")
-		m = "matches"
-		m = "match" if @count == 1
-		v = "verses"
-		v = "verse" if @verses == 1
-		puts "Found #{@count} #{m} for #{words} in #{@verses} #{v}."
+		say = "Found #{@count} matches for #{words} in #{@verses} verses."
+		say[' matches '] = "match" if @count == 1
+		say[' verses'] = " verse" if @verses == 1
+		puts say
+		puts ""
 		@matches.each { |match| puts verse.fetch(match) }
 	end
 end
 
-#Index.new(:kjv,"KJV test").write
-
-result = Result.new(:kjv, "Jesus said")
-result.put
+if __FILE__ == $0
+	#Index.new(:kjv,"KJV test").write
+	result = Result.new(:kjv, ARGV.join(" "))
+	result.put
+end

@@ -8,10 +8,11 @@ Finished:
 [x] Allow sidenotes (marked with >) and headings (marked with #) in the text
 [x] Handle the "Found x matches for ..." line
 [x] Handle results with no matches
-[x] Multi-word search
+[x] Two word search
+[x] Allow prompt flags
 
 Towards a web release:
-[ ] Search parameter from prompt
+[ ] Multi-word search (past two)
 [ ] Web gateway
 
 Later:
