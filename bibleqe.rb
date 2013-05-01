@@ -63,32 +63,48 @@ end
 
 class Result
 	attr_accessor :count, :matches, :verses
+	
 	def initialize(version, query)
-		results = []
-		result = []
-		query.split.each { |w|
-			search = Search.new(version,w)
-			results += search.matches
-		}
-		results.each { |r|
-			count = results.select { |num| num == r }.count
-			result += [r] if count > 1
-		}
+		result = self.get(version, query)
 		@text  = File.new(version.to_s + ".txt")
+		@words = query.split
 		@count = result.count
 		@matches = result.uniq
 		@verses = result.uniq.count
 	end
 	
+	def get(version, query)
+		words = query.split
+		results = []
+		result = []
+		words.each { |w|
+			search = Search.new(version,w)
+			results += search.matches
+		}
+		if words.count > 1
+			results.each { |r|
+				count = results.select {|num| num == r }.count
+				result += [r] if count > 1
+			}
+		else
+			result = results
+		end
+		result
+	end
+	
 	def put
 		verse = @text.readlines
-		puts "Found #{@count} occurances of `#{@word}'" if @count > 1
-		puts "Found #{@count} occurance of `#{@word}'" if @count == 1
+		words = @words.map {|w| "`#{w}'"}.join(", ")
+		m = "matches"
+		m = "match" if @count == 1
+		v = "verses"
+		v = "verse" if @verses == 1
+		puts "Found #{@count} #{m} for #{words} in #{@verses} #{v}."
 		@matches.each { |match| puts verse.fetch(match) }
 	end
 end
 
 #Index.new(:kjv,"KJV test").write
 
-result = Result.new(:kjv, "nicodemus saith")
+result = Result.new(:kjv, "nicodemus")
 result.put

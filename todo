@@ -6,12 +6,11 @@ Finished:
 [x] Use a "label" in the source on each line that tells the book, verse, chapter (ignore label)
 [x] Basic search functions
 [x] Allow sidenotes (marked with >) and headings (marked with #) in the text
-[x] Multi-word search
-
+[x] Handle the "Found x matches for ..." line
+[x] Handle results with no matches
 
 Towards a web release:
-[ ] Handle the "Found x matches for ..." line
-[ ] Handle results with no matches
+[?] Multi-word search
 [ ] Search parameter from prompt
 [ ] Web version
 
