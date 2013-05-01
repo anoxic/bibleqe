@@ -77,13 +77,10 @@ class Result
 		words = query.split
 		results = []
 		result = []
-		words.each { |w|
-			search = Search.new(version,w)
-			results += search.matches
-		}
+		words.each {|w| results += Search.new(version,w).matches.uniq }
 		if words.count > 1
 			results.each { |r|
-				count = results.select {|num| num == r }.count
+				count = results.select {|num| num == r }.length
 				result += [r] if count > 1
 			}
 		else
@@ -106,5 +103,5 @@ end
 
 #Index.new(:kjv,"KJV test").write
 
-result = Result.new(:kjv, "nicodemus")
+result = Result.new(:kjv, "Jesus said")
 result.put

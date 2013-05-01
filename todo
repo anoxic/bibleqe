@@ -8,11 +8,11 @@ Finished:
 [x] Allow sidenotes (marked with >) and headings (marked with #) in the text
 [x] Handle the "Found x matches for ..." line
 [x] Handle results with no matches
+[x] Multi-word search
 
 Towards a web release:
-[?] Multi-word search
 [ ] Search parameter from prompt
-[ ] Web version
+[ ] Web gateway
 
 Later:
 [ ] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text (via `strip` flag)
