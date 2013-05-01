@@ -1,19 +1,23 @@
 class Index
-	def initialize(file, bibleversion)
-		@file = File.new(file)
-		@bibleversion = bibleversion
+	def initialize(version, longversion)
+		@version = version
+		@text  = File.new(version.to_s + ".txt")
+		@longversion = longversion
 		@indexversion = 1
 		@delim = self.delim
 		@index = self.compile(self.index)
+		puts @text.path
 	end
 	
 	def put; print @index; end
-	def write; File.open("out.txt", "w") { |f| f << @index }; end
-	def delim; @file.each { |l| return l[8,10].strip if l.match '! delim ' }; end
+	def write; File.open(@version.to_s + ".index", "w") { |f| f << @index }; end
+	def delim; @text.each { |l| return l[8,10].strip if l.match '! delim ' }; end
 	
 	def index
 		index = Hash.new { |hash,key| hash[key] = {:occ=>"",:freq=>0} }
-		@file.each { |line| self.line(line, @file.lineno, index) unless line[0] == /[!#>]/ }
+		@text.each { |line| 
+			self.line(line, @text.lineno, index) unless line[0].match(/!|>|\#/) 
+		}
 		return index
 	end
 	
@@ -29,7 +33,7 @@ class Index
 	end
 
 	def compile(index)
-		out = "! BibleQE Index: #{@bibleversion}\n! version #{@indexversion}"
+		out = "! BibleQE Index: #{@longversion}\n! version #{@indexversion}"
 		index = index.sort_by {|k, v| k }
 		index.each { |word, props|
 			out << "\n#{word} #{props[:freq]}#{props[:occ]}"
@@ -39,6 +43,8 @@ class Index
 end
 
 class Search
+	attr_accessor :matches, :count
+	
 	def initialize(version)
 		@index = File.new(version.to_s + ".index")
 		@text  = File.new(version.to_s + ".txt")
@@ -47,7 +53,6 @@ class Search
 	def search(word)
 		@word = word
 		self.word
-		self.output
 	end
 	
 	def word
@@ -56,12 +61,12 @@ class Search
 		count = 0
 		@index.each do |line|
 			if line.match(/^#{@word} /) 
-				occ = line.split
-				count = occ[1].to_i
-				occ = occ.drop(2)
-				occ.each { |w|
-					w.gsub!(/,.*/,'')
-					matches << w.to_i - 1
+				x = line.split
+				count = x[1].to_i
+				refs = x.drop(2)
+				refs.each { |r|
+					r.gsub!(/,.*/,'')
+					matches << r.to_i - 1
 				}
 				break
 			end
@@ -71,16 +76,17 @@ class Search
 	end
 	
 	def output
+		verse = @text.readlines
 		puts "Found #{@count} occurances of `#{@word}'" if @count > 1
 		puts "Found #{@count} occurance of `#{@word}'" if @count == 1
-		lines = @text.readlines
 		@matches.each { |match|
-			puts lines[match]
+			puts verse.fetch(match)
 		}
 	end
 end
 
-Index.new("faith.txt","KJV test").write
+#Index.new(:kjv,"KJV test").write
 
-#search = Search.new(:kjv)
-#search.search "Nicodemus"
+search = Search.new(:kjv)
+search.search "Nicodemus"
+search.output

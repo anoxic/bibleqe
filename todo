@@ -1,3 +1,4 @@
+Finished:
 [x] Use a multi-line input, with one verse per line.
 [x] Create an index (as an array first) capturing word frequencies
 [x] In the index, catch the line number + word number (in verse)
@@ -5,8 +6,12 @@
 [x] Use a "label" in the source on each line that tells the book, verse, chapter (ignore label)
 [x] Basic search functions
 [x] Allow sidenotes (marked with >) and headings (marked with #) in the text
-[ ] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text
-[ ] Handle results with nothing
+
+Towards a web release:
 [ ] Multi-word search
-[ ] Prompt
+[ ] Handle results with nothing
+[ ] Search parameter from prompt
 [ ] Web version
+
+Later:
+[ ] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text
