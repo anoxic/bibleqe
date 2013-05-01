@@ -14,7 +14,7 @@ Towards a web release:
 [ ] Web version
 
 Later:
-[ ] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text
+[ ] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text (via `strip` flag)
 
 Questions:
 [?] Will it be faster to run `downcase!` + `tr!` on the whole input vs. line by line?
