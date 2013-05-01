@@ -75,25 +75,24 @@ class Result
 	
 	def get(version, query)
 		words = query.split
-		results = []
+		return Search.new(version,words.fetch(0)).matches.uniq if words.count == 1
+		matches = []
 		result = []
-		words.each {|w| results += Search.new(version,w).matches.uniq }
-		if words.count > 1
-			results.each { |r|
-				count = results.select {|num| num == r }.length
-				result += [r] if count > 1
-			}
-		else
-			result = results
-		end
-		result
+		words.each {|w|
+			matches += Search.new(version,w).matches.uniq
+		}
+		matches.each {|r|
+			result << r if matches.select {|n| n == r}.count >= words.count
+		}
+		
+		result.uniq
 	end
 	
 	def put
 		verse = @text.readlines
 		words = @words.map {|w| "`#{w}'"}.join(", ")
 		say = "Found #{@count} matches for #{words} in #{@verses} verses."
-		say[' matches '] = "match" if @count == 1
+		say[' matches '] = " match " if @count == 1
 		say[' verses'] = " verse" if @verses == 1
 		puts say
 		puts ""
@@ -102,7 +101,7 @@ class Result
 end
 
 if __FILE__ == $0
-	#Index.new(:kjv,"KJV test").write
+	# Index.new(:kjv,"KJV test").write
 	result = Result.new(:kjv, ARGV.join(" "))
 	result.put
 end
