@@ -11,31 +11,31 @@ The text should be in plain text format. Encoded in Unicode UTF-8 where possible
 
 ## Overview
 
-Each line is considered a single verse, except for lines starting in any of the following: !#>
+Each line is considered a single verse, except for lines starting in any of the following: `!#>`
 
-A reference (or short reference) begins each line, separated by a delimeter. The delimeter can be set by the text file creator using the `delim` flag. Anything not occuring in the text can be used. It could be a unicode charactar like '♥' or any other charactar or grouping, like: =>, ::, =, ...
+A reference (or short reference) begins each line, separated by a delimeter. The delimeter can be set by the text file creator using the `delim` flag. Anything not occuring in the text can be used. It could be a unicode charactar like `♥` or any other charactar or grouping, like: `=>`, `::`, `=`, `...`
 
 Paragraphs are also allowed
 
 ## Comments
 
-Lines starting in '!' are comments. They can occur anywhere in the text.
+Lines starting in `!` are comments. They can occur anywhere in the text.
 
 ## Flags
 
 There are special comments that act as setting flags, these are:
 
 1. `version` -- text file version, currently version 1
-2. `delim` -- the delimiter between the reference and the verse, I prefer the double colon - '::'
-3. `strip` -- characters to strip from the text before indexing, right now: .,:;()[]{}?! (Note that this is not available in the present implementation and will be ignored)
+2. `delim` -- the delimiter between the reference and the verse, I prefer the double colon - `::`
+3. `strip` -- characters to strip from the text before indexing, right now: `.,:;()[]{}?!` (Note that this is not available in the present implementation and will be ignored)
 
 ## Paragraphs
 
-You can mark a paragraph in the text by using the '¶' mark at the beginning of the verse the paragraph begins on.
+You can mark a paragraph in the text by using the `¶` mark at the beginning of the verse the paragraph begins on.
 
 ## Example
 
-    ! BibleQE test text
+	! BibleQE test text
 	! version 1
 	! delim ::
 	! strip .,:;()[]{}?!
