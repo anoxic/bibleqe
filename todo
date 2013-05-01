@@ -15,3 +15,6 @@ Towards a web release:
 
 Later:
 [ ] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text
+
+Questions:
+[?] Will it be faster to run `downcase!` + `tr!` on the whole input vs. line by line?

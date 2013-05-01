@@ -1,1 +1,0 @@
-1. Will it be faster to run `downcase!` + `tr!` on the whole input vs. line by line?
