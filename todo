@@ -19,4 +19,4 @@ Later:
 [ ] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text (via `strip` flag)
 
 Questions:
-[?] Will it be faster to run `downcase!` + `tr!` on the whole input vs. line by line?
+[?] When indexing, will it be faster to run `downcase!` + `tr!` on the whole input vs. line by line?
