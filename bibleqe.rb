@@ -68,9 +68,8 @@ class Result
 		result = self.get(version, query)
 		@text  = File.new(version.to_s + ".txt")
 		@words = query.split
-		@count = result.count
+		@count = result.uniq.count
 		@matches = result.uniq
-		@verses = result.uniq.count
 	end
 	
 	def get(version, query)
@@ -91,9 +90,8 @@ class Result
 	def put
 		verse = @text.readlines
 		words = @words.map {|w| "`#{w}'"}.join(", ")
-		say = "Found #{@count} matches for #{words} in #{@verses} verses."
+		say = "Matched #{@count} verses for #{words}."
 		say[' matches '] = " match " if @count == 1
-		say[' verses'] = " verse" if @verses == 1
 		puts say
 		puts ""
 		@matches.each { |match| puts verse.fetch(match) }
