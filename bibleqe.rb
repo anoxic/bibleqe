@@ -61,9 +61,7 @@ class Search
 	end
 end
 
-class Result
-	attr_accessor :count, :matches, :verses
-	
+class Result	
 	def initialize(version, query)
 		result = self.get(version, query)
 		@text  = File.new(version.to_s + ".txt")
@@ -87,19 +85,23 @@ class Result
 		result.uniq
 	end
 	
-	def put
+	def matches
+		return "Nothing to be searched for!" if @words.count == 0
+		verse = @count == 1 ? "verse" : "verses"
+		"Found #{@count} #{verse} matching: #{@words.join(", ")}"
+	end
+	
+	def show
 		verse = @text.readlines
-		words = @words.map {|w| "`#{w}'"}.join(", ")
-		say = "Matched #{@count} verses for #{words}."
-		say[' matches '] = " match " if @count == 1
-		puts say
-		puts ""
-		@matches.each { |match| puts verse.fetch(match) }
+		show = "\n"
+		@matches.each { |match| show += verse.fetch(match) }
+		show
 	end
 end
 
 if __FILE__ == $0
 	# Index.new(:kjv,"KJV test").write
 	result = Result.new(:kjv, ARGV.join(" "))
-	result.put
+	puts result.matches
+	puts result.show
 end

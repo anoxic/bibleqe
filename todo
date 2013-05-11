@@ -10,6 +10,7 @@ Finished:
 [x] Handle results with no matches
 [x] Multi-word search
 [x] Allow commandline parameters for search
+[ ] List references
 
 Towards a web release:
 [ ] Add full KJV text
