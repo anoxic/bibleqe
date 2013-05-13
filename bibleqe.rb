@@ -1,5 +1,5 @@
 class Text
-	attr_reader :index, :text, :symbol, :name
+	attr_reader :index, :text, :symbol
 	
 	def initialize(name, dir = :texts)
 		raise TextNotFoundError, "Can't find #{name}.txt" unless File.exists? "./#{dir}/#{name}.txt"
