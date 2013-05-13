@@ -28,6 +28,7 @@ There are special comments that act as setting flags, these are:
 1. `version` -- text file version, currently version 1
 2. `delim` -- the delimiter between the reference and the verse, I prefer the double colon - `::`
 3. `strip` -- characters to strip from the text before indexing, right now: `.,:;()[]{}?!` (Note that this is not available in the present implementation and will be ignored)
+4. `name` -- The full name of the text (where the filename is the abbrevieation)
 
 ## Paragraphs
 

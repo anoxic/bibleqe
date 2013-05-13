@@ -10,7 +10,7 @@ Finished:
 [x] Handle results with no matches
 [x] Multi-word search
 [x] Allow commandline parameters for search
-[ ] Full text name set in the text
+[x] Full text name set in the text
 
 Towards a web release:
 [ ] Add full KJV text
