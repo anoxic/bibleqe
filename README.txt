@@ -22,6 +22,3 @@ Later:
 [ ] List references
 [ ] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text (via `strip` flag)
 [ ] Allow the File and Index classes to take a text from somewhere other that a file already on the system and create the system files
-
-Questions:
-[?] When indexing, will it be faster to run `downcase!` + `tr!` on the whole input vs. line by line?
