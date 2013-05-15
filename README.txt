@@ -1,3 +1,5 @@
+TODO
+
 Finished:
 [x] Use a multi-line input, with one verse per line.
 [x] Create an index (as an array first) capturing word frequencies
