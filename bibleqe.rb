@@ -1,12 +1,10 @@
 class Text
-	attr_reader :index, :text, :symbol
+	attr_reader :text, :symbol
 	
 	def initialize(name, dir = :texts)
 		raise TextNotFoundError, "Can't find #{name}.txt" unless File.exists? "./#{dir}/#{name}.txt"
-		Index.new(name, dir) unless File.exists? "./#{dir}/#{name}.ind"
 		
-		@text = File.new("./#{dir}/#{name}.txt")
-		@index = File.new("./#{dir}/#{name}.ind")
+		@text = File.new("./#{dir}/#{name}.txt").readlines
 		@symbol = name
 	end
 	
@@ -19,8 +17,35 @@ class Text
 	end
 end
 
-
 class Index
+	attr_reader :index, :symbol
+	
+	def initialize (name, dir = :texts)
+		raise TextNotFoundError, "Can't find #{name}.txt" unless File.exists? "./#{dir}/#{name}.txt"
+		IndexBuilder.new(name, dir) unless File.exists? "./#{dir}/#{name}.ind"
+				
+		@index = File.new("./#{dir}/#{name}.ind").readlines
+		@symbol = name
+	end
+	
+	def [](term)
+		word = term.downcase
+		matches = []
+		@index.each do |line|
+			if line.match(/^#{word} /) 
+				refs = line.split.drop(2)
+				refs.each { |r|
+					r.gsub!(/,.*/,'')
+					matches << r.to_i - 1
+				}
+				break
+			end
+		end
+		matches.uniq
+	end
+end
+
+class IndexBuilder
 	def initialize(name, dir)
 		@name = name
 		@dir = dir
@@ -65,45 +90,25 @@ class Index
 	end
 end
 
-class Search
-	attr_accessor :matches
-	def initialize(version, word)
-		index = File.new("./texts/#{version}.ind")
-		word.downcase!
-		matches = []
-		index.each do |line|
-			if line.match(/^#{word} /) 
-				refs = line.split.drop(2)
-				refs.each { |r|
-					r.gsub!(/,.*/,'')
-					matches << r.to_i - 1
-				}
-				break
-			end
-		end
-		@matches = matches
-	end
-end
-
 class Result	
 	def initialize(version, query)
-		result = self.get(version, query)
-		@text  = File.new("./texts/#{version}.txt")
+		@text  = Text.new(version).text
+		@index = Index.new(version)
 		@words = query.split
+
+		result = self.get
 		@count = result.uniq.count
 		@matches = result.uniq
 	end
 	
-	def get(version, query)
-		words = query.split
-		return Search.new(version,words.fetch(0)).matches.uniq if words.count == 1
+	def get
+		return @index[@words[0]].uniq if @words.count == 1
+		
 		matches = []
 		result = []
-		words.each {|w|
-			matches += Search.new(version,w).matches.uniq
-		}
+		@words.each {|w| matches += @index[w]}
 		matches.each {|r|
-			result << r if matches.select {|n| n == r}.count >= words.count
+			result << r if matches.select {|n| n == r}.count >= @words.count
 		}
 		
 		result.uniq
@@ -116,9 +121,8 @@ class Result
 	end
 	
 	def show
-		verse = @text.readlines
 		show = "\n"
-		@matches.each { |match| show += verse.fetch(match) }
+		@matches.each { |match| show += @text.fetch(match) }
 		show
 	end
 end

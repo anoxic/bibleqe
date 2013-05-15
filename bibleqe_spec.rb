@@ -1,29 +1,38 @@
 require "./bibleqe"
 
 describe Text do
-	it "has a text" do
-		kjv = Text.new(:kjv)
-		kjv.text.is_a?(File).should == true
+	before do
+		@kjv = Text.new :kjv
 	end
 	
-	it "has an index" do
-		kjv = Text.new(:kjv)
-		kjv.index.is_a?(File).should == true
+	it "has a text" do
+		@kjv.text.is_a?(Array).should == true
 	end
 	
 	it "has a delimeter" do
-		kjv = Text.new(:kjv)
-		kjv.delim.should == "::"
+		@kjv.delim.should == "::"
 	end	
 	
 	it "has a name" do
-		kjv = Text.new(:kjv)
-		kjv.name.should == "King James Version"
+		@kjv.name.should == "King James Version"
 	end
 	
 	it "has a symbol" do
-		kjv = Text.new(:kjv)
-		kjv.symbol.should == :kjv
+		@kjv.symbol.should == :kjv
+	end
+end
+
+describe Index do
+	before do
+		@kjv = Index.new :kjv
+	end
+	
+	it "has an index" do
+		@kjv.index.is_a?(Array).should == true
+	end
+	
+	it "gets matched lines for a word" do
+		@kjv["jesus"].should == [6,8,11,16,28]
 	end
 end
 
@@ -41,6 +50,16 @@ describe "the search function" do
 	it "finds two words" do
 		query = Result.new(:kjv, "Jesus came")
 		query.matches.should == "Found 2 verses matching: Jesus, came"
+	end
+	
+	it "finds two words, reversed terms" do
+		query = Result.new(:kjv, "came Jesus")
+		query.matches.should == "Found 2 verses matching: came, Jesus"
+	end
+	
+	it "finds three words" do
+		query = Result.new(:kjv, "and art thou")
+		query.matches.should == "Found 2 verses matching: and, art, thou"
 	end
 	
 	it "finds 0 matches for a word" do
