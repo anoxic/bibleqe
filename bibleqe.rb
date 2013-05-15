@@ -26,7 +26,7 @@ class Index
 	
 	def initialize (name, dir = :texts)
 		raise LoadError, "Can't find #{name}.txt" unless File.exists? "./#{dir}/#{name}.txt"
-		IndexBuilder.new(name, dir) unless File.exists? "./#{dir}/#{name}.ind"
+		IndexBuilder.new(name, dir).write unless File.exists? "./#{dir}/#{name}.ind"
 				
 		@index = File.new("./#{dir}/#{name}.ind").readlines
 		@symbol = name
@@ -50,15 +50,16 @@ class Index
 end
 
 class IndexBuilder
-	def initialize(name, dir)
+	def initialize(name, dir = :texts)
 		@name = name
 		@dir = dir
-		@text  = File.new("./#{dir}/#{name}.txt")
-		@longversion = "Kind James Version"
+		
+		text = Text.new(name, dir)
+		@delim = text.delim
+		@longversion = text.name
+		@text  = File.new("./#{dir}/#{name}.txt") # @todo swith to Text
 		@indexversion = 1
-		@delim = self.delim
 		@index = self.compile(self.index)
-		self.write
 	end
 	
 	def put; print @index; end
@@ -132,9 +133,8 @@ class Result
 end
 
 if __FILE__ == $0
-	# Index.new(:kjv)
-	result = Result.new(:kjv, ARGV.join(" "))
-	puts result.matches
-	puts result.show
-	#Text.new(:kjv)
+	IndexBuilder.new(:kjv).put
+	# result = Result.new(:kjv, ARGV.join(" "))
+	# puts result.matches
+	# puts result.show
 end
