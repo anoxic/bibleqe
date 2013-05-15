@@ -2,7 +2,7 @@ class Text
 	attr_reader :text, :symbol
 	
 	def initialize(name, dir = :texts)
-		raise TextNotFoundError, "Can't find #{name}.txt" unless File.exists? "./#{dir}/#{name}.txt"
+		raise LoadError, "Can't find #{name}.txt" unless File.exists? "./#{dir}/#{name}.txt"
 		
 		@text = File.new("./#{dir}/#{name}.txt").readlines
 		@symbol = name
@@ -21,7 +21,7 @@ class Index
 	attr_reader :index, :symbol
 	
 	def initialize (name, dir = :texts)
-		raise TextNotFoundError, "Can't find #{name}.txt" unless File.exists? "./#{dir}/#{name}.txt"
+		raise LoadError, "Can't find #{name}.txt" unless File.exists? "./#{dir}/#{name}.txt"
 		IndexBuilder.new(name, dir) unless File.exists? "./#{dir}/#{name}.ind"
 				
 		@index = File.new("./#{dir}/#{name}.ind").readlines
@@ -125,9 +125,6 @@ class Result
 		@matches.each { |match| show += @text.fetch(match) }
 		show
 	end
-end
-
-class TextNotFoundError < RuntimeError
 end
 
 if __FILE__ == $0
