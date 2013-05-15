@@ -37,7 +37,7 @@ class Index
 		matches = []
 		@index.each do |line|
 			if line.match(/^#{word} /) 
-				refs = line.split.drop(2)
+				refs = line.split.drop(1)
 				refs.each { |r|
 					r.gsub!(/,.*/,'')
 					matches << r.to_i - 1
@@ -59,19 +59,25 @@ class IndexBuilder
 		@longversion = text.name
 		@text  = File.new("./#{dir}/#{name}.txt") # @todo swith to Text
 		@indexversion = 1
-		@index = self.compile(self.index)
+		@index = self.index
+		@compiled = self.compile
 	end
 	
-	def put; print @index; end
-	def write; File.open("#{@dir}/#{@name}.ind", "w") { |f| f << @index }; end
-	def delim; @text.each { |l| return l[8,10].strip if l.match '! delim ' }; end
+	def put
+		print @compiled
+	end
+	
+	def write
+		File.open("#{@dir}/#{@name}.ind", "w") { |f| f << @compiled }
+	end
 	
 	def index
-		index = Hash.new { |hash,key| hash[key] = {:occ=>"",:freq=>0} }
-		@text.each { |line| 
-			self.line(line, @text.lineno, index) unless line.start_with?('!','>','#') 
+		occurances = Hash.new{|h,k| h[k] = String.new}
+		
+		@text.each { |line|
+			self.line(line, @text.lineno, occurances) unless line.start_with?('!','>','#') 
 		}
-		return index
+		occurances
 	end
 	
 	def line(line, lineno, index)
@@ -79,17 +85,13 @@ class IndexBuilder
 		line.downcase!
 		line.delete!(".,:;()[]{}?!")
 		words = line.split
-		words.each_index { |ind|
-			index[words[ind].to_sym][:occ] << " #{lineno},#{ind + 1}";
-			index[words[ind].to_sym][:freq] += 1
-		}
+		words.each_index { |x| index[words[x].to_sym] << " #{lineno},#{x + 1}"; }
 	end
 
-	def compile(index)
+	def compile
 		out = "! BibleQE Index: #{@longversion}\n! version #{@indexversion}"
-		index = index.sort_by {|k, v| k }
-		index.each { |word, props|
-			out << "\n#{word} #{props[:freq]}#{props[:occ]}"
+		@index.each { |word, occ|
+			out << "\n#{word}#{occ}"
 		}
 		return out
 	end
@@ -133,8 +135,8 @@ class Result
 end
 
 if __FILE__ == $0
-	IndexBuilder.new(:kjv).put
-	# result = Result.new(:kjv, ARGV.join(" "))
-	# puts result.matches
-	# puts result.show
+	# IndexBuilder.new(:kjv).put
+	result = Result.new(:kjv, ARGV.join(" "))
+	puts result.matches
+	puts result.show
 end
