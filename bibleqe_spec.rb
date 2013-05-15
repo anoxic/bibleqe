@@ -20,6 +20,10 @@ describe Text do
 	it "has a symbol" do
 		@kjv.symbol.should == :kjv
 	end
+	
+	it "gets lines" do
+		@kjv[2].should == "! delim ::\n"
+	end
 end
 
 describe Index do

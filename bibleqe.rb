@@ -15,6 +15,10 @@ class Text
 	def name
 		@text.each {|l| return l[7,255].strip if l.match '! name '}
 	end
+	
+	def [](lineno)
+		@text.fetch(lineno)
+	end
 end
 
 class Index
@@ -92,7 +96,7 @@ end
 
 class Result	
 	def initialize(version, query)
-		@text  = Text.new(version).text
+		@text  = Text.new(version)
 		@index = Index.new(version)
 		@words = query.split
 
@@ -122,7 +126,7 @@ class Result
 	
 	def show
 		show = "\n"
-		@matches.each { |match| show += @text.fetch(match) }
+		@matches.each { |match| show += @text[match] }
 		show
 	end
 end
