@@ -29,5 +29,8 @@ ruby quickstart
   
 TEXT SOURCING:
 
-King James, Cambridge Edition (circa 1600)
+King James, 1900 Pure Cambridge Edition
   http://www.bibleprotector.com/
+  
+King James, 1769 Edition
+  http://printkjv.ifbweb.com/
