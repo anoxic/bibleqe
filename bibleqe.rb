@@ -12,6 +12,10 @@ class Text
 		@text.each {|l| return l[8,16].strip if l.match '! delim '}
 	end
 
+	def strip
+		@text.each {|l| return l[8,16].strip if l.match '! strip '}
+	end
+
 	def name
 		@text.each {|l| return l[7,255].strip if l.match '! name '}
 	end
@@ -53,10 +57,10 @@ class IndexBuilder
 	def initialize(name, dir = :texts)
 		@name = name
 		@dir = dir
-		
 		text = Text.new(name, dir)
 		@delim = text.delim
 		@longversion = text.name
+		@strip = text.strip
 		@text  = File.new("./#{dir}/#{name}.txt") # @todo swith to Text
 		@indexversion = 1
 		@index = self.index
@@ -83,7 +87,7 @@ class IndexBuilder
 	def line(line, lineno, index)
 		line.slice!(/.*#{@delim} */)
 		line.downcase!
-		line.delete!(".,:;()[]{}?!")
+		line.delete!(@strip)
 		words = line.split
 		words.each_index { |x| index[words[x].to_sym] << " #{lineno},#{x + 1}"; }
 	end
@@ -137,7 +141,7 @@ class Result
 end
 
 if __FILE__ == $0
-	IndexBuilder.new(:pce2).write
+	IndexBuilder.new(:kjv).write
 	# result = Result.new(:pce2, ARGV.join(" "))
 	# puts result.matches
 	# puts result.show

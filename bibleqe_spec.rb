@@ -19,6 +19,10 @@ describe Text do
 	
 	it "has a symbol" do
 		@kjv.symbol.should == :kjv
+	end	
+	
+	it "has a characters to strip" do
+		@kjv.strip.should == ".,:;()[]{}?!"
 	end
 	
 	it "gets lines" do
