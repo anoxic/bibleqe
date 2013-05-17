@@ -13,12 +13,15 @@ Finished:
 [x] Multi-word search
 [x] Allow commandline parameters for search
 [x] Full text name set in the text
+[x] Add full KJV text
+[x] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text (via `strip` flag)
+
+Searching is too slow:
+[ ] Start within the context of the first letter
+[ ] Binary search
 
 Towards a web release:
-[ ] Add full KJV text
 [ ] Web gateway
 
 Later:
-[ ] List references
-[ ] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text (via `strip` flag)
-[ ] Allow the File and Index classes to take a text from somewhere other that a file already on the system and create the system files
+[ ] List result references vs. whole verse
