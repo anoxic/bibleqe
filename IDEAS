@@ -1,0 +1,35 @@
+Should consider using a modified Wharton Text Format, as http://www.bibleprotector.com/WHARTON_PCE.txt
+
+Consider:
+
+A. It will be more human readable, with no need of:
+   * A delimeter
+   * Special characters to mark comments, headings, and quotes (!, #, >)
+B. Any line not starting with a URL (for example 'Ge' for Genesis) will be considered:
+     A TITLE IF ALL UPPERCASE
+     A note if contains lowercase
+     3 (better) an indecated note (with the other number marked somewhere in the text)
+C. If not directly adjecent to a line starting with a URL it will be ignored as a comment
+     For example, a line with blanks above and below.
+D. Already takes care of a name, abbreviated name, and URL for the book
+
+
+Consider:
+
+BibleQE Text Format Version: 2
+
+Text Name: KING JAMES BIBLE: PURE CAMBRIDGE EDITION
+Text Abbr: KING JAMES VERSION
+Text URL: KJV
+Text Credit: http://www.bibleprotector.com/
+Text Copyright: Outside of the United Kingdom, the KJV is in the public domain. Within the United Kingdom, the rights to the KJV are vested in the Crown.
+
+Book Name: THE FIRST BOOK OF MOSES, CALLED GENESIS.
+Book Abbr: GENESIS
+Book URL: Ge
+Book No: 1
+
+GENESIS CHAPTER 1
+Ge 1:1 In the beginning God created the heaven and the earth.
+Ge 1:2 And the earth was without form, and void; and darkness [was] upon the face of the deep. And the Spirit of God moved upon the face of the waters.
+Ge 1:3 And God said, Let there be light: and there was light.
