@@ -90,6 +90,8 @@ class IndexBuilder
 
 	def compile
 		out = "! BibleQE Index: #{@longversion}\n! version #{@indexversion}"
+		
+		@index = @index.sort
 		@index.each { |word, occ|
 			out << "\n#{word}#{occ}"
 		}
@@ -135,8 +137,8 @@ class Result
 end
 
 if __FILE__ == $0
-	# IndexBuilder.new(:kjv).put
-	result = Result.new(:pce2, ARGV.join(" "))
-	puts result.matches
-	puts result.show
+	IndexBuilder.new(:pce2).write
+	# result = Result.new(:pce2, ARGV.join(" "))
+	# puts result.matches
+	# puts result.show
 end
