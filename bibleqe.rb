@@ -136,7 +136,7 @@ end
 
 if __FILE__ == $0
 	# IndexBuilder.new(:kjv).put
-	result = Result.new(:kjv, ARGV.join(" "))
+	result = Result.new(:pce2, ARGV.join(" "))
 	puts result.matches
 	puts result.show
 end
