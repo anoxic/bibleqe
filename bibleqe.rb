@@ -54,6 +54,7 @@ class Index
 end
 
 class IndexBuilder
+	attr_reader :arr, :compiled
 	def initialize(name, dir = :texts)
 		@name = name
 		@dir = dir
@@ -65,6 +66,7 @@ class IndexBuilder
 		@indexversion = 1
 		@index = self.index
 		@compiled = self.compile
+		@arr = @index
 	end
 	
 	def put
@@ -73,6 +75,18 @@ class IndexBuilder
 	
 	def write
 		File.open("#{@dir}/#{@name}.ind", "w") { |f| f << @compiled }
+	end
+	
+	def range(l = nil)
+		words = @index.flatten.select {|x| x.is_a? Symbol }
+		chars = Hash.new {|k,v| k[v] = Array.new(0) }
+		words.each { |w|
+			letter = w.to_s[0].to_sym
+			chars[letter][0] ||= words.index(w) + 2
+			chars[letter][1] = words.index(w) + 2
+		}
+		return chars[l.to_sym] unless l == nil
+		chars
 	end
 	
 	def index
@@ -141,7 +155,7 @@ class Result
 end
 
 if __FILE__ == $0
-	IndexBuilder.new(:kjv).write
+	p IndexBuilder.new(:kjv).range(:a)
 	# result = Result.new(:pce2, ARGV.join(" "))
 	# puts result.matches
 	# puts result.show

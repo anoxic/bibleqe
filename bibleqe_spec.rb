@@ -1,5 +1,11 @@
 require "./bibleqe"
 
+describe "the index builder" do
+	it "has a range for 'a'" do
+		IndexBuilder.new(:kjv).range(:a).should == [2,19]
+	end
+end
+
 describe Text do
 	before do
 		@kjv = Text.new :kjv
