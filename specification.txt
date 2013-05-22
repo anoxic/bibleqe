@@ -1,0 +1,25 @@
+BibleQE Specification
+Version 2
+
+Index:
+* The index is made up of two files: <name>.ind, and  <name>_toc.ind
+
+* <name>.ind is the index file - e.g.
+  A. It has two flag lines (starting with a `!`)
+  B. Each line is in this format <word> <lineno>,<wordno> ...
+  > ! BibleQE Index: King James Version
+  > ! version 2
+  > a 6,4 6,11 7,18 9,14 11,7 12,10 17,9 32,4 34,5
+  > abideth 43,26
+  
+* <name>_toc.ind keeps the "table of contents" for the index - e.g.
+  > ! BibleQE Index TOC: King James Version
+  > ! version 2
+  > a 2..19
+  > b 20..41
+  
+Text:
+...
+
+Program:
+...

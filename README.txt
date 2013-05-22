@@ -1,5 +1,7 @@
 TODO
 
+[ ] Make full specification
+
 Searching is too slow:
 [ ] Start within the context of the first letter
 [ ] Binary search
@@ -9,6 +11,7 @@ Towards a web release:
 
 Later:
 [ ] Feature: List result references vs. whole verse
+[ ] Use only UTF-8 for all files
 
 Finished:
 [x] Use a multi-line input, with one verse per line.
