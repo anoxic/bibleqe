@@ -1,15 +1,13 @@
 TODO
 
-Searching is too slow:
-[-] Start within the context of the first letter
-[ ] Binary search
-
 Towards a web release:
 [ ] Web gateway
+[ ] Paginate results vs. printing all
 
 Later:
 [ ] Feature: List result references vs. whole verse
 [ ] Use only UTF-8 for all files
+[ ] Searching is too slow: Binary search
 
 Finished:
 [x] Use a multi-line input, with one verse per line.
@@ -30,3 +28,4 @@ Finished:
 [x] Make full specification
 [x] Printing is too slow: Instead of loading entire file, 
     load from stream, skipping lines
+[x] Searching is too slow: Start within the context of the first letter
