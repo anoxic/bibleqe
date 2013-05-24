@@ -1,9 +1,7 @@
 TODO
 
-[ ] Make full specification
-
 Searching is too slow:
-[ ] Start within the context of the first letter
+[-] Start within the context of the first letter
 [ ] Binary search
 
 Towards a web release:
@@ -29,3 +27,6 @@ Finished:
 [x] Full text name set in the text
 [x] Add full KJV text
 [x] Allow ignored characters (i.e. .,:;()[]{}?!) to be set in the text
+[x] Make full specification
+[x] Printing is too slow: Instead of loading entire file, 
+    load from stream, skipping lines

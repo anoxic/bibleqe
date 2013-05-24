@@ -12,7 +12,7 @@ describe Text do
 	end
 	
 	it "has a text" do
-		@kjv.text.is_a?(Array).should == true
+		@kjv.text.is_a?(File).should == true
 	end
 	
 	it "has a delimeter" do

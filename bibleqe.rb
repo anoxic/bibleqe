@@ -4,7 +4,7 @@ class Text
 	def initialize(name, dir = :texts)
 		raise LoadError, "Can't find #{name}.txt" unless File.exists? "./#{dir}/#{name}.txt"
 		
-		@text = File.new("./#{dir}/#{name}.txt").readlines
+		@text = File.new("./#{dir}/#{name}.txt")
 		@symbol = name
 	end
 	
@@ -14,6 +14,7 @@ class Text
 
 	def strip
 		@text.each {|l| return l[8,16].strip if l.match '! strip '}
+		".,:;()[]{}?!"
 	end
 
 	def name
@@ -21,7 +22,15 @@ class Text
 	end
 	
 	def [](lineno)
-		@text.fetch(lineno)
+		@text.rewind if @text.lineno > lineno
+		skip = lineno - @text.lineno
+		skip.times { @text.readline }
+		@text.readline
+		
+		#using @text.readlines.fetch(lineno) to get results for "aaron"
+		#=> 0.640625
+		#skipping lines + continuing at last pointer
+		#=> 0.234375
 	end
 end
 
@@ -156,15 +165,26 @@ class Result
 	end
 	
 	def show
-		show = "\n"
-		@matches.each { |match| show += @text[match] }
-		show
+		puts ""
+		@matches.each { |match| puts @text[match] }
 	end
 end
 
 if __FILE__ == $0
-	IndexBuilder.new(:kjv).write
-	# result = Result.new(:pce2, ARGV.join(" "))
-	# puts result.matches
-	# puts result.show
+	# IndexBuilder.new(:kjv).write
+	require "benchmark"
+	time = Benchmark.measure do	
+		result = Result.new(:pce2, ARGV.join(" "))
+		puts result.matches
+		result.show
+	end
+	puts time
+	# Without starting within the context:
+	# Search for `zuzims` (1 result) takes 0.421875 seconds
+	# Search for `abaddon` (1 result) takes 0.265625 seconds
+	# Search for `a` (6309 results) takes 21.109375 seconds
+	# ...The search itself took 0.296875 seconds, 
+	# it was the printing that took so long.
+	# note that with searches containing few results (as zuzims) 
+	# the first 0.3 is the search time
 end
