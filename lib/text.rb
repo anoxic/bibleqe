@@ -7,18 +7,21 @@ class Text
 		@text = File.new("./#{dir}/#{name}.txt")
 		@symbol = name
 	end
+
+	def name
+		@text.rewind
+		@text.each {|l| return l[7,255].strip if l.match '! name '}
+	end
 	
 	def delim
+		@text.rewind
 		@text.each {|l| return l[8,16].strip if l.match '! delim '}
 	end
 
 	def strip
+		@text.rewind
 		@text.each {|l| return l[8,16].strip if l.match '! strip '}
 		".,:;()[]{}?!"
-	end
-
-	def name
-		@text.each {|l| return l[7,255].strip if l.match '! name '}
 	end
 	
 	def [](lineno)

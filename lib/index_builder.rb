@@ -2,11 +2,13 @@ class IndexBuilder
 	def initialize(name, dir = :texts)
 		@name = name
 		@dir = dir
-		text = Text.new(name, dir)
-		@delim = text.delim
-		@longversion = text.name
-		@strip = text.strip
-		@text  = File.new("./#{dir}/#{name}.txt") # @todo swith to Text
+		
+		t = Text.new(name)
+		@long_name = t.name
+		@delim = t.delim
+		@strip = t.strip
+		@text = t.text
+		
 		@indexversion = 1
 		@index = self.index
 		@compiled = self.compile
@@ -53,7 +55,7 @@ class IndexBuilder
 	end
 
 	def compile
-		out = "! BibleQE Index: #{@longversion}\n! version #{@indexversion}"
+		out = "! BibleQE Index: #{@long_name}\n! version #{@indexversion}"
 		@index = @index.sort
 		@index.each { |word, occ|
 			out << "\n#{word}#{occ}"
@@ -62,7 +64,7 @@ class IndexBuilder
 	end
 	
 	def compile_range
-		out = "! BibleQE Index TOC: #{@longversion}\n! version #{@indexversion}"
+		out = "! BibleQE Index TOC: #{@long_name}\n! version #{@indexversion}"
 		@range.each { |letter, range|
 			out << "\n#{letter} #{range[0]}..#{range[1]}"
 		}
