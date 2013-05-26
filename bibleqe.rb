@@ -9,6 +9,6 @@ if __FILE__ == $0
 	# puts ""
 	# puts result.matches
 	
-	IndexBuilder.new(:pce2).write
+	IndexBuilder.new(:kjv).write
 	puts ""
 end

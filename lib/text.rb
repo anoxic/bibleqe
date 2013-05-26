@@ -1,36 +1,39 @@
 class Text
-	attr_reader :text, :symbol
+	attr_reader :content, :symbol
 	
 	def initialize(name, dir = :texts)
-		raise LoadError, "Can't find #{name}.txt" unless File.exists? "./#{dir}/#{name}.txt"
-		
-		@text = File.new("./#{dir}/#{name}.txt")
+		unless File.exists? "./#{dir}/#{name}.txt"
+			raise LoadError, "Can't find #{name}.txt" 
+		end
+		@content = File.new("./#{dir}/#{name}.txt")
 		@symbol = name
 	end
 
 	def name
-		@text.rewind
-		@text.each {|l| return l[7,255].strip if l.match '! name '}
+		@content.rewind
+		@content.each {|l| return l[7,255].strip if l.match '! name '}
+		raise SyntaxError, "No `name' property found in #{@content.path}"
 	end
 	
 	def delim
-		@text.rewind
-		@text.each {|l| return l[8,16].strip if l.match '! delim '}
+		@content.rewind
+		@content.each {|l| return l[8,16].strip if l.match '! delim '}
+		"%" # Default delimiter
 	end
 
 	def strip
-		@text.rewind
-		@text.each {|l| return l[8,16].strip if l.match '! strip '}
-		".,:;()[]{}?!"
+		@content.rewind
+		@content.each {|l| return l[8,16].strip if l.match '! strip '}
+		".,:;()[]{}<>?!¶" # Default string for `strip'
 	end
 	
 	def [](lineno)
-		@text.rewind if @text.lineno > lineno
-		skip = lineno - @text.lineno
-		skip.times { @text.readline }
-		@text.readline
+		@content.rewind if @content.lineno > lineno
+		skip = lineno - @content.lineno
+		skip.times { @content.readline }
+		@content.readline
 		
-		#using @text.readlines.fetch(lineno) to get results for "aaron"
+		#using @content.readlines.fetch(lineno) to get results for "aaron"
 		#=> 0.640625
 		#skipping lines + continuing at last pointer
 		#=> 0.234375
