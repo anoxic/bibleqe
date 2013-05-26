@@ -7,7 +7,7 @@ class IndexBuilder
 		@long_name = t.name
 		@delim = t.delim
 		@strip = t.strip
-		@text = t.text
+		@text = t.content
 		
 		@indexversion = 1
 		@index = self.index
