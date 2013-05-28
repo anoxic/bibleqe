@@ -29,6 +29,8 @@ class Result
 	end
 	
 	def show
-		@matches.each { |match| puts @text[match] }
+		result = []
+		@matches.each { |match| result << @text[match] }
+		result
 	end
 end

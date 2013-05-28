@@ -5,7 +5,7 @@ require './lib/result.rb'
 
 if __FILE__ == $0
 	result = Result.new(:pce2, ARGV.join(" "))
-	result.show
+	puts result.show
 	puts ""
 	puts result.matches
 end

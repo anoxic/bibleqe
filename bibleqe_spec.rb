@@ -93,6 +93,11 @@ describe "the search function" do
 		query = Result.new(:kjv, "")
 		query.matches.should == "Nothing to be searched for!"
 	end
+	
+	it "gets matching verses" do
+		query = Result.new(:kjv, "jesus")
+		query.show.count.should == 5
+	end
 end
 
 # list: print matching verse references
