@@ -103,6 +103,11 @@ describe "the search function" do
 		query = Result.new(:test, "and")
 		query.show(1..10).count.should == 10
 	end
+	
+	it "displays by page" do
+		query = Result.new(:test, "and")
+		query.show_by_page(1).count.should == 10
+	end
 end
 
 # list: print matching verse references

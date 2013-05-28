@@ -1,8 +1,10 @@
 class Result	
-	def initialize(version, query)
+	def initialize(version, query, results_per_page = 10)
 		@text  = Text.new(version)
 		@index = Index.new(version)
 		@query = query
+		@query = query.split if query.is_a? String
+		@results_per_page = results_per_page
 
 		result = self.get
 		@count = result.uniq.count
@@ -33,7 +35,13 @@ class Result
 		matches = @matches[range] if range.is_a? Range
 		matches ||= @matches
 		matches.each { |match| result << @text[match] }
-		result.unshift("Showing results #{range}") if range.is_a? Range
 		result
+	end
+	
+	def show_by_page(pagenum)
+		raise_by = pagenum * @results_per_page
+		range = 1..@results_per_page
+		range = range.min + raise_by..range.max + raise_by if pagenum > 1
+		self.show(range)
 	end
 end
