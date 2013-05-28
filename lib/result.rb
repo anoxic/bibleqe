@@ -2,7 +2,7 @@ class Result
 	def initialize(version, query)
 		@text  = Text.new(version)
 		@index = Index.new(version)
-		@words = query.split
+		@query = query
 
 		result = self.get
 		@count = result.uniq.count
@@ -10,22 +10,22 @@ class Result
 	end
 	
 	def get
-		return @index[@words[0]].uniq if @words.count == 1
+		return @index[@query[0]].uniq if @query.count == 1
 		
 		matches = []
 		result = []
-		@words.each {|w| matches += @index[w]}
+		@query.each {|w| matches += @index[w]}
 		matches.each {|r|
-			result << r if matches.select {|n| n == r}.count >= @words.count
+			result << r if matches.select {|n| n == r}.count >= @query.count
 		}
 		
 		result.uniq
 	end
 	
 	def matches
-		return "Nothing to be searched for!" if @words.count == 0
+		return "Nothing to be searched for!" if @query.count == 0
 		verse = @count == 1 ? "verse" : "verses"
-		"Found #{@count} #{verse} matching: #{@words.join(", ")}"
+		"Found #{@count} #{verse} matching: #{@query.join(", ")}"
 	end
 	
 	def show(range = nil)
