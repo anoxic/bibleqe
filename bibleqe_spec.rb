@@ -2,7 +2,7 @@ require "./bibleqe"
 
 describe "the index builder" do
 	before do
-		@kjv = IndexBuilder.new(:kjv)
+		@kjv = IndexBuilder.new(:test)
 	end
 	
 	it "has a range for 'a'" do
@@ -16,7 +16,7 @@ end
 
 describe Text do
 	before do
-		@kjv = Text.new :kjv
+		@kjv = Text.new :test
 	end
 	
 	it "has a text" do
@@ -32,7 +32,7 @@ describe Text do
 	end
 	
 	it "has a symbol" do
-		@kjv.symbol.should == :kjv
+		@kjv.symbol.should == :test
 	end	
 	
 	it "has a characters to strip" do
@@ -46,7 +46,7 @@ end
 
 describe Index do
 	before do
-		@kjv = Index.new :kjv
+		@kjv = Index.new :test
 	end
 	
 	it "has an index" do
@@ -60,47 +60,47 @@ end
 
 describe "the search function" do
 	it "finds one word" do
-		query = Result.new(:kjv, "Jesus")
+		query = Result.new(:test, "Jesus")
 		query.matches.should == "Found 5 verses matching: Jesus"
 	end
 	
 	it "finds another word" do
-		query = Result.new(:kjv, "John")
+		query = Result.new(:test, "John")
 		query.matches.should == "Found 4 verses matching: John"
 	end
 	
 	it "finds two words" do
-		query = Result.new(:kjv, "Jesus came")
+		query = Result.new(:test, "Jesus came")
 		query.matches.should == "Found 2 verses matching: Jesus, came"
 	end
 	
 	it "finds two words, reversed terms" do
-		query = Result.new(:kjv, "came Jesus")
+		query = Result.new(:test, "came Jesus")
 		query.matches.should == "Found 2 verses matching: came, Jesus"
 	end
 	
 	it "finds three words" do
-		query = Result.new(:kjv, "and art thou")
+		query = Result.new(:test, "and art thou")
 		query.matches.should == "Found 2 verses matching: and, art, thou"
 	end
 	
 	it "finds 0 matches for a word" do
-		query = Result.new(:kjv, "sentinel")
+		query = Result.new(:test, "sentinel")
 		query.matches.should == "Found 0 verses matching: sentinel"
 	end
 	
 	it "cannot search for empty string" do
-		query = Result.new(:kjv, "")
+		query = Result.new(:test, "")
 		query.matches.should == "Nothing to be searched for!"
 	end
 	
 	it "gets matching verses" do
-		query = Result.new(:kjv, "jesus")
+		query = Result.new(:test, "jesus")
 		query.show.count.should == 5
 	end
 	
 	it "shows just 10 results of a larger query" do
-		query = Result.new(:kjv, "and")
+		query = Result.new(:test, "and")
 		query.show(1..10).count.should == 10
 	end
 end

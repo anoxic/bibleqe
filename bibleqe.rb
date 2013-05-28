@@ -5,7 +5,7 @@ require './lib/result.rb'
 
 if __FILE__ == $0
 	result = Result.new(:kjv, ARGV.join(" "))
-	puts result.show(21..30)
-	puts ""
 	puts result.matches
+	puts ""
+	puts result.show(1..10)
 end
