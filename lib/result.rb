@@ -33,6 +33,7 @@ class Result
 		matches = @matches[range] if range.is_a? Range
 		matches ||= @matches
 		matches.each { |match| result << @text[match] }
+		result.unshift("Showing results #{range}") if range.is_a? Range
 		result
 	end
 end

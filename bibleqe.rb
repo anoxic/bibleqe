@@ -2,10 +2,8 @@ require './lib/text.rb'
 require './lib/index.rb'
 require './lib/index_builder.rb'
 require './lib/result.rb'
+require './lib/prompt.rb'
 
 if __FILE__ == $0
-	result = Result.new(:kjv, ARGV.join(" "))
-	puts result.matches
-	puts ""
-	puts result.show(1..10)
+	Prompt.new(ARGV)
 end
