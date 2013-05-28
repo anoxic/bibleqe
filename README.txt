@@ -2,7 +2,7 @@ TODO
 
 Towards a web release:
 [ ] Web gateway
-[ ] Paginate results vs. printing all
+[-] Paginate results vs. printing all
 
 Later:
 [ ] Feature: List result references vs. whole verse

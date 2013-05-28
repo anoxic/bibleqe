@@ -98,6 +98,11 @@ describe "the search function" do
 		query = Result.new(:kjv, "jesus")
 		query.show.count.should == 5
 	end
+	
+	it "shows just 10 results of a larger query" do
+		query = Result.new(:kjv, "and")
+		query.show(1..10).count.should == 10
+	end
 end
 
 # list: print matching verse references

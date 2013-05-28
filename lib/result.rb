@@ -28,9 +28,11 @@ class Result
 		"Found #{@count} #{verse} matching: #{@words.join(", ")}"
 	end
 	
-	def show
+	def show(range = nil)
 		result = []
-		@matches.each { |match| result << @text[match] }
+		matches = @matches[range] if range.is_a? Range
+		matches ||= @matches
+		matches.each { |match| result << @text[match] }
 		result
 	end
 end
