@@ -8,6 +8,7 @@ Later:
 [ ] Feature: List result references vs. whole verse
 [ ] Use only UTF-8 for all files
 [ ] Searching is too slow: Binary search
+[ ] Instead of doing file system reads, load Bible into memory.
 
 Finished:
 [x] Use a multi-line input, with one verse per line.
