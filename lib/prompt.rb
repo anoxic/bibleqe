@@ -14,7 +14,7 @@ class Prompt
 	                      
 		result = Result.new(:kjv, args.flatten)
 		puts result.matches
-		puts "Page #{page}"
+		puts "Page #{page} (displaying 10 results)"
 		puts ""
 		puts result.show_by_page(page)
 	end
