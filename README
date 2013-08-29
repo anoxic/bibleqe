@@ -11,18 +11,18 @@ Arguments not starting in : are used as search terms.
 
 :limit <num> sets how many results per page (default = 10)
 
-
-UNIMPLEMENTED ARGUMENTS
-
 :all will display all results
 
-/<regex>/ for a wildcard search
 
-<term>|<term> executes an OR search
+UNIMPLEMENTED ARGUMENTS
 
 :show (on by default) show all results
 
 :list list references
+
+/<regex>/ for a wildcard search
+
+<term>|<term> executes an OR search
 
 
 TODO
