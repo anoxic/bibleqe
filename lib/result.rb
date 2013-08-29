@@ -29,6 +29,18 @@ class Result
 		verse = @count == 1 ? "verse" : "verses"
 		"Found #{@count} #{verse} matching: #{@query.join(", ")}"
 	end
+
+    def list
+        raw = self.show
+        delim = @text.delim
+        list = []
+
+        raw.each do |line|
+            list << line.split(delim).first.chop
+        end
+
+        list
+    end
 	
 	def show(range = nil)
 		result = []

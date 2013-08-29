@@ -13,12 +13,12 @@ Arguments not starting in : are used as search terms.
 
 :all will display all results
 
-
-UNIMPLEMENTED ARGUMENTS
-
-:show (on by default) show all results
+:show (on by default) show result text
 
 :list list references
+
+
+UNIMPLEMENTED ARGUMENTS
 
 /<regex>/ for a wildcard search
 

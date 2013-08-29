@@ -14,6 +14,13 @@ class Prompt
 
         puts result.matches
 
+        # List results
+        if @flags[:list] != nil
+            puts ""
+            puts result.list.join ", "
+            return
+        end
+
         # Show results
         if @flags[:all] != nil
             puts ""
