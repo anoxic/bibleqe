@@ -24,6 +24,12 @@ UNIMPLEMENTED ARGUMENTS
 
 <term>|<term> executes an OR search
 
+:in <book_or_chapter> define a scope for searching
+
+:within <num> [words/verses] when used with two or more words, allows you to find matches for words within a certain distance
+
+
+
 
 TODO
 
