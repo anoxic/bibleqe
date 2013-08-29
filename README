@@ -1,10 +1,36 @@
+Usage:
+
+    $ ./bqe <search_term> [<search_term] [:page <number>] [:limit <number>]
+
+
+IMPLEMENTED ARGUMENTS
+
+Arguments not starting in : are used as search terms.
+
+:page <num> sets which page number to view (default = 1)
+
+:limit <num> sets how many results per page (default = 10)
+
+
+UNIMPLEMENTED ARGUMENTS
+
+:all will display all results
+
+/<regex>/ for a wildcard search
+
+<term>|<term> executes an OR search
+
+:show (on by default) show all results
+
+:list list references
+
+
 TODO
 
 Towards a web release:
 [ ] Web gateway
-[-] Paginate results vs. printing all
 
-Later:
+Other items:
 [ ] Feature: List result references vs. whole verse
 [ ] Use only UTF-8 for all files
 [ ] Searching is too slow: Binary search
@@ -30,3 +56,4 @@ Finished:
 [x] Printing is too slow: Instead of loading entire file, 
     load from stream, skipping lines
 [x] Searching is too slow: Start within the context of the first letter
+[x] Paginate results vs. printing all
