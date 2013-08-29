@@ -33,12 +33,12 @@ class Prompt
             if arg.match /^:.?/
                 name = arg.delete ':'
 
-                if ! booleans.include? name
-                    flags[name.to_sym] = @args[k + 1]
-                    @args.delete_at(k)
+                if booleans.include? name
+                    flags[name.to_sym] = true;
                     @args.delete_at(k)
                 else
-                    flags[name.to_sym] = true;
+                    flags[name.to_sym] = @args[k + 1]
+                    @args.delete_at(k)
                     @args.delete_at(k)
                 end
             end
