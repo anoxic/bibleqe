@@ -37,7 +37,7 @@ class Prompt
         booleans = ['all', 'list', 'show']
         
         @args.each.with_index do |arg, k|
-            if arg.match /^:.?/
+            if arg.start_with? ':'
                 name = arg.delete ':'
 
                 if booleans.include? name
