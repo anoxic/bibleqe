@@ -33,6 +33,17 @@ class Index
 	end
 	
 	def [](term)
+		matches = []
+        terms = term.split '|'
+        
+        terms.each do |t|
+            matches = matches + self.fetch(t)
+        end
+
+        matches.uniq
+	end
+
+    def fetch(term)
 		word = term.downcase
 		matches = []
 		range(word).each do |line|
@@ -45,6 +56,6 @@ class Index
 				break
 			end
 		end
-		matches.uniq
-	end
+		matches
+    end
 end

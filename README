@@ -5,7 +5,9 @@ Usage:
 
 IMPLEMENTED ARGUMENTS
 
-Arguments not starting in : are used as search terms.
+Arguments not starting in : are used as search terms (in an AND search)
+
+<term>|<term> executes an OR search
 
 :page <num> sets which page number to view (default = 1)
 
@@ -20,14 +22,11 @@ Arguments not starting in : are used as search terms.
 
 UNIMPLEMENTED ARGUMENTS
 
-<term>|<term> executes an OR search (must be implemented before a regex search)
-
 /<regex>/ for a wildcard search
 
 :in <book_or_chapter> define a scope for searching
 
 :within <num> [words/verses] when used with two or more words, allows you to find matches for words within a certain distance
-
 
 
 

@@ -23,7 +23,7 @@ class Result
 		
 		result.uniq
 	end
-	
+
 	def matches
 		return "Nothing to be searched for!" if @query.count == 0
 		verse = @count == 1 ? "verse" : "verses"
