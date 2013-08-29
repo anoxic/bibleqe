@@ -10,7 +10,7 @@ class Prompt
  	    @limit = @flags[:limit] if @flags[:limit] != nil
 	                      
 	    # Get results                  
-		result = Result.new(:kjv, @args.flatten)
+		result = Result.new(:kjv, @args.flatten, @limit)
 		puts result.matches
 		puts "Page #{@page} (displaying #{@limit} results)"
 		puts ""

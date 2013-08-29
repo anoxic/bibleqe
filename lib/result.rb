@@ -4,7 +4,7 @@ class Result
 		@index = Index.new(version)
 		@query = query
 		@query = query.split if query.is_a? String
-		@results_per_page = results_per_page
+		@results_per_page = results_per_page.to_i
 
 		result = self.get
 		@count = result.uniq.count
