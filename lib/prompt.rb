@@ -1,21 +1,34 @@
 class Prompt
-	def initialize(args)     
-	      
-	    # Use arg 1 for page number
-	    
-	    if args[0] =~ /^[0-9]+$/
-	        page = args[0].to_i
-            args.delete_at(0)
-	    else
-	        page = 1;
-	    end
+	def initialize(args)     	    	    
+	    @args = args
+	    @flags = self.get_flags()	            
+
+	    @page = 1        
+	    @page = @flags[:page] if @flags[:page] != nil
+
+	    @limit = 10
+ 	    @limit = @flags[:limit] if @flags[:limit] != nil
 	                      
-	    # Get results
-	                      
-		result = Result.new(:kjv, args.flatten)
+	    # Get results                  
+		result = Result.new(:kjv, @args.flatten)
 		puts result.matches
-		puts "Page #{page} (displaying 10 results)"
+		puts "Page #{@page} (displaying #{@limit} results)"
 		puts ""
-		puts result.show_by_page(page)
+		puts result.show_by_page(@page)
+	end
+	
+	def get_flags()
+	    flags = {}
+	    
+	    @args.each.with_index do |arg, k|
+	        if arg.match /^:.?/
+	           name = arg.delete ':'
+	           flags[name.to_sym] = @args[k + 1]
+	           @args.delete_at(k)
+	           @args.delete_at(k)
+	        end
+	    end
+	    
+	    flags
 	end
 end

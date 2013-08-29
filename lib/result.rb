@@ -39,6 +39,7 @@ class Result
 	end
 	
 	def show_by_page(pagenum)
+		pagenum = pagenum.to_i
 		raise_by = pagenum * @results_per_page
 		range = 1..@results_per_page
 		range = range.min + raise_by..range.max + raise_by if pagenum > 1
