@@ -1,4 +1,4 @@
-require "./bibleqe"
+require "../bibleqe"
 
 describe "the index builder" do
 	before do
