@@ -20,9 +20,9 @@ Arguments not starting in : are used as search terms.
 
 UNIMPLEMENTED ARGUMENTS
 
-/<regex>/ for a wildcard search
+<term>|<term> executes an OR search (must be implemented before a regex search)
 
-<term>|<term> executes an OR search
+/<regex>/ for a wildcard search
 
 :in <book_or_chapter> define a scope for searching
 
@@ -34,6 +34,8 @@ UNIMPLEMENTED ARGUMENTS
 TODO
 
 Towards a web release:
+[ ] Use full length book names
+[ ] Format the verses better
 [ ] Web gateway
 
 Other items:
