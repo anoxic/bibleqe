@@ -27,12 +27,13 @@ class Prompt
     
     def get_flags()
         flags = {}
+        booleans = ['all', 'list', 'show']
         
         @args.each.with_index do |arg, k|
             if arg.match /^:.?/
                 name = arg.delete ':'
 
-                if name != 'all'
+                if ! booleans.include? name
                     flags[name.to_sym] = @args[k + 1]
                     @args.delete_at(k)
                     @args.delete_at(k)
