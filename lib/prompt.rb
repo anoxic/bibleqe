@@ -8,9 +8,12 @@ class Prompt
 
         @limit = 10
         @limit = @flags[:limit] if @flags[:limit] != nil
-                          
+
+        @text = :kjv
+        @text = @flags[:text] if @flags[:text] != nil
+
         # Get results                  
-        result = Result.new(:kjv, @args.flatten, @limit)
+        result = Result.new(@text, @args.flatten, @limit)
 
         puts result.matches
 
