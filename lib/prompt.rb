@@ -3,14 +3,14 @@ class Prompt
         @args = args
         @flags = self.get_flags()                
 
+        @text = :kjv
+        @text = @flags[:text] if @flags[:text] != nil
+
         @page = 1        
         @page = @flags[:page] if @flags[:page] != nil
 
         @limit = 10
         @limit = @flags[:limit] if @flags[:limit] != nil
-
-        @text = :kjv
-        @text = @flags[:text] if @flags[:text] != nil
 
         # Get results                  
         result = Result.new(@text, @args.flatten, @limit)
