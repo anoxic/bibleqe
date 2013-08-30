@@ -5,15 +5,18 @@ class Index
 		raise LoadError, "Can't find #{name}.txt" unless File.exists? "./#{dir}/#{name}.txt"
 		IndexBuilder.new(name, dir).write unless File.exists? "./#{dir}/#{name}.ind"
 		IndexBuilder.new(name, dir).write unless File.exists? "./#{dir}/#{name}_toc.ind"
+		IndexBuilder.new(name, dir).write unless File.exists? "./#{dir}/#{name}_words.lst"
 				
 		@index = File.new("./#{dir}/#{name}.ind").readlines
 		@toc = File.new("./#{dir}/#{name}_toc.ind").readlines
+		@words = File.new("./#{dir}/#{name}_words.lst").readlines
 		@symbol = name
 	end
 	
 	def range(word)
 		letter = word.to_s[0] 
 		lower,upper = nil
+
 		@toc.each do |l|
 			if l.match(/^#{letter} /) 
 				x = l.split[1].split("..")
@@ -22,6 +25,7 @@ class Index
 				break
 			end
 		end
+
 		@index[lower..upper]
 		
 		# Without range, search for:
@@ -46,6 +50,7 @@ class Index
     def fetch(term)
 		word = term.downcase
 		matches = []
+
 		range(word).each do |line|
 			if line.match(/^#{word} /) 
 				refs = line.split.drop(1)
@@ -56,6 +61,7 @@ class Index
 				break
 			end
 		end
+
 		matches
     end
 end
