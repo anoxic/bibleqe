@@ -6,14 +6,44 @@ class Result
 		@query = query.split if query.is_a? String
 		@results_per_page = results_per_page.to_i
 
+        @query = self.expand(@query)
 		result = self.get
 		@count = result.uniq.count
 		@matches = result.uniq
 	end
-	
+
+    def expand(query)
+        expanded = []
+
+        query.each_with_index do |q, k|
+            if q.start_with? "/"
+                x = self.regex(q)
+                if x != nil
+                    query.delete_at(k)
+                    expanded << x
+                end
+            end
+        end
+
+        query + expanded
+    end
+
+    def regex(regex)
+        matches = []
+        regex = regex.tr('/','')
+        regex = Regexp.new(regex)
+
+        @index.words.each do |word|
+            matches << word if word[regex] == word
+        end
+
+        return matches.join "|" if matches.count > 0
+        nil
+    end
+
 	def get
 		return @index[@query[0]].uniq if @query.count == 1
-		
+
 		matches = []
 		result = []
 		@query.each {|w| matches += @index[w]}

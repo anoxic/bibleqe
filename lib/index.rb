@@ -1,5 +1,5 @@
 class Index
-	attr_reader :index, :symbol
+	attr_reader :index, :words, :symbol
 	
 	def initialize (name, dir = :texts)
 		raise LoadError, "Can't find #{name}.txt" unless File.exists? "./#{dir}/#{name}.txt"
@@ -9,16 +9,16 @@ class Index
 				
 		@index = File.new("./#{dir}/#{name}.ind").readlines
 		@toc = File.new("./#{dir}/#{name}_toc.ind").readlines
-		@words = File.new("./#{dir}/#{name}_words.lst").readlines
+		@words = File.new("./#{dir}/#{name}_words.lst").readlines.join.split
 		@symbol = name
 	end
-	
+
 	def range(word)
 		letter = word.to_s[0] 
 		lower,upper = nil
 
 		@toc.each do |l|
-			if l.match(/^#{letter} /) 
+			if l.start_with? "#{letter} "
 				x = l.split[1].split("..")
 				lower = x[0].to_i
 				upper = x[1].to_i
@@ -26,6 +26,7 @@ class Index
 			end
 		end
 
+        return [] if lower.nil?
 		@index[lower..upper]
 		
 		# Without range, search for:
