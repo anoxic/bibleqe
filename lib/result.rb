@@ -28,12 +28,12 @@ class Result
         query + expanded
     end
 
-    def regex(regex)
+    def regex(regexp)
         matches = []
-        regex = regex.tr('/','')
-        regex = Regexp.new(regex)
+        regex = Regexp.new(regexp.tr('/',''))
 
         @index.words.each do |word|
+            raise BibleQE::Error, "#{regexp}: matched too many words" if matches.count > 15
             matches << word if word[regex] == word
         end
 

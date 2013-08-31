@@ -1,3 +1,4 @@
+require './lib/bibleqe.rb'
 require './lib/text.rb'
 require './lib/index.rb'
 require './lib/index_builder.rb'

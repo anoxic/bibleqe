@@ -1,5 +1,5 @@
 class Prompt
-    def initialize(args)                     
+    def initialize(args)
         @args = args
         @flags = self.get_flags()                
 
