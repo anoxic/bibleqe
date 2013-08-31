@@ -16,6 +16,7 @@ class Shell
         # Get results                  
         result = Result.new(text, args.flatten, limit)
 
+        # Display line about matches
         puts result.matches
 
         # List results
