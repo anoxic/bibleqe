@@ -21,3 +21,5 @@ puts result.show_by_page(1)
 ## Result.show_by_page()
 ## Result.limit
 
+# Create indexes
+
