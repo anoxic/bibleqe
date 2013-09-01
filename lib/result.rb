@@ -14,7 +14,11 @@ class Result
 		@matches = result.uniq
 	end
 
-	def matches
+    def matches
+        @query.count
+    end
+
+	def matches_verbose
 		return "Nothing to be searched for!" if @query.count == 0
 		verse = @count == 1 ? "verse" : "verses"
 		"Found #{@count} #{verse} matching: #{@query.join(", ")}"
