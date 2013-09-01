@@ -39,6 +39,7 @@ TODO
 Better API:
 [ ] Return int for Result.matches
 [ ] Return key-value hash for Result.show
+[ ] Move actual querying from Result.get to Search.query
 
 Towards a web release:
 [ ] Use full length book names
