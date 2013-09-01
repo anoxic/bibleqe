@@ -1,10 +1,12 @@
-class Result	
-	def initialize(version, query, results_per_page = 10)
+class Result
+    attr_accessor :limit
+
+	def initialize(version, query, limit = 10)
 		@text  = Text.new(version)
 		@index = Index.new(version)
 		@query = query
 		@query = query.split if query.is_a? String
-		@results_per_page = results_per_page.to_i
+		@limit = limit.to_i
 
         @query = self.expand(@query)
 		result = self.get
@@ -82,8 +84,8 @@ class Result
 	
 	def show_by_page(pagenum)
 		pagenum = pagenum.to_i
-		raise_by = pagenum * @results_per_page
-		range = 1..@results_per_page
+		raise_by = pagenum * @limit
+		range = 1..@limit
 		range = range.min + raise_by..range.max + raise_by if pagenum > 1
 		self.show(range)
 	end

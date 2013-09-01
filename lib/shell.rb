@@ -14,7 +14,10 @@ class Shell
         limit = options[:limit] if options[:limit] != nil
 
         # Get results                  
-        result = Result.new(text, args.flatten, limit)
+        search = Search.new(text)
+        search.query(args)
+        result = search.result
+        result.limit = limit
 
         # Display line about matches
         puts result.matches
