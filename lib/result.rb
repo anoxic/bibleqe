@@ -14,6 +14,42 @@ class Result
 		@matches = result.uniq
 	end
 
+	def matches
+		return "Nothing to be searched for!" if @query.count == 0
+		verse = @count == 1 ? "verse" : "verses"
+		"Found #{@count} #{verse} matching: #{@query.join(", ")}"
+	end
+
+    def list
+        raw = self.show
+        delim = @text.delim
+        list = []
+
+        raw.each do |line|
+            list << line.split(delim).first.chop
+        end
+
+        list
+    end
+	
+	def show(range = nil)
+		result = []
+		matches = @matches[range] if range.is_a? Range
+		matches ||= @matches
+		matches.each { |match| result << @text[match] }
+		result
+	end
+	
+	def show_by_page(pagenum)
+		pagenum = pagenum.to_i
+		raise_by = pagenum * @limit
+		range = 1..@limit
+		range = range.min + raise_by..range.max + raise_by if pagenum > 1
+		self.show(range)
+	end
+
+    protected
+
     def expand(query)
         expanded = []
 
@@ -56,37 +92,4 @@ class Result
 		result.uniq
 	end
 
-	def matches
-		return "Nothing to be searched for!" if @query.count == 0
-		verse = @count == 1 ? "verse" : "verses"
-		"Found #{@count} #{verse} matching: #{@query.join(", ")}"
-	end
-
-    def list
-        raw = self.show
-        delim = @text.delim
-        list = []
-
-        raw.each do |line|
-            list << line.split(delim).first.chop
-        end
-
-        list
-    end
-	
-	def show(range = nil)
-		result = []
-		matches = @matches[range] if range.is_a? Range
-		matches ||= @matches
-		matches.each { |match| result << @text[match] }
-		result
-	end
-	
-	def show_by_page(pagenum)
-		pagenum = pagenum.to_i
-		raise_by = pagenum * @limit
-		range = 1..@limit
-		range = range.min + raise_by..range.max + raise_by if pagenum > 1
-		self.show(range)
-	end
 end
