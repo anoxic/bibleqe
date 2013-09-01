@@ -1,10 +1,10 @@
-require './lib/bibleqe.rb'
-require './lib/text.rb'
-require './lib/index.rb'
-require './lib/index_builder.rb'
-require './lib/result.rb'
-require './lib/shell.rb'
-require './lib/parse.rb'
+require_relative './lib/bibleqe.rb'
+require_relative './lib/text.rb'
+require_relative './lib/index.rb'
+require_relative './lib/index_builder.rb'
+require_relative './lib/result.rb'
+require_relative './lib/shell.rb'
+require_relative './lib/parse.rb'
 
 if __FILE__ == $0
 	Shell.new(ARGV)

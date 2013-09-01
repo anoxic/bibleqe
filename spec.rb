@@ -1,4 +1,4 @@
-require "../bibleqe"
+require_relative "bibleqe"
 
 describe "the index builder" do
 	before do
