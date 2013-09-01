@@ -36,14 +36,16 @@ Follow guidelines in http://pubs.opengroup.org/onlinepubs/9699919799/utilities/V
 
 TODO
 
+Better API:
+[ ] Return int for Result.matches
+[ ] Return key-value hash for Result.show
+
 Towards a web release:
 [ ] Use full length book names
 [ ] Format the verses better
 [ ] Web gateway
 
-Other items:
-[ ] Feature: List result references vs. whole verse
-[ ] Use only UTF-8 for all files
+Search spead:
 [ ] Searching is too slow: Binary search
 [ ] Instead of doing file system reads, load Bible into memory.
 
@@ -68,3 +70,5 @@ Finished:
     load from stream, skipping lines
 [x] Searching is too slow: Start within the context of the first letter
 [x] Paginate results vs. printing all
+[x] Feature: List result references vs. whole verse
+[x] Create a search object for querying
