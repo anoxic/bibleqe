@@ -15,8 +15,7 @@ class Shell
 
         # Get results                  
         search = Search.new(text)
-        search.query(args)
-        result = search.result
+        result = search.query(args)
         result.limit = limit
 
         # Display line about matches
