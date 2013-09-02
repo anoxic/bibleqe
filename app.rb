@@ -2,6 +2,7 @@ require 'sinatra'
 require_relative 'bibleqe'
 
 set :bind, '0.0.0.0'
+set :port, 80
 
 get '/' do
     '<title>Bible Query Engine</title>
@@ -22,5 +23,5 @@ end
 get '/search' do
     redirect '/' if params[:q].nil?
 	x = Shell.new(params[:q] + " :all", false)
-    "<title>#{params[:q]}</title>" + x.out.gsub(/\n/,"<br>")
+    "<title>#{params[:q]}</title>" + x.out.gsub(/[\n\[\]]/, "\n"=>"<br>", "["=>"<i>", "]"=>"</i>")
 end
