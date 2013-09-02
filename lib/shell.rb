@@ -1,5 +1,9 @@
 class Shell
-    def initialize(args)
+    attr_reader :out
+
+    def initialize(args, puts = true)
+        out = []
+
         parser = Parse.new(args)
         args = parser.args
         options = parser.options
@@ -19,24 +23,28 @@ class Shell
         result.limit = limit
 
         # Display line about matches
-        puts result.matches_verbose
+        out << result.matches_verbose
 
         # List results
         if options[:list] != nil
-            puts ""
-            puts result.list.join ", "
+            out << ""
+            out << result.list.join(", ")
             return
         end
 
         # Show results
         if options[:all] != nil
-            puts ""
-            puts result.show!
+            out << ""
+            out << result.show!
         else
-            puts "Page #{page} (displaying #{limit} results)" if result.matches > 0
-            puts ""
-            puts result.show_by_page!(page)
+            out << "Page #{page} (displaying #{limit} results)" if result.matches > 0
+            out << ""
+            out << result.show_by_page!(page)
         end
+
+        puts out if puts == true
+        
+        @out = out.join $/
     end
-    
 end
+

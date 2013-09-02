@@ -4,6 +4,8 @@ class Parse
     def initialize(args)
         options = {}
         booleans = ['all', 'list', 'show']
+
+        args = args.split if args.is_a? String
         
         args.each.with_index do |arg, k|
             if arg.start_with? ':'
