@@ -41,7 +41,6 @@ TODO
 
 Towards a web release:
 [ ] Use full length book names
-[ ] Format the verses better
 [ ] Web gateway
 
 Search spead:
@@ -73,3 +72,4 @@ Finished:
 [x] Create a search object for querying
 [x] Return int for Result.matches
 [x] Return key-value hash for Result.show
+[x] Format the verses better

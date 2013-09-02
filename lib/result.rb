@@ -38,14 +38,32 @@ class Result
 		matches.each { |match| result << @text[match].split(" #{delim} ") }
 		result
 	end
-	
-	def show_by_page(pagenum)
+
+    def show!(range = nil)
+        raw = self.show(range)
+        formatted = []
+
+        raw.each do |verse|
+           formatted << verse.join($/).wrap
+           formatted << ''
+        end
+
+        formatted
+    end
+
+	def show_by_page(pagenum, format = nil)
 		pagenum = pagenum.to_i
 		raise_by = pagenum * @limit
 		range = 1..@limit
 		range = range.min + raise_by..range.max + raise_by if pagenum > 1
+        
+        return self.show!(range) if format
 		self.show(range)
 	end
+
+    def show_by_page!(pagenum)
+        self.show_by_page(pagenum, true)
+    end
 
     protected
 

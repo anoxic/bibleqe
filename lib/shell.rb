@@ -31,11 +31,11 @@ class Shell
         # Show results
         if options[:all] != nil
             puts ""
-            puts result.show
+            puts result.show!
         else
-            puts "Page #{page} (displaying #{limit} results)"
+            puts "Page #{page} (displaying #{limit} results)" if result.matches > 0
             puts ""
-            puts result.show_by_page(page)
+            puts result.show_by_page!(page)
         end
     end
     
