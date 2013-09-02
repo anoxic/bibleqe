@@ -15,7 +15,7 @@ class Result
 	end
 
     def matches
-        @query.count
+        self.show.count
     end
 
 	def matches_verbose

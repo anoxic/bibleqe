@@ -94,6 +94,11 @@ describe "Search and Result" do
 		query.matches_verbose.should == "Nothing to be searched for!"
 	end
 
+    it "gets number of matches" do
+		query = Search.new(:test).query("John")
+		query.matches.should == 4
+    end
+	
 	it "shows just 10 results of a larger query" do
 		query = Search.new(:test).query("and")
 		query.show(1..10).count.should == 10
