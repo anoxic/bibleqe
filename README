@@ -36,8 +36,6 @@ Follow guidelines in http://pubs.opengroup.org/onlinepubs/9699919799/utilities/V
 
 TODO
 
-Better API:
-[ ] Return key-value hash for Result.show
 [ ] Add a Result.pages
 [ ] Move actual querying from Result.get to Search.query
 
@@ -74,3 +72,4 @@ Finished:
 [x] Feature: List result references vs. whole verse
 [x] Create a search object for querying
 [x] Return int for Result.matches
+[x] Return key-value hash for Result.show

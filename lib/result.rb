@@ -25,22 +25,17 @@ class Result
 	end
 
     def list
-        raw = self.show
-        delim = @text.delim
         list = []
-
-        raw.each do |line|
-            list << line.split(delim).first.chop
-        end
-
+        self.show.each { |verse| list << verse[0] }
         list
     end
 	
 	def show(range = nil)
 		result = []
+        delim = @text.delim
 		matches = @matches[range] if range.is_a? Range
 		matches ||= @matches
-		matches.each { |match| result << @text[match] }
+		matches.each { |match| result << @text[match].split(" #{delim} ") }
 		result
 	end
 	
