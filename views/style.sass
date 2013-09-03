@@ -1,4 +1,7 @@
+$gray: #8D7575
+$lightgray: #C4B3B3
 $red: #EC2727
+
 $margin: 1em
 
 *
@@ -7,12 +10,12 @@ $margin: 1em
 
 body
   font-family: sans-serif
-  color: #8D7575
+  color: $gray
 
 .wrapper
   width: 33em
   font-size: 19px
-  margin: 3em auto
+  margin: 1em auto
 
 .wrapper-home
   @extend .wrapper
@@ -36,4 +39,10 @@ input
 
 p
   margin-bottom: 1em
+
+  &.result
+    font-size: 22px
   
+address
+  color: $lightgray
+  font-style: normal

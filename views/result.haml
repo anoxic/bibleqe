@@ -1,0 +1,18 @@
+!!! 5
+%html
+
+  %head
+    %title Bible Query Engine
+    %style= sass :style
+
+  %body
+    .wrapper
+
+      %form
+        %input{name: "q", value: params[:q]}/
+        %p= result.matches_verbose
+
+      - result.show.each do |r|
+        %address= r[0]
+        %p.result= r[1]
+
