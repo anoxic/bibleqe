@@ -22,19 +22,5 @@ get '/search' do
   search = Search.new(text)
   result = search.query(args)
 
-  out = []
-
-  # List results
-  if options[:list] != nil
-    out << ""
-    out << result.list.join(", ")
-  end
-
-  # Show results
-    out << ""
-    out << result.show!
-
-  #"<title>#{params[:q]}</title>" + x.out.gsub(/[\n\[\]]/, "\n"=>"<br>", "["=>"<i>", "]"=>"</i>")
-
-  haml :result, locals: {result: result}
+  haml :result, locals: {result: result, list: options[:list] ? true : false}
 end
