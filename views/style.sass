@@ -1,10 +1,8 @@
 $light: #C4B3B3
 $medium: #796969
 $dark: #3F3535
-
 $red: #EB4444
-
-$margin: 1em
+$margin: 16px
 
 *
   margin: 0
@@ -14,49 +12,46 @@ $margin: 1em
 body
   font-family: sans-serif
   color: $medium
-
+  line-height: 25px
+  font-size: 19px
 .wrapper
   width: 33em
-  font-size: 19px
   margin: 1em auto
-
 .wrapper-home
   @extend .wrapper
   margin-top: 7em
+
+.instructions
+  color: $light
+  margin-top: $margin * 2
 
 h1
   font-weight: normal
   font-size: 2.2em
   color: $red
-
+  line-height: 1
 form
   color: $red
-
 input
-  border: 2px solid $red
+  border: 1px solid $red
   color: $red
   font-family: sans-serif
   font-size: 1.4em
-  font-weight: 300
-  margin-bottom: .5rem
   padding: 5px 10px 7px
   width: 100%
-
 p
-  margin-bottom: 1em
+  margin-bottom: $margin
   &.result
     font-size: 22px
     font-weight: 300
-  
+  &.aside
+    text-align: right
 address
   color: $light
   font-style: normal
-  font-weight: 600
-  margin-bottom: 2px
 
 ins
   text-decoration: none
   font-style: italic
-
 b
   color: $dark
