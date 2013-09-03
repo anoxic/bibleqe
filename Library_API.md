@@ -6,6 +6,11 @@ result = search.query("raising hands")
 
 puts result.show_by_page(1)
 ```
+or
+
+``` ruby
+result = Search.new(:kjv).query("raising hands")
+```
 
 # Searching
 
