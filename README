@@ -44,8 +44,8 @@ TODO
 Towards a web release:
 [ ] Use full length book names
 [ ] Fetch by book and verse
-[ ] Fix word highlighting
 [ ] Make search box look right without box-model: border-box
+[ ] Create list of unsearchable words
 
 Search spead:
 [ ] Searching is too slow: Binary search
@@ -78,3 +78,4 @@ Finished:
 [x] Return key-value hash for Result.show
 [x] Format the verses better
 [x] Web gateway
+[x] Fix word highlighting
