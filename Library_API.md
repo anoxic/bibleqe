@@ -12,7 +12,7 @@ puts result.show_by_page(1)
 ## Search.new
 
     Search.new()
-    Search.new(<version>)
+    Search.new(<bible_version>)
 
 ## Search.query
 
@@ -30,7 +30,9 @@ You can include any word, OR group, and regex in a query, so "word this|orthat o
 
 ## Search.result
 
-Returns a Result object
+    Search.result()
+
+Returns a Result object, see below:
 
 # Results
 
