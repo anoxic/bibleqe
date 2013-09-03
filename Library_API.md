@@ -7,12 +7,6 @@ result = search.query("raising hands")
 puts result.show_by_page(1)
 ```
 
-Regex word search:
-
-``` ruby
-search.query("/rais.*/")
-```
-
 # Searching
 
 ## Search.new
