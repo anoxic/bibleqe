@@ -1,6 +1,5 @@
 class Result
   attr_accessor :limit
-  attr_reader :query
 
   def initialize(version, query, limit = 10)
     @text  = Text.new(version)
@@ -17,6 +16,10 @@ class Result
 
   def matches
     self.show.count
+  end
+
+  def query
+    @query.join("|").split("|").sort.reverse
   end
 
   def matches_verbose
