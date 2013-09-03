@@ -6,10 +6,10 @@ result = search.query("raising hands")
 
 puts result.show_by_page(1)
 ```
-
-Regex word search:
+or
 
 ``` ruby
+result = Search.new(:kjv).query("raising hands")
 ```
 
 # Searching
@@ -17,21 +17,27 @@ Regex word search:
 ## Search.new
 
     Search.new()
-    Search.new(<version>)
+    Search.new(<bible_version>)
 
 ## Search.query
+
+    Search.query(<query>)
+
+e.g.
 
     search = Search.new()
     search.query("word otherword")
     search.query("this|orthat")
     search.query("/rais.*/")
 
-Takes a string of space separated argument or an array.
+Takes a string of space separated arguments or an array.
 You can include any word, OR group, and regex in a query, so "word this|orthat otherword /rais.*/" is valid.
 
 ## Search.result
 
-Returns a Result object
+    Search.result()
+
+Returns a Result object, see below:
 
 # Results
 
