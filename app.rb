@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'haml'
+require 'sass'
 require_relative 'bibleqe'
 
 set :bind, '0.0.0.0'
