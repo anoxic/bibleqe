@@ -39,6 +39,7 @@ class Result
     delim = @text.delim
     matches = @matches[range] if range.is_a? Range
     matches ||= @matches
+    matches.sort!
     matches.each { |match| result << @text[match].split(" #{delim} ") }
     result
   end
