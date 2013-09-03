@@ -43,7 +43,9 @@ TODO
 
 Towards a web release:
 [ ] Use full length book names
-[ ] Web gateway
+[ ] Fetch by book and verse
+[ ] Fix word highlighting
+[ ] Make search box look right without box-model: border-box
 
 Search spead:
 [ ] Searching is too slow: Binary search
@@ -75,3 +77,4 @@ Finished:
 [x] Return int for Result.matches
 [x] Return key-value hash for Result.show
 [x] Format the verses better
+[x] Web gateway
