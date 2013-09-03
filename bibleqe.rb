@@ -9,5 +9,5 @@ require_relative './lib/parse.rb'
 require_relative './lib/string.rb'
 
 if __FILE__ == $0
-	Shell.new(ARGV)
+  Shell.new(ARGV)
 end
