@@ -29,7 +29,7 @@ class Shell
     if options[:list] != nil
       out << ""
       out << result.list.join(", ")
-      return
+      return self.display out,puts
     end
 
     # Show results
@@ -42,8 +42,11 @@ class Shell
       out << result.show_by_page!(page)
     end
 
+    self.display out,puts
+  end
+
+  def display(out, puts)
     puts out if puts == true
-    
     @out = out.join $/
   end
 end
