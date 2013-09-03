@@ -1,5 +1,6 @@
 class Result
   attr_accessor :limit
+  attr_reader :query
 
   def initialize(version, query, limit = 10)
     @text  = Text.new(version)

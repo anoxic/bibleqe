@@ -17,6 +17,8 @@
           %address= r
       - else
         - result.show.each do |r|
+          - r[1].gsub!(/[\[\]]/, "["=>"<ins>", "]"=>"</ins>")
+          - r[1].gsub!(/(#{result.query.join('|')})/i, '<b>\1</b>')
           %address= r[0]
-          %p.result= r[1].gsub(/[\[\]]/, "["=>"<ins>", "]"=>"</ins>")
+          %p.result= r[1]
 
