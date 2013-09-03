@@ -1,6 +1,7 @@
-$gray: #796969
-$lightgray: #C4B3B3
-$dark: #635454
+$light: #C4B3B3
+$medium: #796969
+$dark: #3F3535
+
 $red: #EB4444
 
 $margin: 1em
@@ -8,10 +9,11 @@ $margin: 1em
 *
   margin: 0
   outline: 0
+  box-sizing: border-box
 
 body
   font-family: sans-serif
-  color: $gray
+  color: $medium
 
 .wrapper
   width: 33em
@@ -31,22 +33,26 @@ form
   color: $red
 
 input
-  border: 1px solid $red
+  border: 2px solid $red
   color: $red
+  font-family: sans-serif
   font-size: 1.4em
+  font-weight: 300
   margin-bottom: .5rem
-  padding: 4px 10px
+  padding: 5px 10px 7px
   width: 100%
 
 p
   margin-bottom: 1em
-
   &.result
     font-size: 22px
+    font-weight: 300
   
 address
-  color: $lightgray
+  color: $light
   font-style: normal
+  font-weight: 600
+  margin-bottom: 2px
 
 ins
   text-decoration: none
