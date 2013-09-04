@@ -46,8 +46,8 @@ Towards a web release:
 [ ] Fetch by book and verse
 [ ] Create a new parser that uses regex scanning
 [ ] Display info about src of Bible text
-[ ] Add footer with links 
 [ ] Add query query log containing terms and timestamp
+[ ] Create list of unsearchable words
 
 Search spead:
 [ ] Searching is too slow: Binary search
@@ -81,4 +81,4 @@ Finished:
 [x] Web gateway
 [x] Fix word highlighting
 [x] Make search box look right without box-model: border-box
-
+[x] Add footer with links 
