@@ -7,19 +7,20 @@
 
   %body
     .wrapper
+      .sub-wrapper
 
-      %form
-        %label
-          %input{name: "q", value: params[:q]}/
-        %p= result.matches_verbose
+        %form
+          %label
+            %input{name: "q", value: params[:q]}/
+          %p= result.matches_verbose
 
-      - if list
-        - result.list.each do |r|
-          %address= r
-      - else
-        - result.show.each do |r|
-          - r[1].gsub!(/[\[\]]/, "["=>"<ins>", "]"=>"</ins>")
-          - r[1].gsub!(/(#{result.query.join('|')})/i, '<b>\1</b>')
-          %address= r[0]
-          %p.result= r[1]
+        - if list
+          - result.list.each do |r|
+            %address= r
+        - else
+          - result.show.each do |r|
+            - r[1].gsub!(/[\[\]]/, "["=>"<ins>", "]"=>"</ins>")
+            - r[1].gsub!(/(#{result.query.join('|')})/i, '<b>\1</b>')
+            %address= r[0]
+            %p.result= r[1]
 

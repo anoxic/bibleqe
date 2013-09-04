@@ -7,17 +7,21 @@
 
   %body
     .wrapper-home
-      %h1 BibleQE
+      .sub-wrapper
+        %h1 BibleQE
 
-      %form{action: "/search"}
-        %label
-          %input{name: "q", autofocus: true}/
-        %p.aside Press enter to search the Bible
+        %form{action: "/search"}
+          %label
+            %input{name: "q", autofocus: true}/
+          %p.aside Press enter to search the Bible
 
-      .instructions
-        %p Terms not starting in : are used as search terms (in an AND search)
-        %p &lt;term&gt;|&lt;term&gt; executes an OR search
-        %p /&lt;regex&gt;/ for a regular expression search
-        %p :list list references
-        %p :text &lt;version&gt; Change text  (by version abbreviation)
+        .instructions
+          %p Terms not starting in : are used as search terms (in an AND search)
+          %p &lt;term&gt;|&lt;term&gt; executes an OR search
+          %p /&lt;regex&gt;/ for a regular expression search
+          %p :list list references
+          %p :text &lt;version&gt; Change text  (by version abbreviation)
 
+    %nav.footer
+      %a{href: "http://github.com/anoxic/bibleqe"} Github
+      %a{href: "http://zickzickzick.com"} Author
