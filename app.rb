@@ -4,7 +4,12 @@ require 'sass'
 require_relative 'bibleqe'
 
 set :bind, '0.0.0.0'
-set :port, 80
+
+if ARGV[0].to_i
+  set :port, ARGV[0]
+else
+  set :port, 9001
+end
 
 get '/' do
   haml :index
