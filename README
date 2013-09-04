@@ -48,6 +48,7 @@ Towards a web release:
 [ ] Display info about src of Bible text
 [ ] Add query query log containing terms and timestamp
 [ ] Create list of unsearchable words
+[ ] Simpler wildcard search
 
 Search spead:
 [ ] Searching is too slow: Binary search
