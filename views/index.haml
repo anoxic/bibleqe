@@ -10,9 +10,9 @@
       %h1 BibleQE
 
       %form{action: "/search"}
-        %input{name: "q", autofocus: true}/
+        %label
+          %input{name: "q", autofocus: true}/
         %p.aside Press enter to search the Bible
-
 
       .instructions
         %p Terms not starting in : are used as search terms (in an AND search)

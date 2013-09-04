@@ -9,7 +9,8 @@
     .wrapper
 
       %form
-        %input{name: "q", value: params[:q]}/
+        %label
+          %input{name: "q", value: params[:q]}/
         %p= result.matches_verbose
 
       - if list
