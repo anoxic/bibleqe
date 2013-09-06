@@ -5,7 +5,7 @@ require_relative 'bibleqe'
 
 set :bind, '0.0.0.0'
 
-if ARGV[0].to_i
+if ARGV[0].to_i > 1
   set :port, ARGV[0]
 else
   set :port, 9001
@@ -29,4 +29,8 @@ get '/search' do
   result = search.query(args)
 
   haml :result, locals: {result: result, list: options[:list] ? true : false}
+end
+
+get '/googlefb83095fe398976d.html' do
+  'google-site-verification: googlefb83095fe398976d.html'
 end
