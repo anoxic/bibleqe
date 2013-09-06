@@ -1,6 +1,6 @@
 Usage:
 
-    $ ./bqe <search_term> [<search_term] [:page <number>] [:limit <number>]
+    $ ./bqe <search_term> [<search_term>] [:page <number>] [:limit <number>]
 
 
 IMPLEMENTED ARGUMENTS
@@ -26,7 +26,7 @@ Arguments not starting in : are used as search terms (in an AND search)
 
 UNIMPLEMENTED ARGUMENTS
 
-:not <word> - exclude verses matching this word
+!<term> - exclude verses matching this word
 
 :in <book_or_chapter> define a scope for searching
 
