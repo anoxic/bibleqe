@@ -24,3 +24,9 @@
             %address= r[0]
             %p.result= r[1]
 
+        - if result.matches > 10
+          %form
+            %label
+              %input{name: "q", value: params[:q]}/
+            %p.aside Press enter to search the Bible
+
