@@ -11,9 +11,9 @@ describe Parse do
   end
 
   it "matches basic references" do
-    @p.contains_ref('john 12').should == true
-    @p.contains_ref('genesis 2').should == true
-    @p.contains_ref('psalm 119').should == true
+    @p.contains_ref('john 12').should_not == false
+    @p.contains_ref('genesis 2').should_not == false
+    @p.contains_ref('psalm 119').should_not == false
   end
 end
 
