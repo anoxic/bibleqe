@@ -36,7 +36,7 @@ class Parse
     match = str.match(/[a-z]+ [0-9]+([.,: ][0-9]+)?/)
     return false if match == nil
 
-    match
+    match.to_s
   end
 end
 
