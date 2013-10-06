@@ -18,6 +18,8 @@ describe Parse do
 
   it "also matches verse references" do
     @p.contains_ref('psalm 119:1').should == "psalm 119:1"
+    @p.contains_ref('genesis 2:15').should == "genesis 2:15"
+    @p.contains_ref('rev 3:8').should == "rev 3:8"
   end
 end
 
