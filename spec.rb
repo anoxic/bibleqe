@@ -1,5 +1,15 @@
 require_relative "bibleqe"
 
+describe Parse do 
+  before do
+    @p = Parse.new('')
+  end
+
+  it "doesn't match strings without numbers" do
+    @p.contains_ref('john').should == false
+  end
+end
+
 describe IndexBuilder do
   before do
   	@kjv = IndexBuilder.new(:test)

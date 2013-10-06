@@ -6,6 +6,10 @@ class Parse
     booleans = ['all', 'list', 'show']
   
     args = args.split if args.is_a? String
+
+    if self.contains_ref(args)
+
+    end
     
     args.each.with_index do |arg, k|
       if arg.start_with? ':'
@@ -24,6 +28,11 @@ class Parse
     
     @args = args
     @options = options
+  end
+
+  def contains_ref(str)
+    str = str.join ' ' if str.is_a? Array
+    false
   end
 end
 
