@@ -15,6 +15,10 @@ describe Parse do
     @p.contains_ref('genesis 2').should_not == false
     @p.contains_ref('psalm 119').should_not == false
   end
+
+  it "also matches verse references" do
+    @p.contains_ref('psalm 119:1').should_not == false
+  end
 end
 
 describe IndexBuilder do
