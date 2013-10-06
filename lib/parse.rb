@@ -8,7 +8,7 @@ class Parse
     args = args.split if args.is_a? String
 
     if self.contains_ref(args)
-      reference = self.get_ref(args).to_s
+      @ref = self.get_ref(args).to_s
     end
     
     args.each.with_index do |arg, k|
