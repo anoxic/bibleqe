@@ -26,6 +26,8 @@ Arguments not starting in : are used as search terms (in an AND search)
 
 UNIMPLEMENTED ARGUMENTS
 
+<term*> (any term with an *) - wildcard search
+
 !<term> - exclude verses matching this word
 
 :in <book_or_chapter> define a scope for searching

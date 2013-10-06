@@ -49,7 +49,7 @@ class Result
     formatted = []
 
     raw.each do |verse|
-     formatted << verse.join($/).wrap
+     formatted << verse.join($/).wrap(75)
      formatted << ''
     end
 
