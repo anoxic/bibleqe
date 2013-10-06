@@ -9,6 +9,12 @@ describe Parse do
     @p.contains_ref('john').should == false
     @p.contains_ref('12').should == false
   end
+
+  it "matches basic references" do
+    @p.contains_ref('john 12').should == true
+    @p.contains_ref('genesis 2').should == true
+    @p.contains_ref('psalm 119').should == true
+  end
 end
 
 describe IndexBuilder do

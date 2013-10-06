@@ -32,7 +32,8 @@ class Parse
 
   def contains_ref(str)
     str = str.join ' ' if str.is_a? Array
-    false
+
+    str.match(/[a-z]+ [0-9]/) != nil ? true : false
   end
 end
 
