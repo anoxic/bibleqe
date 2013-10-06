@@ -33,6 +33,15 @@ describe Parse do
     @p.contains_ref('1sa 2:1').should == "1sa 2:1"
     @p.contains_ref('1 sa 2:1').should == "1 sa 2:1"
   end
+
+  it "allows books beginning with roman numerals up to 4" do
+    @p.contains_ref('i sa 2:1').should == "i sa 2:1"
+    @p.contains_ref('I sa 2:1').should == "I sa 2:1"
+    @p.contains_ref('ii maccabees 1').should == "ii maccabees 1"
+    @p.contains_ref('iii maccabees 1').should == "iii maccabees 1"
+    @p.contains_ref('iiii maccabees 1').should == "iiii maccabees 1"
+    @p.contains_ref('iv maccabees 1').should == "iv maccabees 1"
+  end
 end
 
 describe IndexBuilder do
