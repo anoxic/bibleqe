@@ -8,7 +8,7 @@ class Parse
     args = args.split if args.is_a? String
 
     if self.contains_ref(args)
-
+      reference = self.get_ref(args).to_s
     end
     
     args.each.with_index do |arg, k|
@@ -31,12 +31,13 @@ class Parse
   end
 
   def contains_ref(str)
+    match = self.get_ref(str)
+    match == nil ? false : match.to_s
+  end
+
+  def get_ref(str)
     str = str.join ' ' if str.is_a? Array
-
-    match = str.match(/([1-9]|(IV|I+))? ?[a-z]+ [0-9]+([.,: ][0-9]+)?/i)
-    return false if match == nil
-
-    match.to_s
+    str.match(/([1-9]|(IV|I+))? ?[a-z]+ [0-9]+([.,: ][0-9]+)?/i)
   end
 end
 
