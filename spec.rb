@@ -28,6 +28,11 @@ describe Parse do
     @p.contains_ref('psalm 119:1').should == "psalm 119:1"
     @p.contains_ref('psalm 119 1').should == "psalm 119 1"
   end
+
+  it "allows books beginning with a number" do
+    @p.contains_ref('1sa 2:1').should == "1sa 2:1"
+    @p.contains_ref('1 sa 2:1').should == "1 sa 2:1"
+  end
 end
 
 describe IndexBuilder do
