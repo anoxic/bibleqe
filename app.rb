@@ -31,6 +31,11 @@ get '/search' do
   haml :result, locals: {result: result, list: options[:list] ? true : false}
 end
 
+get '/robots.txt' do
+  content_type 'text/plain'
+  "User-agent: *\nAllow: *"
+end
+
 get '/googlefb83095fe398976d.html' do
   'google-site-verification: googlefb83095fe398976d.html'
 end
