@@ -5,8 +5,9 @@ describe Parse do
     @p = Parse.new('')
   end
 
-  it "doesn't match strings without numbers" do
+  it "doesn't match single arguments" do
     @p.contains_ref('john').should == false
+    @p.contains_ref('12').should == false
   end
 end
 
