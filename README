@@ -87,3 +87,4 @@ Finished:
 [x] Fix word highlighting
 [x] Make search box look right without box-model: border-box
 [x] Add footer with links 
+[x] Parse out references
