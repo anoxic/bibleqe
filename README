@@ -1,4 +1,8 @@
-Usage:
+BibleQE has two interfaces, a command-line interface and a web interface.
+The web interface is available at http://bibleqe.com. The CLI is detailed below.
+
+
+CLI Usage:
 
     $ ./bqe <search_term> [<search_term>] [:page <number>] [:limit <number>]
 
