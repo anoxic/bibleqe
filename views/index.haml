@@ -15,8 +15,7 @@
 
         %form{action: "/search"}
           %label
-            %input{name: "q", autofocus: true}/
-          %p.aside Press enter to search the Bible
+            %input{name: "q", autofocus: true, autocomplete: "off"}/
 
         .instructions
           %p Terms not starting in : are used as search terms (in an AND search)
