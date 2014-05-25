@@ -27,7 +27,7 @@ class IndexBuilder
     print @compiled
   end
   
-  def write
+  def write!
     File.open("#{@dir}/#{@name}.ind", "w") { |f| f << @compiled }
     File.open("#{@dir}/#{@name}_toc.ind", "w") { |f| f << @compiled_range }
     File.open("#{@dir}/#{@name}_words.lst", "w") { |f| f << @compiled_words }
