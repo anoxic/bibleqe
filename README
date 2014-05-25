@@ -46,20 +46,16 @@ Intersting: http://about.esvbible.org/uncategorized/technical-introduction-to-th
 
 TODO
 
-[ ] Add a Result.pages
-[ ] Move actual querying from Result.get to Search.query
+Simplification:
+[ ] Remove use of a delimiter
 
 Towards a web release:
 [ ] Fetch by book and verse
 [ ] Use full length book names
 [ ] Simpler wildcard search
 [ ] Create a new parser that uses regex scanning
-[ ] Create list of unsearchable words
-[ ] Display info about src of Bible text
-[ ] Add query log containing terms and timestamp
+[ ] Display info about source of Bible text
 
-Search spead:
-[ ] Searching is too slow: Binary search
 
 Finished:
 [x] Use a multi-line input, with one verse per line.
