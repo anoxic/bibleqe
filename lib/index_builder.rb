@@ -1,6 +1,6 @@
 class IndexBuilder
   def initialize(name, dir = :texts)
-    text = Text.new(name, dir)
+    t = Text.new(name, dir)
 
     @indexversion   = 1
 
@@ -13,23 +13,18 @@ class IndexBuilder
     @text           = t.content
 
     @index          = self.index
-    @compiled       = self.compile
-
     @range          = self.range
-    @compiled_range = self.compile_range
-
     @words          = self.words
-    @compiled_words = self.compile_words
   end
   
   def put!
-    print @compiled
+    print self.compile
   end
   
   def write!
-    File.open("#{@dir}/#{@name}.ind", "w") { |f| f << @compiled }
-    File.open("#{@dir}/#{@name}_toc.ind", "w") { |f| f << @compiled_range }
-    File.open("#{@dir}/#{@name}_words.lst", "w") { |f| f << @compiled_words }
+    File.open("#{@dir}/#{@name}.ind", "w") { |f| f << self.compile }
+    File.open("#{@dir}/#{@name}_toc.ind", "w") { |f| f << self.compile_range }
+    File.open("#{@dir}/#{@name}_words.lst", "w") { |f| f << self.compile_words }
   end
   
   def line(line, lineno, index)
