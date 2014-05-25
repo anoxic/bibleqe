@@ -3,7 +3,7 @@ class IndexBuilder
   	@name = name
   	@dir = dir
   	
-  	t = Text.new(name)
+  	t = Text.new(name, dir)
   	@long_name = t.name
   	@delim = t.delim
   	@strip = t.strip
