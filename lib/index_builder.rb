@@ -1,25 +1,24 @@
 class IndexBuilder
-  attr_reader :compiled
-
   def initialize(name, dir = :texts)
-    @name = name
-    @dir = dir
-    
-    t = Text.new(name, dir)
-    @long_name = t.name
-    @delim = t.delim
-    @strip = t.strip
-    @text = t.content
-    
-    @indexversion = 1
+    text = Text.new(name, dir)
 
-    @index = self.index
-    @compiled = self.compile
+    @indexversion   = 1
 
-    @range = self.range
+    @name           = name
+    @dir            = dir
+    
+    @long_name      = t.name
+    @delim          = t.delim
+    @strip          = t.strip
+    @text           = t.content
+
+    @index          = self.index
+    @compiled       = self.compile
+
+    @range          = self.range
     @compiled_range = self.compile_range
 
-    @words = self.words
+    @words          = self.words
     @compiled_words = self.compile_words
   end
   
