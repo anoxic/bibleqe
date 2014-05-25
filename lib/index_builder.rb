@@ -1,4 +1,6 @@
 class IndexBuilder
+  attr_reader :compiled
+
   def initialize(name, dir = :texts)
   	@name = name
   	@dir = dir
@@ -10,15 +12,18 @@ class IndexBuilder
   	@text = t.content
   	
   	@indexversion = 1
+
   	@index = self.index
   	@compiled = self.compile
+
   	@range = self.range
   	@compiled_range = self.compile_range
+
   	@words = self.words
   	@compiled_words = self.compile_words
   end
   
-  def put
+  def put!
   	print @compiled
   end
   
@@ -29,19 +34,22 @@ class IndexBuilder
   end
   
   def line(line, lineno, index)
-  	line.slice!(/.*#{@delim} */)
+    line.slice!(/^[a-zA-Z0-9]{1,4} [0-9]{1,3}:[0-9]{1,3} /)
   	line.downcase!
   	line.delete!(@strip)
-  	words = line.split
-  	words.each_index { |x| index[words[x].to_sym] << " #{lineno},#{x + 1}"; }
+
+  	line.split.each do |k,v|
+      index[k.to_sym] << " #{lineno},#{v.to_i + 1}"
+    end
   end
 
   def index
   	occurances = Hash.new{|h,k| h[k] = String.new}
   	
-  	@text.each { |line|
+  	@text.each do |line|
   		self.line(line, @text.lineno, occurances) unless line.start_with?('!','>','#') 
-  	}
+    end
+
   	occurances
   end
   
