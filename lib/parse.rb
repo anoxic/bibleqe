@@ -32,12 +32,13 @@ class Parse
 
   def contains_ref(str)
     match = self.get_ref(str)
-    match == nil ? false : match.to_s
+    return match.to_s unless match == nil
+    false
   end
 
   def get_ref(str)
     str = str.join ' ' if str.is_a? Array
-    str.match(/([1-9]|(IV|I+))? ?[a-z]+ [0-9]+([.,: ][0-9]+)?/i)
+    str.match(/([1-9]|(IV|I+))? ?\w+ \d+([.,: ]\d+)?/i)
   end
 end
 
