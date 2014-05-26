@@ -1,7 +1,7 @@
 require_relative "bibleqe"
 
 describe Parse do 
-  before do
+  before :all do
     @p = Parse.new
   end
 
@@ -38,7 +38,7 @@ describe Parse do
 end
 
 describe IndexBuilder do
-  before do
+  before :all do
   	@kjv = IndexBuilder.new(:test)
   end
   
@@ -52,7 +52,7 @@ describe IndexBuilder do
 end
 
 describe Text do
-  before do
+  before :all do
   	@kjv = Text.new :test
   end
   
@@ -78,7 +78,7 @@ describe Text do
 end
 
 describe Index do
-  before do
+  before :all do
   	@kjv = Index.new :test
   end
   
@@ -92,48 +92,52 @@ describe Index do
 end
 
 describe "Search and Result" do
+  before :all do
+    @s = Search.new :test
+  end
+
   it "finds one word" do
-  	query = Search.new(:test).query("Jesus")
+  	query = @s.query("Jesus")
   	query.matches_verbose.should == "Found 5 verses matching: Jesus"
   end
   
   it "finds another word" do
-  	query = Search.new(:test).query("John")
+  	query = @s.query("John")
   	query.matches_verbose.should == "Found 4 verses matching: John"
   end
   
   it "finds two words" do
-  	query = Search.new(:test).query("Jesus came")
+  	query = @s.query("Jesus came")
   	query.matches_verbose.should == "Found 2 verses matching: Jesus, came"
   end
   
   it "finds two words, reversed terms" do
-  	query = Search.new(:test).query("came Jesus")
+  	query = @s.query("came Jesus")
   	query.matches_verbose.should == "Found 2 verses matching: came, Jesus"
   end
   
   it "finds three words" do
-  	query = Search.new(:test).query("and art thou")
+  	query = @s.query("and art thou")
   	query.matches_verbose.should == "Found 2 verses matching: and, art, thou"
   end
   
   it "finds 0 matches for a word" do
-  	query = Search.new(:test).query("sentinel")
+  	query = @s.query("sentinel")
   	query.matches_verbose.should == "Found 0 verses matching: sentinel"
   end
   
   it "cannot search for empty string" do
-  	query = Search.new(:test).query("")
+  	query = @s.query("")
   	query.matches_verbose.should == "Nothing to be searched for!"
   end
 
   it "gets number of matches" do
-  	query = Search.new(:test).query("John")
+  	query = @s.query("John")
   	query.matches.should == 4
   end
   
   it "shows just 10 results of a larger query" do
-  	query = Search.new(:test).query("and")
+  	query = @s.query("and")
   	query.show(1..10).count.should == 10
   end
   
