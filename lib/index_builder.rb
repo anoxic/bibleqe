@@ -2,7 +2,6 @@ class IndexBuilder
   def initialize(name, dir = :texts)
     t = Text.new(name, dir)
 
-    @bqe_version    = 2
     @name           = name
     @dir            = dir
     @long_name      = t.name
@@ -42,7 +41,7 @@ class IndexBuilder
   end
   
   def compile
-    out = "! BibleQE Index: #{@long_name}\n! version #{@bqe_version}"
+    out = "! BibleQE Index: #{@long_name}\n! version #{BibleQE::version}"
 
     self.index.each do |word, occ|
       out << "\n#{word}#{occ}"
@@ -66,7 +65,7 @@ class IndexBuilder
   end
   
   def compile_range
-    out = "! BibleQE Index TOC: #{@long_name}\n! version #{@bqe_version}"
+    out = "! BibleQE Index TOC: #{@long_name}\n! version #{BibleQE::version}"
     self.range.each { |letter, range|
       out << "\n#{letter} #{range[0]}..#{range[1]}"
     }
