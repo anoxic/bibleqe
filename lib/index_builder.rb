@@ -69,7 +69,7 @@ class IndexBuilder
   def compile_book_names
     out = ["! BibleQE Text TOC: #{@long_name}","! version #{BibleQE::version}"]
     book_names.map { |i| out << "#{i[0]} #{i[1]}" }
-    out
+    out.join "\n"
   end
   
   def range(l = nil)
