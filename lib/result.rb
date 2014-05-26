@@ -80,6 +80,11 @@ class Result
     expanded = []
 
     query.each_with_index do |q, k|
+      if q.include? "*"
+        q["*"] = ".*"
+        q = "/" + q + "/"
+      end
+
       if q.start_with? "/"
         x = self.regex(q)
         if x != nil
