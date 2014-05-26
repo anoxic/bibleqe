@@ -7,8 +7,8 @@ class Parse
   
     args = args.split if args.is_a? String
 
-    if self.contains_ref(args)
-      @ref = self.get_ref(args).to_s
+    if contains_ref(args)
+      @ref = get_ref(args).to_s
     end
     
     args.each.with_index do |arg, k|
@@ -31,7 +31,7 @@ class Parse
   end
 
   def contains_ref(str)
-    return true if self.get_ref(str)
+    return true if get_ref(str)
     false
   end
 
