@@ -31,8 +31,7 @@ class Parse
   end
 
   def contains_ref(str)
-    match = self.get_ref(str)
-    return match.to_s unless match == nil
+    return true if self.get_ref(str)
     false
   end
 
