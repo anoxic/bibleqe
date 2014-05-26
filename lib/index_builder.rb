@@ -21,6 +21,7 @@ class IndexBuilder
     File.open("#{@dir}/#{@name}.ind", "w") { |f| f << self.compile }
     File.open("#{@dir}/#{@name}_toc.ind", "w") { |f| f << self.compile_range }
     File.open("#{@dir}/#{@name}_words.lst", "w") { |f| f << self.compile_words }
+    true
   end
   
   def line(line, lineno, index)
@@ -42,13 +43,13 @@ class IndexBuilder
       self.line(line, @text.lineno, occurances) unless line.start_with?('!','>','#') 
     end
 
-    @index = occurances
+    @index = occurances.sort
   end
   
   def compile
     out = "! BibleQE Index: #{@long_name}\n! version #{@indexversion}"
 
-    self.index.sort.each do |word, occ|
+    self.index.each do |word, occ|
       out << "\n#{word}#{occ}"
     end
 
@@ -56,20 +57,22 @@ class IndexBuilder
   end
   
   def range(l = nil)
-    words = self.index.flatten.select {|x| x.is_a? Symbol }
+    words = self.words
     chars = Hash.new {|k,v| k[v] = Array.new(0) }
+
     words.each { |w|
       letter = w.to_s[0].to_sym
       chars[letter][0] ||= words.index(w) + 2
       chars[letter][1] = words.index(w) + 2
     }
+
     return chars[l.to_sym] unless l == nil
     chars
   end
   
   def compile_range
     out = "! BibleQE Index TOC: #{@long_name}\n! version #{@indexversion}"
-    @range.each { |letter, range|
+    self.range.each { |letter, range|
       out << "\n#{letter} #{range[0]}..#{range[1]}"
     }
     out
@@ -82,6 +85,6 @@ class IndexBuilder
   end
 
   def compile_words
-    @words.join " "
+    self.words.join " "
   end
 end
