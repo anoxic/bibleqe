@@ -29,7 +29,7 @@ class IndexBuilder
     line.downcase!
     line.delete!(@strip)
 
-    line.split.each do |k,v|
+    line.split.map.with_index do |k,v|
       index[k.to_sym] << " #{lineno},#{v.to_i + 1}"
     end
   end
