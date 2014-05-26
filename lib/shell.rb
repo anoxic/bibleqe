@@ -21,7 +21,7 @@ class Shell
     result.limit = limit
 
     # Display line about matches
-     puts result.matches_verbose
+    puts result.matches_verbose
 
     # List results
     if options[:list] != nil

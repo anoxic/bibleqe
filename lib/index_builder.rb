@@ -8,7 +8,6 @@ class IndexBuilder
     @dir            = dir
     
     @long_name      = t.name
-    @delim          = t.delim
     @strip          = t.strip
     @text           = t.content
   end

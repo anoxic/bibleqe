@@ -15,12 +15,6 @@ class Text
 		raise SyntaxError, "No `name' property found in #{@content.path}"
 	end
 	
-	def delim
-		@content.rewind
-		@content.each {|l| return l[8,16].strip if l.match '! delim '}
-		"%" # Default delimiter
-	end
-
 	def strip
 		@content.rewind
 		@content.each {|l| return l[8,16].strip if l.match '! strip '}

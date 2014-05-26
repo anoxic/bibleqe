@@ -36,11 +36,15 @@ class Result
   
   def show(range = nil)
     result = []
-    delim = @text.delim
+
     matches = @matches[range] if range.is_a? Range
     matches ||= @matches
-    matches.sort!
-    matches.each { |match| result << @text[match].split(" #{delim} ") }
+
+    matches.sort.each do |match|
+      match = @text[match]
+      result << [match.slice!(/^[a-zA-Z0-9]{1,4} [0-9]{1,3}:[0-9]{1,3} /), match]
+    end
+
     result
   end
 
