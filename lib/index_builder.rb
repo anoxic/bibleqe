@@ -56,7 +56,7 @@ class IndexBuilder
   end
   
   def range(l = nil)
-    words = @index.flatten.select {|x| x.is_a? Symbol }
+    words = self.index.flatten.select {|x| x.is_a? Symbol }
     chars = Hash.new {|k,v| k[v] = Array.new(0) }
     words.each { |w|
       letter = w.to_s[0].to_sym
@@ -77,7 +77,7 @@ class IndexBuilder
 
   def words
     words = []
-    @index.each {|l| words << l[0] }
+    self.index.each {|l| words << l[0] }
     words
   end
 
