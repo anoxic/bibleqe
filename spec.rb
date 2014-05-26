@@ -67,10 +67,6 @@ describe Text do
   	@kjv.content.is_a?(File).should == true
   end
   
-  it "has a delimeter" do
-  	@kjv.delim.should == "::"
-  end	
-  
   it "has a name" do
   	@kjv.name.should == "King James Version"
   end
@@ -80,11 +76,11 @@ describe Text do
   end	
   
   it "has a characters to strip" do
-  	@kjv.strip.should == ".,:;()[]{}?!"
+  	@kjv.strip.should == "¶.,:;()[]{}?!"
   end
   
   it "gets lines" do
-  	@kjv[2].should == "! delim ::\n"
+  	@kjv[32].should == "Jhn 3:27 John answered and said, A man can receive nothing, except it be given him from heaven.\n"
   end
 end
 
@@ -98,7 +94,7 @@ describe Index do
   end
   
   it "gets matched lines for a word" do
-  	@kjv["jesus"].should == [6,8,11,16,28]
+  	@kjv["jesus"].should == [5, 7, 10, 15, 27]
   end
 end
 
