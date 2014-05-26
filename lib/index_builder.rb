@@ -17,6 +17,7 @@ class IndexBuilder
     File.open("#{@dir}/#{@name}.ind", "w") { |f| f << self.compile }
     File.open("#{@dir}/#{@name}_toc.ind", "w") { |f| f << self.compile_range }
     File.open("#{@dir}/#{@name}_words.lst", "w") { |f| f << self.compile_words }
+    File.open("#{@dir}/#{@name}_toc.txt", "w") { |f| f << self.compile_book_names }
     true
   end
   
@@ -47,6 +48,27 @@ class IndexBuilder
       out << "\n#{word}#{occ}"
     end
 
+    out
+  end
+
+  def book_names
+    names = Hash.new
+    @text.rewind if @text.lineno > 0
+
+    @text.map.with_index do |line,lineno|
+      next unless line.match(Verse.reference_pattern)
+
+      unless names[line.slice(/\w+/).to_sym]
+        names[line.slice(/\w+/).to_sym] = lineno
+      end
+    end
+
+    names
+  end
+
+  def compile_book_names
+    out = ["! BibleQE Text TOC: #{@long_name}","! version #{BibleQE::version}"]
+    book_names.map { |i| out << "#{i[0]} #{i[1]}" }
     out
   end
   
