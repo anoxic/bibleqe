@@ -4,36 +4,41 @@ describe Parse do
   before :all do
     @p = Parse.new
   end
+  
+  # Note: the part that parses arguments into options
+  #       is completely untested at this point
 
-  it "doesn't match single arguments" do
-    @p.contains_ref('john').should == false
-    @p.contains_ref('12').should == false
-  end
+  describe "reference matching" do
+    it "doesn't match single arguments" do
+      @p.contains_ref('john').should == false
+      @p.contains_ref('12').should == false
+    end
 
-  it "matches basic references" do
-    @p.contains_ref('john 12').should_not == false
-    @p.contains_ref('genesis 2').should_not == false
-    @p.contains_ref('psalm 119').should_not == false
-  end
+    it "matches basic references" do
+      @p.contains_ref('john 12').should_not == false
+      @p.contains_ref('genesis 2').should_not == false
+      @p.contains_ref('psalm 119').should_not == false
+    end
 
-  it "matches verse references" do
-    @p.contains_ref('genesis 2:15').should == "genesis 2:15"
-    @p.contains_ref('rev 3:8').should == "rev 3:8"
-    @p.contains_ref('psalm 119.1').should == "psalm 119.1"
-    @p.contains_ref('psalm 119,1').should == "psalm 119,1"
-    @p.contains_ref('psalm 119:1').should == "psalm 119:1"
-    @p.contains_ref('psalm 119 1').should == "psalm 119 1"
-  end
+    it "matches verse references" do
+      @p.contains_ref('genesis 2:15').should_not == false
+      @p.contains_ref('rev 3:8').should_not == false
+      @p.contains_ref('psalm 119.1').should_not == false
+      @p.contains_ref('psalm 119,1').should_not == false
+      @p.contains_ref('psalm 119:1').should_not == false
+      @p.contains_ref('psalm 119 1').should_not == false
+    end
 
-  it "matches books beginning with a number" do
-    @p.contains_ref('1sa 2:1').should == "1sa 2:1"
-    @p.contains_ref('1 sa 2:1').should == "1 sa 2:1"
-    @p.contains_ref('i sa 2:1').should == "i sa 2:1"
-    @p.contains_ref('I Samuel 2:1').should == "I Samuel 2:1"
-    @p.contains_ref('ii maccabees 1').should == "ii maccabees 1"
-    @p.contains_ref('iii maccabees 1').should == "iii maccabees 1"
-    @p.contains_ref('iiii maccabees 1').should == "iiii maccabees 1"
-    @p.contains_ref('iv maccabees 1').should == "iv maccabees 1"
+    it "matches books beginning with a number" do
+      @p.contains_ref('1sa 2:1').should_not == false
+      @p.contains_ref('1 sa 2:1').should_not == false
+      @p.contains_ref('i sa 2:1').should_not == false
+      @p.contains_ref('I Samuel 2:1').should_not == false
+      @p.contains_ref('ii maccabees 1').should_not == false
+      @p.contains_ref('iii maccabees 1').should_not == false
+      @p.contains_ref('iiii maccabees 1').should_not == false
+      @p.contains_ref('iv maccabees 1').should_not == false
+    end
   end
 end
 
