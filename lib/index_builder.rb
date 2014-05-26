@@ -27,9 +27,9 @@ class IndexBuilder
     occurances = Hash.new{|h,k| h[k] = String.new}
     
     @text.each do |line|
-      next unless line.match(/^[a-zA-Z0-9]{1,4} [0-9]{1,3}:[0-9]{1,3} /)
+      next unless line.match(Verse.reference_pattern)
 
-      line.slice!(/^[a-zA-Z0-9]{1,4} [0-9]{1,3}:[0-9]{1,3} /)
+      line.slice!(Verse.reference_pattern)
       line.downcase!
       line.delete!(@strip)
 

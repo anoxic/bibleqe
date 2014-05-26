@@ -42,7 +42,7 @@ class Result
 
     matches.sort.each do |match|
       match = @text[match]
-      result << [match.slice!(/^[a-zA-Z0-9]{1,4} [0-9]{1,3}:[0-9]{1,3} /), match]
+      result << [match.slice!(Verse.reference_pattern), match]
     end
 
     result
