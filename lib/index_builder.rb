@@ -21,23 +21,21 @@ class IndexBuilder
     true
   end
   
-  def line(line, lineno, index)
-    line.slice!(/^[a-zA-Z0-9]{1,4} [0-9]{1,3}:[0-9]{1,3} /)
-    line.downcase!
-    line.delete!(@strip)
-
-    line.split.map.with_index do |k,v|
-      index[k.to_sym] << " #{lineno},#{v.to_i + 1}"
-    end
-  end
-
   def index
     return @index if @index
 
     occurances = Hash.new{|h,k| h[k] = String.new}
     
     @text.each do |line|
-      self.line(line, @text.lineno, occurances) unless line.start_with?('!','>','#') 
+      next if line.start_with?('!','>','#') 
+
+      line.slice!(/^[a-zA-Z0-9]{1,4} [0-9]{1,3}:[0-9]{1,3} /)
+      line.downcase!
+      line.delete!(@strip)
+
+      line.split.map.with_index do |k,v|
+        occurances[k.to_sym] << " #{@text.lineno},#{v.to_i + 1}"
+      end
     end
 
     @index = occurances.sort
