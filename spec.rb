@@ -2,7 +2,7 @@ require_relative "bibleqe"
 
 describe Parse do 
   before do
-    @p = Parse.new('')
+    @p = Parse.new
   end
 
   it "doesn't match single arguments" do
@@ -16,27 +16,20 @@ describe Parse do
     @p.contains_ref('psalm 119').should_not == false
   end
 
-  it "also matches verse references" do
-    @p.contains_ref('psalm 119:1').should == "psalm 119:1"
+  it "matches verse references" do
     @p.contains_ref('genesis 2:15').should == "genesis 2:15"
     @p.contains_ref('rev 3:8').should == "rev 3:8"
-  end
-
-  it "allows multiple ways to format references" do
     @p.contains_ref('psalm 119.1').should == "psalm 119.1"
     @p.contains_ref('psalm 119,1').should == "psalm 119,1"
     @p.contains_ref('psalm 119:1').should == "psalm 119:1"
     @p.contains_ref('psalm 119 1').should == "psalm 119 1"
   end
 
-  it "allows books beginning with a number" do
+  it "matches books beginning with a number" do
     @p.contains_ref('1sa 2:1').should == "1sa 2:1"
     @p.contains_ref('1 sa 2:1').should == "1 sa 2:1"
-  end
-
-  it "allows books beginning with roman numerals up to 4" do
     @p.contains_ref('i sa 2:1').should == "i sa 2:1"
-    @p.contains_ref('I sa 2:1').should == "I sa 2:1"
+    @p.contains_ref('I Samuel 2:1').should == "I Samuel 2:1"
     @p.contains_ref('ii maccabees 1').should == "ii maccabees 1"
     @p.contains_ref('iii maccabees 1').should == "iii maccabees 1"
     @p.contains_ref('iiii maccabees 1').should == "iiii maccabees 1"
