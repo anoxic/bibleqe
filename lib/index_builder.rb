@@ -2,7 +2,7 @@ class IndexBuilder
   def initialize(name, dir = :texts)
     t = Text.new(name, dir)
 
-    @indexversion   = 1
+    @indexversion  = 1
 
     @name           = name
     @dir            = dir
@@ -11,10 +11,6 @@ class IndexBuilder
     @delim          = t.delim
     @strip          = t.strip
     @text           = t.content
-
-    @index          = self.index
-    @range          = self.range
-    @words          = self.words
   end
   
   def put!
@@ -38,21 +34,24 @@ class IndexBuilder
   end
 
   def index
+    return @index if @index
+
     occurances = Hash.new{|h,k| h[k] = String.new}
     
     @text.each do |line|
       self.line(line, @text.lineno, occurances) unless line.start_with?('!','>','#') 
     end
 
-    occurances
+    @index = occurances
   end
   
   def compile
     out = "! BibleQE Index: #{@long_name}\n! version #{@indexversion}"
-    @index = @index.sort
-    @index.each { |word, occ|
+
+    self.index.sort.each do |word, occ|
       out << "\n#{word}#{occ}"
-    }
+    end
+
     out
   end
   
