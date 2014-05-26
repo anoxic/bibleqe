@@ -10,11 +10,11 @@ class IndexBuilder
   end
   
   def put!
-    print self.compile
+    print self.compile_index
   end
   
   def write!
-    File.open("#{@dir}/#{@name}.ind", "w") { |f| f << self.compile }
+    File.open("#{@dir}/#{@name}.ind", "w") { |f| f << self.compile_index }
     File.open("#{@dir}/#{@name}_toc.ind", "w") { |f| f << self.compile_range }
     File.open("#{@dir}/#{@name}_words.lst", "w") { |f| f << self.compile_words }
     File.open("#{@dir}/#{@name}_toc.txt", "w") { |f| f << self.compile_book_names }
@@ -41,7 +41,7 @@ class IndexBuilder
     @index = occurances.sort
   end
   
-  def compile
+  def compile_index
     out = "! BibleQE Index: #{@long_name}\n! version #{BibleQE::version}"
 
     self.index.each do |word, occ|
