@@ -1,7 +1,7 @@
 class Parse
-  attr_reader :args, :options
+  attr_reader :args, :options, :ref
 
-  def initialize(args)
+  def initialize(args = [])
     options = {}
     booleans = ['all', 'list', 'show']
   

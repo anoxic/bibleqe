@@ -32,4 +32,14 @@ class Text
 		#skipping lines + continuing at last pointer
 		#=> 0.234375
 	end
+
+  def fetch_by_ref(ref)
+    @content.rewind
+
+    @content.each do |l|
+      return l if l.match /^#{ref} /i
+    end
+
+    nil
+  end
 end

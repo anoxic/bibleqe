@@ -15,29 +15,35 @@ class Shell
     limit = 10
     limit = options[:limit] if options[:limit] != nil
 
-    # Get results          
-    search = Search.new(text)
-    result = search.query(args)
-    result.limit = limit
-
-    # Display line about matches
-    puts result.matches_verbose
-
-    # List results
-    if options[:list] != nil
-      puts ""
-      puts result.list.join(", ")
-      return 
-    end
-
-    # Show results
-    if options[:all] != nil
-      puts ""
-      puts result.show!
+    if parser.ref
+      # Fetch by reference
+      t = Text.new(text)
+      puts t.fetch_by_ref(parser.ref)
     else
-      puts "Page #{page} (displaying #{limit} results)" if result.matches > 0
-      puts ""
-      puts result.show_by_page!(page)
+      # Get results          
+      search = Search.new(text)
+      result = search.query(args)
+      result.limit = limit
+
+      # Display line about matches
+      puts result.matches_verbose
+
+      # List results
+      if options[:list] != nil
+        puts ""
+        puts result.list.join(", ")
+        return 
+      end
+
+      # Show results
+      if options[:all] != nil
+        puts ""
+        puts result.show!
+      else
+        puts "Page #{page} (displaying #{limit} results)" if result.matches > 0
+        puts ""
+        puts result.show_by_page!(page)
+      end
     end
   end
 end
