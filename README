@@ -47,8 +47,9 @@ Interesting: http://about.esvbible.org/uncategorized/technical-introduction-to-t
 TODO
 
 Use full length book names:
-[ ] Get list of book abbrs for version
+[x] Get list of book abbrs for version
 [ ] Use a regex to reduce the book name to the abbreviation
+[ ] Create list of full names to show
 
 
 Towards a web release:
