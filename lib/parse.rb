@@ -39,5 +39,24 @@ class Parse
     str = str.join ' ' if str.is_a? Array
     str.match(/([1-9]|(IV|I+))? ?\w+ \d+([.,: ]\d+)?/i)
   end
+
+  def get_short_name(name)
+    @abbrs ||= File.new "./texts/book_abbreviations.txt"
+    @abbrs.rewind
+
+    @abbrs.map do |line|
+      next unless line.match /\w+ {2,}/
+
+      abbr = line.slice! /\w+/
+      exps = line.chop.split(/ {2,}/).drop(1)
+      
+      exps.map do |e|
+        e = Regexp.new e
+        return abbr if name.match e
+      end
+    end
+
+    nil
+  end
 end
 

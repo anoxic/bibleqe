@@ -7,7 +7,7 @@ describe Parse do
   
   # Note: the part that parses arguments into options
   #       is completely untested at this point
-
+  
   describe "reference matching" do
     it "doesn't match single arguments" do
       @p.contains_ref('john').should == false
@@ -38,6 +38,19 @@ describe Parse do
       @p.contains_ref('iii maccabees 1').should_not == false
       @p.contains_ref('iiii maccabees 1').should_not == false
       @p.contains_ref('iv maccabees 1').should_not == false
+    end
+  end
+
+  describe "reference expansion" do
+    it "expands book names" do
+      p = Parse.new
+      p.get_short_name("jn").should == "Joh"
+      p.get_short_name("1jn").should == "1Jo"
+      p.get_short_name("genesis").should == "Ge"
+      p.get_short_name("revel").should == "Re"
+    end
+
+    it "formats chapters and verses consistently" do
     end
   end
 end
