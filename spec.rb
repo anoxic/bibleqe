@@ -15,29 +15,29 @@ describe Parse do
     end
 
     it "matches basic references" do
-      @p.contains_ref('john 12').should_not == false
-      @p.contains_ref('genesis 2').should_not == false
-      @p.contains_ref('psalm 119').should_not == false
+      @p.contains_ref('john 12').should == true
+      @p.contains_ref('genesis 2').should == true
+      @p.contains_ref('psalm 119').should == true
     end
 
     it "matches verse references" do
-      @p.contains_ref('genesis 2:15').should_not == false
-      @p.contains_ref('rev 3:8').should_not == false
-      @p.contains_ref('psalm 119.1').should_not == false
-      @p.contains_ref('psalm 119,1').should_not == false
-      @p.contains_ref('psalm 119:1').should_not == false
-      @p.contains_ref('psalm 119 1').should_not == false
+      @p.contains_ref('genesis 2:15').should == true
+      @p.contains_ref('rev 3:8').should == true
+      @p.contains_ref('psalm 119.1').should == true
+      @p.contains_ref('psalm 119,1').should == true
+      @p.contains_ref('psalm 119:1').should == true
+      @p.contains_ref('psalm 119 1').should == true
     end
 
     it "matches books beginning with a number" do
-      @p.contains_ref('1sa 2:1').should_not == false
-      @p.contains_ref('1 sa 2:1').should_not == false
-      @p.contains_ref('i sa 2:1').should_not == false
-      @p.contains_ref('I Samuel 2:1').should_not == false
-      @p.contains_ref('ii maccabees 1').should_not == false
-      @p.contains_ref('iii maccabees 1').should_not == false
-      @p.contains_ref('iiii maccabees 1').should_not == false
-      @p.contains_ref('iv maccabees 1').should_not == false
+      @p.contains_ref('1sa 2:1').should == true
+      @p.contains_ref('1 sa 2:1').should == true
+      @p.contains_ref('i sa 2:1').should == true
+      @p.contains_ref('I Samuel 2:1').should == true
+      @p.contains_ref('ii maccabees 1').should == true
+      @p.contains_ref('iii maccabees 1').should == true
+      @p.contains_ref('iiii maccabees 1').should == true
+      @p.contains_ref('iv maccabees 1').should == true
     end
   end
 
