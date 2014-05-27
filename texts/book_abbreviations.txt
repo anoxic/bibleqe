@@ -1,8 +1,8 @@
-Ge    genesis gen?    gn
-Ex    exodus  exo?d?  ex  
-Le    leviticus   le?v    levi    le
-Nu    numbers?    nu?m    nu  numb
-De    deuteronomy deut?   dt
+Ge    genesis  gen?    gn
+Ex    exodus   exo?d?  ex  
+Le    leviticus    le?v    levi    le
+Nu    numbers?     nu?m    nu  numb
+De    deuteronomy  deut?   dt
 Jos   joshua  jo?sh   jos
 Jg    judges  jd?gs?  judg    
 Ru    ruth?   ru  rth
@@ -20,13 +20,13 @@ Job   jo?b
 Ps    psa?lms?    ps[as]?m?
 Pr    proverbs?   pro?v?  prvbs?  pv
 Ec    ecclesiastes?   eccl?   eccles  ecl?
-Song  (?:the ?)?song ?of ?solomon (?:the ?)?song ?of ?songs   sn?gs?  songs?  so?s    sol?    son s ?of ? s
+Song  (?:the ?)?song ?of ?solomon  (?:the ?)?song ?of ?songs   sn?gs?  songs?  so?s    sol?   son  s ?of ?s
 Jer   jeremiah?   jer?    jr  jere
 La    lamentations?   lam?    lm
-Eze   ezekiel ez[ek]  ezek
-Da    daniel  da?n    dl  da
-Ho    hosea   ho?s    hos?
-Joe   joel?   jl
+Eze   ezekiel  ez[ek]  ezek
+Da    daniel   da?n    dl  da
+Ho    hosea    ho?s    hos?
+Joe   joel?    jl
 Am    amo?s?
 Ob    obadiah?    obad?   obd?
 Jon   jonah   jon
@@ -37,30 +37,30 @@ Zep   zephaniah?  ze?ph?
 Hag   haggai  ha?gg?
 Zec   zechariah?  ze?ch?
 Mal   malachi?    mal
-Mt    matthew ma?tt?
-Mr    ma?rk?  mk
-Lu    luke?   lk  lu
-1Jo   (?:1|i|first|1 st) ?john?   (?:1|i|first|1 st) ?jh?n    (?:1|i|first|1 st) ?jon?    (?:1|i|first|1 st) ?jh
-2Jo   (?:2|ii|second|2 nd) ?john? (?:2|ii|second|2 nd) ?jh?n  (?:2|ii|second|2 nd) ?jon?  (?:2|ii|second|2 nd) ?jh
-3Jo   (?:3|iii|third|3 rd) ?john? (?:3|iii|third|3 rd) ?jh?n  (?:3|iii|third|3 rd) ?jon?  (?:3|iii|third|3 rd) ?jh
-Joh   john?   jh?n
-Ac    acts    act?
-Ro    romans? rom?    rms?    roms
-2Co   (?:2|ii|second|2 nd) ?corinthians?  (?:2|ii|second|2 nd) ?cor?  (?:2|ii) ?corint?h? (?:2|ii) ?corth
-1Co   (?:(?:1|i|first|1 st) ?)?corinthians?   (?:1|i|first|1 st) ?cor?    (?:1|i|first|1 st) ?corint?h?   (?:1|i|first|1 st) ?corth
+Mt    matthew  ma?tt?
+Mr    ma?rk?   mk
+Lu    luke?    lk  lu
+1Jo   (?:1|i|first|1 st) ?john?    (?:1|i|first|1 st) ?jh?n    (?:1|i|first|1 st) ?jon?    (?:1|i|first|1 st) ?jh
+2Jo   (?:2|ii|second|2 nd) ?john?  (?:2|ii|second|2 nd) ?jh?n  (?:2|ii|second|2 nd) ?jon?  (?:2|ii|second|2 nd) ?jh
+3Jo   (?:3|iii|third|3 rd) ?john?  (?:3|iii|third|3 rd) ?jh?n  (?:3|iii|third|3 rd) ?jon?  (?:3|iii|third|3 rd) ?jh
+Joh   john?    jh?n
+Ac    acts     act?
+Ro    romans?  rom?    rms?    roms
+2Co   (?:2|ii|second|2 nd) ?corinthians?      (?:2|ii|second|2 nd) ?cor?  (?:2|ii) ?corint?h?            (?:2|ii) ?corth
+1Co   (?:(?:1|i|first|1 st) ?)?corinthians?   (?:1|i|first|1 st) ?cor?    (?:1|i|first|1 st) ?corint?h?  (?:1|i|first|1 st) ?corth
 Ga    galatians?  gal?    galat?
 Eph   ephesians?  eph?    ephe?s?
-Php   philippians?    phi?l   php phi philipp?
+Php   philippians?    phi?l   php  phi  philipp?
 Col   colossi?ans?    col?
-2Th   (?:2|ii|second|2 nd) ?thessalonians?    (?:2|ii|second|2 nd) ?thes{1,}  (?:2|ii|second|2 nd) ?the?s?
-1Th   (?:(?:1|i|first|1 st) ?)?thessalonians? (?:(?:1|i|first|1 st) ?)?thes{1,}   (?:(?:1|i|first|1 st) ?)?the?s?
+2Th   (?:2|ii|second|2 nd) ?thessalonians?     (?:2|ii|second|2 nd) ?thes{1,}  (?:2|ii|second|2 nd) ?the?s?
+1Th   (?:(?:1|i|first|1 st) ?)?thessalonians?  (?:(?:1|i|first|1 st) ?)?thes{1,}   (?:(?:1|i|first|1 st) ?)?the?s?
 2Ti   (?:2|ii|second|2 nd) ?timothy?  (?:2|ii|second|2 nd) ?tim?  (?:2|ii|second|2 nd) ?tm
 1Ti   (?:(?:1|i|first|1 st) ?)?timothy?   (?:1|i|first|1 st) ?tim?    (?:1|i|first|1 st) ?tm
 Tit   titus   tit?
-Phm   philemon    phl?mn? philem?
+Phm   philemon    phl?mn?  philem?
 Heb   hebrews?    heb
-Jas   james?  ja[ms]? jms?
-2Pe   (?:2|ii|second|2 nd) ?peter?    (?:2|ii|second|2 nd) ?pe?t?r?
-1Pe   (?:(?:1|i|first|1 st) ?)?peter? (?:1|i|first|1 st) ?pe?t?r?
-Jude  jude jde
+Jas   james?  ja[ms]?  jms?
+2Pe   (?:2|ii|second|2 nd) ?peter?     (?:2|ii|second|2 nd) ?pe?t?r?
+1Pe   (?:(?:1|i|first|1 st) ?)?peter?  (?:1|i|first|1 st) ?pe?t?r?
+Jude  jude  jde
 Re    revelations?    re?v    re  revel
