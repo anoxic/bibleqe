@@ -43,14 +43,14 @@ describe Parse do
 
   describe "reference expansion" do
     it "expands book names" do
-      p = Parse.new
-      p.get_short_name("jn").should == "Joh"
-      p.get_short_name("1jn").should == "1Jo"
-      p.get_short_name("genesis").should == "Ge"
-      p.get_short_name("revel").should == "Re"
+      @p.get_short_name("jn").should == "Joh"
+      @p.get_short_name("1jn").should == "1Jo"
+      @p.get_short_name("genesis").should == "Ge"
+      @p.get_short_name("revel").should == "Re"
     end
 
     it "formats chapters and verses consistently" do
+      @p.get_ref("GENESIS 1:1").should == "Ge 1:1"
     end
   end
 end

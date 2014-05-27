@@ -36,8 +36,20 @@ class Parse
   end
 
   def get_ref(str)
+    ref  = /([1-9]|(IV|I+))? ?\w+ \d+([.,: ]\d+)?/i
+    book = /([1-9]|(IV|I+))? ?\w+/i
+
     str = str.join ' ' if str.is_a? Array
-    str.match(/([1-9]|(IV|I+))? ?\w+ \d+([.,: ]\d+)?/i)
+
+    if str.match ref
+      str = str[ref].downcase
+    
+      if str.match book and short = get_short_name(str[book])
+          str[book] = get_short_name(str[book])
+      end
+
+      return str
+    end
   end
 
   def get_short_name(name)
