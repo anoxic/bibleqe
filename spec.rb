@@ -38,6 +38,7 @@ describe Parse do
       @p.contains_ref('iii maccabees 1').should == true
       @p.contains_ref('iiii maccabees 1').should == true
       @p.contains_ref('iv maccabees 1').should == true
+      @p.contains_ref('1st John 1').should == true
     end
   end
 
@@ -51,6 +52,7 @@ describe Parse do
 
     it "formats chapters and verses consistently" do
       @p.get_ref("GENESIS 1:1").should == "Ge 1:1"
+      @p.get_ref('1st John 1').should == "1Jo 1"
     end
   end
 end

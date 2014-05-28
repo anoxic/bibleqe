@@ -36,8 +36,8 @@ class Parse
   end
 
   def get_ref(str)
-    ref  = /([1-9]|(IV|I+))? ?\w+ \d+([.,: ]\d+)?/i
-    book = /([1-9]|(IV|I+))? ?\w+/i
+    ref  = /([1-9]|(IV|I+))? ?(st|nd|rd|th)? ?\w+ \d+([.,: ]\d+)?/i
+    book = /([1-9]|(IV|I+))? ?(st|nd|rd|th)? ?\w+/i
 
     str = str.join ' ' if str.is_a? Array
 
@@ -66,6 +66,20 @@ class Parse
         e = Regexp.new e
         return abbr if name.match e
       end
+    end
+
+    nil
+  end
+
+  def get_long_name(abbr)
+    @abbrs ||= File.new "./texts/book_abbreviations.txt"
+    @abbrs.rewind
+
+    @abbrs.map do |line|
+      next unless line.match /\w+ {2,}/
+
+      abbr = line.slice! /\w+/
+      exps = line.chop.split(/ {2,}/).drop(2)
     end
 
     nil
