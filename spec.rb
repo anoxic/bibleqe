@@ -42,7 +42,7 @@ describe Parse do
   end
 
   describe "reference expansion" do
-    it "expands book names" do
+    it "converts book names to abbreviations" do
       @p.get_short_name("jn").should == "Joh"
       @p.get_short_name("1jn").should == "1Jo"
       @p.get_short_name("genesis").should == "Ge"
