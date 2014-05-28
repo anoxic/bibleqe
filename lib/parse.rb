@@ -60,7 +60,7 @@ class Parse
       next unless line.match /\w+ {2,}/
 
       abbr = line.slice! /\w+/
-      exps = line.chop.split(/ {2,}/).drop(1)
+      exps = line.chop.split(/ {2,}/).drop(2)
       
       exps.map do |e|
         e = Regexp.new e
