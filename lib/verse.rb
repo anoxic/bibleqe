@@ -6,7 +6,7 @@ class Verse
   def Verse.format(raw)
     formatted = []
 
-    raw.each do |verse|
+    raw.map do |verse|
      formatted << verse.join($/).wrap(75)
      formatted << ''
     end

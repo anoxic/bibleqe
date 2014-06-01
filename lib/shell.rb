@@ -18,7 +18,7 @@ class Shell
     if parser.ref
       # Fetch by reference
       t = Text.new(text)
-      puts t.fetch_by_ref(parser.ref)
+      puts Verse.format(t.fetch_by_ref(parser.ref))
     else
       # Get results          
       search = Search.new(text)
