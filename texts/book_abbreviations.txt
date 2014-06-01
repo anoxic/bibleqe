@@ -7,12 +7,12 @@ Jos   Joshua           joshua  jo?sh  jos
 Jg    Judges           judges  jd?gs?  judg                                                                                                       
 Ru    Ruth             ruth?  ru  rth                                                                                                             
 Isa   Isaiah           isaiah  isa?  ia  isa[ih]                                                                                                  
-2Sa   2 Samuel         (?:2|ii|second|2 nd) ?samuels?  (?:2|ii|second|2 nd) ?sa?m?                                                                
-1Sa   1 Samuel         (?:(?:1|i|first|1 st) ?)?samuels?  (?:1|i|first|1 st) ?sa?m?                                                               
-2Ki   2 Kings          (?:2|ii|second|2 nd) ?ki?ng?s?  (?:2|ii|second|2 nd) ?ki?  (?:2|ii|second|2 nd) ?kgs?                                      
-1Ki   2 Kings          (?:(?:1|i|first|1 st) ?)?ki?ng?s?  (?:1|i) ?ki?  (?:1|i|first|1 st) ?kgs?                                                  
-2Ch   2 Chronicles     (?:2|ii|second|2 nd) ?chronicles?  (?:2|ii|second|2 nd) ?chr?  (?:2|ii|second|2 nd) ?chro?n?                               
-1Ch   1 Chronicles     (?:(?:1|i|first|1 st) ?)?chronicles?  (?:1|i|first|1 st) ?chr?  (?:1|i|first|1 st) ?chro?n?                                
+2Sa   2 Samuel         (?:2|ii|second|2 ?nd) ?samuels?  (?:2|ii|second|2 nd) ?sa?m?                                                                
+1Sa   1 Samuel         (?:(?:1|i|first|1 ?st) ?)?samuels?  (?:1|i|first|1 st) ?sa?m?                                                               
+2Ki   2 Kings          (?:2|ii|second|2 ?nd) ?ki?ng?s?  (?:2|ii|second|2 nd) ?ki?  (?:2|ii|second|2 nd) ?kgs?                                      
+1Ki   2 Kings          (?:(?:1|i|first|1 ?st) ?)?ki?ng?s?  (?:1|i) ?ki?  (?:1|i|first|1 st) ?kgs?                                                  
+2Ch   2 Chronicles     (?:2|ii|second|2 ?nd) ?chronicles?  (?:2|ii|second|2 nd) ?chr?  (?:2|ii|second|2 nd) ?chro?n?                               
+1Ch   1 Chronicles     (?:(?:1|i|first|1 ?st) ?)?chronicles?  (?:1|i|first|1 st) ?chr?  (?:1|i|first|1 st) ?chro?n?                                
 Ezr   Ezra             ezra?                                                                                                                      
 Ne    Nehemiah         nehemiah  neh?                                                                                                             
 Es    Esther           esther  esth?  es                                                                                                          
@@ -40,9 +40,9 @@ Mal   Malachi          malachi?  mal
 Mt    Matthew          matthew  ma?tt?                                                                                                            
 Mr    Mark             ma?rk?  mk                                                                                                                 
 Lu    Luke             luke?  lk  lu                                                                                                              
-1Jo   1 John           (?:1|i|first|1 st) ?john?  (?:1|i|first|1 st) ?jh?n  (?:1|i|first|1 st) ?jon?  (?:1|i|first|1 st) ?jh                      
-2Jo   2 John           (?:2|ii|second|2 nd) ?john?  (?:2|ii|second|2 nd) ?jh?n  (?:2|ii|second|2 nd) ?jon?  (?:2|ii|second|2 nd) ?jh              
-3Jo   3 John           (?:3|iii|third|3 rd) ?john?  (?:3|iii|third|3 rd) ?jh?n  (?:3|iii|third|3 rd) ?jon?  (?:3|iii|third|3 rd) ?jh              
+1Jo   1 John           (?:1|i|first|1 ?st) ?john?  (?:1|i|first|1 ?st) ?jh?n  (?:1|i|first|1 st) ?jon?  (?:1|i|first|1 st) ?jh                      
+2Jo   2 John           (?:2|ii|second|2 ?nd) ?john?  (?:2|ii|second|2 ?nd) ?jh?n  (?:2|ii|second|2 nd) ?jon?  (?:2|ii|second|2 nd) ?jh              
+3Jo   3 John           (?:3|iii|third|3 ?rd) ?john?  (?:3|iii|third|3 ?rd) ?jh?n  (?:3|iii|third|3 rd) ?jon?  (?:3|iii|third|3 rd) ?jh              
 Joh   John             john?  jh?n                                                                                                                
 Ac    Acts             acts  act?                                                                                                                 
 Ro    Romans           romans?  rom?  rms?  roms                                                                                                  
