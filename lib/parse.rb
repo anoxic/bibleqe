@@ -44,8 +44,8 @@ class Parse
     if str.match ref
       str = str[ref].downcase
     
-      if str.match book and short = get_short_name(str[book])
-          str[book] = get_short_name(str[book])
+      if str.match book and short_name = get_short_name(str[book])
+          str[book] = short_name
       end
 
       return str
