@@ -49,15 +49,7 @@ class Result
   end
 
   def show!(range = nil)
-    raw = self.show(range)
-    formatted = []
-
-    raw.each do |verse|
-     formatted << verse.join($/).wrap(75)
-     formatted << ''
-    end
-
-    formatted
+    Verse.format(show(range))
   end
 
   def show_by_page(pagenum, format = nil)
