@@ -7,8 +7,8 @@ Jos   Joshua           joshua  jo?sh  jos
 Jg    Judges           judges  jd?gs?  judg                                                                                                       
 Ru    Ruth             ruth?  ru  rth                                                                                                             
 Isa   Isaiah           isaiah  isa?  ia  isa[ih]                                                                                                  
-2Sa   2 Samuel         (?:2|ii|second|2 ?nd) ?samuels?  (?:2|ii|second|2 nd) ?sa?m?                                                                
-1Sa   1 Samuel         (?:(?:1|i|first|1 ?st) ?)?samuels?  (?:1|i|first|1 st) ?sa?m?                                                               
+2Sa   2 Samuel         (?:2|ii|second|2 ?nd) ?samuels?  (?:2|ii|second|2 nd) ?s(a|m)                                                                
+1Sa   1 Samuel         (?:(?:1|i|first|1 ?st) ?)?samuels?  (?:1|i|first|1 st) ?s(a|m)                                                               
 2Ki   2 Kings          (?:2|ii|second|2 ?nd) ?ki?ng?s?  (?:2|ii|second|2 nd) ?ki?  (?:2|ii|second|2 nd) ?kgs?                                      
 1Ki   2 Kings          (?:(?:1|i|first|1 ?st) ?)?ki?ng?s?  (?:1|i) ?ki?  (?:1|i|first|1 st) ?kgs?                                                  
 2Ch   2 Chronicles     (?:2|ii|second|2 ?nd) ?chronicles?  (?:2|ii|second|2 nd) ?chr?  (?:2|ii|second|2 nd) ?chro?n?                               
