@@ -42,7 +42,7 @@ Mr    Mark             ma?rk?  mk
 Lu    Luke             luke?  lk  lu                                                                                                              
 1Jo   1 John           (?:1|i|first|1 ?st) ?john?  (?:1|i|first|1 ?st) ?jh?n  (?:1|i|first|1 ?st) ?jon?  (?:1|i|first|1 ?st) ?jh                      
 2Jo   2 John           (?:2|ii|second|2 ?nd) ?john?  (?:2|ii|second|2 ?nd) ?jh?n  (?:2|ii|second|2 ?nd) ?jon?  (?:2|ii|second|2 ?nd) ?jh              
-3Jo   3 John           (?:3|iii|third|3 ?rd) ?john?  (?:3|iii|third|3 ?rd) ?jh?n  (?:3|iii|third|3 rd) ?jon?  (?:3|iii|third|3 rd) ?jh              
+3Jo   3 John           (?:3|iii|third|3 ?rd) ?john?  (?:3|iii|third|3 ?rd) ?jh?n  (?:3|iii|third|3 ?rd) ?jon?  (?:3|iii|third|3 ?rd) ?jh              
 Joh   John             john?  jh?n                                                                                                                
 Ac    Acts             acts  act?                                                                                                                 
 Ro    Romans           romans?  rom?  rms?  roms                                                                                                  

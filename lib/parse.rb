@@ -56,12 +56,14 @@ class Parse
     @abbrs ||= File.new "./texts/book_abbreviations.txt"
     @abbrs.rewind
 
+    name = name.downcase
+
     @abbrs.map do |line|
       next unless line.match /\w+ {2,}/
 
       abbr = line.slice! /\w+/
       exps = line.chop.split(/ {2,}/).drop(2)
-      
+
       exps.map do |e|
         e = Regexp.new e
         return abbr if name.match e

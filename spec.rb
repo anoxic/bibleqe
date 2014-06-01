@@ -48,11 +48,13 @@ describe Parse do
       @p.get_short_name("1jn").should == "1Jo"
       @p.get_short_name("genesis").should == "Ge"
       @p.get_short_name("revel").should == "Re"
+      @p.get_short_name('1st John').should == "1Jo"
+      @p.get_short_name('1st Samuel').should == "1Sa"
     end
 
     it "formats chapters and verses consistently" do
       @p.get_ref("GENESIS 1:1").should == "Ge 1:1"
-      @p.get_ref('1st John 1').should == "1Jo 1"
+      @p.get_short_name('1st John').should == "1Jo"
     end
   end
 end
