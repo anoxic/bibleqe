@@ -7,8 +7,10 @@ class Verse
     formatted = []
 
     raw.map do |verse|
-     formatted << verse.join($/).wrap(75)
-     formatted << ''
+      verse[0][/\w+/] = Parse.new.get_long_name(verse[0][/\w+/])
+
+      formatted << verse.join($/).wrap(75)
+      formatted << ''
     end
 
     formatted
