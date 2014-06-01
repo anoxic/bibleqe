@@ -48,9 +48,9 @@ TODO
 
 Use full length book names:
 [x] Get list of book abbrs for version
-[ ] Use a regex to reduce the book name to the abbreviation
-[ ] Create list of full names to show
-
+[x] Use a regex to reduce the book name to the abbreviation
+[x] Create list of full names to show
+[ ] Expand short name to long name in results
 
 Towards a web release:
 [ ] Fetch spans of verses
