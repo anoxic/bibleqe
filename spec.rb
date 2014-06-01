@@ -56,6 +56,10 @@ describe Parse do
       @p.get_ref("GENESIS 1:1").should == "Ge 1:1"
       @p.get_short_name('1st John').should == "1Jo"
     end
+
+    it "converts from abbreviation to long name" do 
+      @p.get_long_name('1Jo').should == "1 John"
+    end
   end
 end
 

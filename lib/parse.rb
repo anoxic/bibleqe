@@ -80,8 +80,9 @@ class Parse
     @abbrs.map do |line|
       next unless line.match /\w+ {2,}/
 
-      abbr = line.slice! /\w+/
-      exps = line.chop.split(/ {2,}/).drop(2)
+      if abbr == line.slice!(/\w+ {2,}/).rstrip
+        return line.slice!(/[\w\s]+ {2,}/).rstrip
+      end
     end
 
     nil
