@@ -58,7 +58,10 @@ describe Parse do
     end
 
     it "converts from abbreviation to long name" do 
+      @p.get_long_name('Ge').should == "Genesis"
       @p.get_long_name('1Jo').should == "1 John"
+      @p.get_long_name('3Jo').should == "3 John"
+      @p.get_long_name('Song').should == "Song of Songs"
     end
   end
 end

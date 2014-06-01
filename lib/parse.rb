@@ -81,7 +81,7 @@ class Parse
       next unless line.match /\w+ {2,}/
 
       if abbr == line.slice!(/\w+ {2,}/).rstrip
-        return line.slice!(/[\w\s]+ {2,}/).rstrip
+        return line.slice!(/( ?\w)+(?= {2,})/)
       end
     end
 
