@@ -1,9 +1,10 @@
+$white: #fff
 $light: #C4B3B3
 $medium: #796969
-$medium-b: #6A5353
+$medium-b: #796262
 $dark: #3F3535
 $red: #EB4444
-$yellow: #FAFA9E
+$yellow: #FFF4A6
 $margin: 1.2em
 $radius: 2px
 
@@ -15,21 +16,30 @@ html, body
 
 body
   font-family: sans-serif
+  background: $white
   color: $medium
   line-height: 1.5em
   font-size: 17px
+.link
+  position: absolute
+  position: fixed
+  top: .7em
+  left: .5em
 .wrapper
   width: 33em
   margin: 1em auto
+  .sub-wrapper
+    padding-bottom: 5em
 .wrapper-home
   @extend .wrapper
   margin-top: 0
   min-height: 100%
-  overflow: hidden
-  h1
-    padding-top: 7rem
-.sub-wrapper
-  padding-bottom: 5em
+  display: table
+  .sub-wrapper
+    overflow: hidden
+    display: table-cell
+    vertical-align: middle
+    padding-bottom: 10em
 .footer
   height: 2em
   margin-top: -3em
@@ -57,9 +67,11 @@ input
   color: $red
   font-family: sans-serif
   font-size: 1.4em
-  padding: 13px 22px 14px
+  padding: 10px 22px 11px
   border-radius: $radius
   width: 100%
+  .wrapper-home &
+    padding: 14px 22px 15px
 p
   margin: .2em 0 1em
   &.result
@@ -78,5 +90,12 @@ b
   border-radius: $radius
   padding: 0 $radius
   margin: 0 -$radius
+  font-weight: normal
 a
   color: $red
+  padding: 0 $radius
+  margin: 0 -$radius
+  &:hover
+    color: $white
+    background: $red
+    text-decoration: none
