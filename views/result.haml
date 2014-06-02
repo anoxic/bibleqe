@@ -20,7 +20,7 @@
         - else
           - result.show.each do |r|
             - r[1].gsub!(/[<>]/, "<"=>"&lt;", ">"=>"&gt;")
-            - r[1].gsub!(/(#{result.query.join('|')})/i, '<b>\1</b>')
+            - r[1].gsub!(/(\s|^)(#{result.query.join('|')})(\s|$|[.,:;!?>})\]])/i, '\1<b>\2</b>\3')
             - r[1].gsub!(/[\[\]]/, "["=>"<ins>", "]"=>"</ins>")
             - r[0][/\w+/] = Parse.new.get_long_name(r[0][/\w+/])
 
