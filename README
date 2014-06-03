@@ -46,14 +46,11 @@ Interesting: http://about.esvbible.org/uncategorized/technical-introduction-to-t
 
 TODO
 
-Use full length book names:
-[x] Get list of book abbrs for version
-[x] Use a regex to reduce the book name to the abbreviation
-[x] Create list of full names to show
-[ ] Expand short name to long name in results
+Fetch spans of verses
+[ ] Fetch whole chapters
+[ ] Fetch ranges
 
 Towards a web release:
-[ ] Fetch spans of verses
 [ ] Display info about source of Bible text
 [ ] Create a new parser that uses regex scanning
 
