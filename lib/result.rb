@@ -72,8 +72,8 @@ class Result
     expanded = []
 
     query.each_with_index do |q, k|
-      if q.include? "*"
-        q["*"] = ".*"
+      if q.include?("*") || q.include?("?")
+        q.gsub! /[*?]/, "*"=>".*", "?"=>".?"
         q = "/" + q + "/"
       end
 
