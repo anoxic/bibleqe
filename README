@@ -52,5 +52,4 @@ Fetch spans of verses
 
 Towards a web release:
 [ ] Display info about source of Bible text
-[ ] Create a new parser that uses regex scanning
-
+[ ] More useful help / usage page
