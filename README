@@ -39,14 +39,3 @@ UNIMPLEMENTED ARGUMENTS
 
 :within <num> [words/verses] when used with two or more words, allows you to find matches for words within a certain distance of eachother
 
-
-TODO
-
-Fetch spans of verses
-[ ] Fetch whole chapters
-[ ] Fetch ranges
-
-Towards a web release:
-[ ] Display info about source of Bible text
-[ ] More useful help / usage page
-[ ] Pagination and small mobile optimizations
