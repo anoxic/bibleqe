@@ -40,11 +40,6 @@ UNIMPLEMENTED ARGUMENTS
 :within <num> [words/verses] when used with two or more words, allows you to find matches for words within a certain distance of eachother
 
 
-Follow guidelines in http://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_05 for style on commandline args
-
-Interesting: http://about.esvbible.org/uncategorized/technical-introduction-to-the-esv-online-edition/
-
-
 TODO
 
 Fetch spans of verses
