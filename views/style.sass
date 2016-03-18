@@ -21,20 +21,24 @@ body
   line-height: 1.5em
   font-size: 17px
 .link
-  position: absolute
   position: fixed
-  top: .7em
-  left: .5em
+  top: 0
+  left: 0
+  padding: 1em 0 0 1em
+  @media (max-width: 48em)
+    position: initial
+    max-width: 33em
+    margin: 0 auto
 .wrapper
-  width: 33em
+  max-width: 33em
   margin: 0 auto
-  padding: 1em 0
+  padding: 1em
   .sub-wrapper
     padding-bottom: 5em
 .wrapper-home
   @extend .wrapper
   margin-top: 0
-  min-height: 100%
+  height: 100%
   display: table
   .sub-wrapper
     overflow: hidden
@@ -66,7 +70,7 @@ label
 input
   border: 1px solid $red
   color: $red
-  font-family: sans-serif
+  font-family: inherit
   font-size: 1.4em
   padding: 10px 22px 11px
   border-radius: $radius

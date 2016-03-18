@@ -2,6 +2,8 @@
 %html
 
   %head
+    %meta{charset: "utf-8"}
+    %meta{name: "viewport", content:"width=device-width"}
     %title #{params[:q]} on BibleQE
     %style= sass :style
 
@@ -15,7 +17,7 @@
         %form
           %label
             %input{name: "q", value: params[:q]}/
-          %p= result.matches_verbose
+          %p #{result.matches} verses found
 
         - if list
           - result.list.each do |r|
