@@ -1,0 +1,34 @@
+!!! 5
+%html
+
+  %head
+    %title Bible Query Engine
+    %meta{name: "description", content: "Uber-simple Bible search for geeks. Just type and press enter to search."}
+    %link{rel: "author", href: "http://zickzickzick.com"}
+    %style= sass :style
+
+  %body
+    .wrapper-home
+      .sub-wrapper
+        .instructions
+          
+          word search
+          By default, BibleQE searches for verses that contains ALL of the search words you have entered.
+
+          | OR search
+          If you would like BibleQE to perform a search that contains ANY of the search words, separate those words by “|”
+
+          ? wildcard
+          You can use “?” in place of any letter in a word and BibleQE
+
+          * wildcard
+
+          %p Words not starting in : are used as search terms (in an AND search)
+          %p &lt;word&gt;|&lt;word&gt; executes an OR search
+          %p A word containing * will execute a wild card search
+          %p /&lt;regex&gt;/ for a regular expression search
+          %p :list list references
+          %p :text &lt;version&gt; Change text (by version abbreviation)
+
+    %nav.footer
+      %a{href: "/"} Back

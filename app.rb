@@ -31,6 +31,10 @@ get '/search' do
   haml :result, locals: {result: result, list: options[:list] ? true : false}
 end
 
+get '/usage' do
+  haml :usage
+end
+
 get '/robots.txt' do
   content_type 'text/plain'
   "User-agent: *\nAllow: *"
