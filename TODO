@@ -1,0 +1,10 @@
+TODO
+
+Fetch spans of verses
+[ ] Fetch whole chapters
+[ ] Fetch ranges
+
+Towards a web release:
+[ ] Display info about source of Bible text
+[ ] More useful help / usage page
+[ ] Pagination and small mobile optimizations

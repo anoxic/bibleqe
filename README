@@ -13,7 +13,8 @@ Arguments not starting in : are used as search terms (in an AND search)
 
 <term>|<term> executes an OR search
 
-<term*> (any term with an *) - wildcard search
+<term*> (any term with an *) - multi-character wildcard search
+<term?> (any term with an ?) - single-character wildcard search
 
 /<regex>/ for a regular expression search
 
@@ -37,20 +38,4 @@ UNIMPLEMENTED ARGUMENTS
 :in <book_or_chapter> define a scope for searching
 
 :within <num> [words/verses] when used with two or more words, allows you to find matches for words within a certain distance of eachother
-
-
-Follow guidelines in http://pubs.opengroup.org/onlinepubs/9699919799/utilities/V3_chap02.html#tag_18_05 for style on commandline args
-
-Interesting: http://about.esvbible.org/uncategorized/technical-introduction-to-the-esv-online-edition/
-
-
-TODO
-
-Fetch spans of verses
-[ ] Fetch whole chapters
-[ ] Fetch ranges
-
-Towards a web release:
-[ ] Display info about source of Bible text
-[ ] Create a new parser that uses regex scanning
 
