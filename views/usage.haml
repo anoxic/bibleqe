@@ -12,23 +12,26 @@
       .sub-wrapper
         .instructions
           
-          word search
-          By default, BibleQE searches for verses that contains ALL of the search words you have entered.
+          %dl
+            %dt word search (all terms)
+            %dd By default, BibleQE searches for verses that contains ALL of the search words you have entered.
 
-          | OR search
-          If you would like BibleQE to perform a search that contains ANY of the search words, separate those words by “|”
+            %dt word search (one term or another): &pipe;
+            %dd If you would like BibleQE to perform a search that contains ANY of the search words, separate those words by “|”.
 
-          ? wildcard
-          You can use “?” in place of any letter in a word and BibleQE
+            %dt single letter wildcard: ?
+            %dd You can use “?” in place of any letter in a word and BibleQE.
 
-          * wildcard
+            %dt multiple letter wildcard: *
+            %dd Use “*” in place of one or more letters, for example “hand*” will searching for hand, handed, hands, handmaid, etc.
 
-          %p Words not starting in : are used as search terms (in an AND search)
-          %p &lt;word&gt;|&lt;word&gt; executes an OR search
-          %p A word containing * will execute a wild card search
-          %p /&lt;regex&gt;/ for a regular expression search
-          %p :list list references
-          %p :text &lt;version&gt; Change text (by version abbreviation)
+            %dt advanced patterns (regular expressions): /&lt;regex&gt;/
+            %dd Use /&lt;regex&gt;/ for a regular expression search
+
+            %dt list verse references: :list
+
+            %dt change text (by version abbreviation): :text &lt;version&gt;
+            %dd currently limited to kjv
 
     %nav.footer
       %a{href: "/"} Back
