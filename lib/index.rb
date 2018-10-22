@@ -1,12 +1,12 @@
 class Index
   attr_reader :index, :words, :symbol
-  
+
   def initialize (name, dir = :texts)
     raise LoadError, "Can't find #{name}.txt" unless File.exists? "./#{dir}/#{name}.txt"
     IndexBuilder.new(name, dir).write! unless File.exists? "./#{dir}/#{name}.ind"
     IndexBuilder.new(name, dir).write! unless File.exists? "./#{dir}/#{name}_toc.ind"
     IndexBuilder.new(name, dir).write! unless File.exists? "./#{dir}/#{name}_words.lst"
-        
+
     @index = File.new("./#{dir}/#{name}.ind").readlines
     @toc = File.new("./#{dir}/#{name}_toc.ind").readlines
     @words = File.new("./#{dir}/#{name}_words.lst").readlines.join.split
@@ -28,7 +28,7 @@ class Index
 
     return [] if lower.nil?
     @index[lower..upper]
-    
+
     # Without range, search for:
     # abbadon, 0.187500
     # zuzims, 0.328125
@@ -36,11 +36,11 @@ class Index
     # abbadon, 0.187500
     # zuzims, 0.109375
   end
-  
+
   def [](term)
     matches = []
     terms = term.split '|'
-    
+
     terms.each do |t|
       matches = matches + self.fetch(t)
     end
