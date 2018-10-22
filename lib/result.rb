@@ -110,7 +110,7 @@ class Result
 
     @query.each {|w| matches += @index[w]}
     matches.each {|r|
-    	result << r if matches.select {|n| n == r}.count >= @query.count
+      result << r if matches.select {|n| n == r}.count >= @query.count
     }
     
     result.uniq
