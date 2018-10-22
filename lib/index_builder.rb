@@ -8,11 +8,11 @@ class IndexBuilder
     @strip          = t.strip
     @text           = t.content
   end
-  
+
   def put!
     print self.compile_index
   end
-  
+
   def write!
     File.open("#{@dir}/#{@name}.ind", "w") { |f| f << self.compile_index }
     File.open("#{@dir}/#{@name}_toc.ind", "w") { |f| f << self.compile_range }
@@ -20,12 +20,12 @@ class IndexBuilder
     File.open("#{@dir}/#{@name}_toc.txt", "w") { |f| f << self.compile_book_names }
     true
   end
-  
+
   def index
     return @index if @index
 
     occurances = Hash.new{|h,k| h[k] = String.new}
-    
+
     @text.each do |line|
       next unless line.match(Verse.reference_pattern)
 
@@ -40,7 +40,7 @@ class IndexBuilder
 
     @index = occurances.sort
   end
-  
+
   def compile_index
     out = "! BibleQE Index: #{@long_name}\n! version #{BibleQE::version}"
 
@@ -71,7 +71,7 @@ class IndexBuilder
     book_names.map { |i| out << "#{i[0]} #{i[1]}" }
     out.join "\n"
   end
-  
+
   def range(l = nil)
     words = self.words
     chars = Hash.new {|k,v| k[v] = Array.new(0) }
@@ -85,7 +85,7 @@ class IndexBuilder
     return chars[l.to_sym] unless l == nil
     chars
   end
-  
+
   def compile_range
     out = "! BibleQE Index TOC: #{@long_name}\n! version #{BibleQE::version}"
     self.range.each { |letter, range|
