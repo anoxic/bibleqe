@@ -4,17 +4,17 @@ class Parse
   def initialize(args = [])
     options = {}
     booleans = ['all', 'list', 'show']
-  
+
     args = args.split if args.is_a? String
 
     if contains_ref(args)
       @ref = get_ref(args).to_s
     end
-    
+
     args.each.with_index do |arg, k|
       if arg.start_with? ':'
         name = arg.delete ':'
-  
+
         if booleans.include? name
           options[name.to_sym] = true;
           args.delete_at(k)
@@ -25,7 +25,7 @@ class Parse
         end
       end
     end
-    
+
     @args = args
     @options = options
   end
@@ -43,7 +43,7 @@ class Parse
 
     if str.match ref
       str = str[ref].downcase
-    
+
       if str.match book and short_name = get_short_name(str[book])
           str[book] = short_name
       end
