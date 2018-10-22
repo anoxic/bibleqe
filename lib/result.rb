@@ -33,7 +33,7 @@ class Result
     self.show.each { |verse| list << verse[0] }
     list
   end
-  
+
   def show(range = nil)
     result = []
 
@@ -57,7 +57,7 @@ class Result
     raise_by = pagenum * @limit
     range = 1..@limit
     range = range.min + raise_by..range.max + raise_by if pagenum > 1
-    
+
     return self.show!(range) if format
     self.show(range)
   end
@@ -112,7 +112,7 @@ class Result
     matches.each {|r|
       result << r if matches.select {|n| n == r}.count >= @query.count
     }
-    
+
     result.uniq
   end
 
