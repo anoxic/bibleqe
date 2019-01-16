@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'fcgi'
 gem 'sinatra'
 gem 'haml'
 gem 'sass'
