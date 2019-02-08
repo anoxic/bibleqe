@@ -1,6 +1,6 @@
 TODO
 
-[ ] Replace Sinatra with straight rack
+[x] Replace Sinatra with straight rack
 
 Simplify file structure
 [ ] Move interface files to their own spot
