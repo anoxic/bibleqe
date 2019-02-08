@@ -43,7 +43,7 @@ builder = Rack::Builder.new do
   end
   map '/search' do
     run lambda { |env|
-      headers = {'Content-Type' => 'text/plain'}
+      headers = {'Content-Type' => 'text/html'}
       params = Rack::Utils.default_query_parser.parse_nested_query(env["QUERY_STRING"])
 
       parser = Parse.new(params["q"])
