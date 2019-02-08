@@ -45,6 +45,7 @@ builder = Rack::Builder.new do
     run lambda { |env|
       headers = {'Content-Type' => 'text/html'}
       params = Rack::Utils.default_query_parser.parse_nested_query(env["QUERY_STRING"])
+      params["q"] ||= ""
 
       parser = Parse.new(params["q"])
       args = parser.args
