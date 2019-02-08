@@ -54,6 +54,25 @@ builder = Rack::Builder.new do
   map '/usage' do
     ok haml :usage
   end
+  map '/search' do
+    run lambda { |env|
+      headers = {'Content-Type' => 'text/plain'}
+      params = Rack::Utils.default_query_parser.parse_nested_query(env["QUERY_STRING"])
+
+      parser = Parse.new(params["q"])
+      args = parser.args
+      options = parser.options
+
+      text = options[:text] ? options[:text] : :kjv
+
+      search = Search.new(text)
+      result = search.query(args)
+
+      body = haml :result, {params: params, result: result, list: options[:list] ? true : false}
+
+      [200, headers, [body]]
+    }
+  end
   map '/robots.txt' do
     run lambda { |env| [200, {'Content-Type' => 'text/plain'}, ["User-agent: *\nAllow: *"]] }
   end
