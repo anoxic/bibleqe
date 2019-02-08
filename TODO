@@ -7,8 +7,8 @@ Simplify file structure
     * cli
     * fastcgi
     * http
-[ ] Remove old scripts
-[ ] Move source files out of lib/ to somewhere better
+[x] Remove old scripts
+[x] Move source files out of lib/ to somewhere better
 
 Fetch spans of verses
 [ ] Fetch whole chapters
