@@ -27,14 +27,14 @@ def ok(body)
   run lambda { |env| [200, {'Content-Type' => 'text/html'}, [body]] }
 end
 
-def haml(view)
+def haml(view, bindings = {})
   name = "./views/#{view}.haml"
   unless File.exists? name
     return "E: Can't find #{view}.haml" 
   end
   file = File.read(name)
   engine = Haml::Engine.new(file)
-  engine.render
+  engine.render Object.new, bindings
 end
 
 def sass(view)
