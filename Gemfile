@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
+gem 'rack'
 gem 'fcgi'
-gem 'sinatra'
 gem 'haml'
 gem 'sass'
