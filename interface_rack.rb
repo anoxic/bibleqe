@@ -1,5 +1,3 @@
-#!/usr/local/bin/ruby
-
 require 'rubygems'
 require 'rack'
 require 'haml'
@@ -10,17 +8,6 @@ require_relative 'bibleqe'
 #STDOUT.reopen fastcgi_log
 #STDERR.reopen fastcgi_log
 #STDOUT.sync = true
-
-module Rack
-  class Request
-    def path_info
-      @env["REDIRECT_URL"].to_s
-    end
-    def path_info=(s)
-      @env["REDIRECT_URL"] = s.to_s
-    end
-  end
-end
 
 def ok(body)
   use Rack::Lint
