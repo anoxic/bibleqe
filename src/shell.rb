@@ -15,10 +15,9 @@ class Shell
     limit = 10
     limit = options[:limit] if options[:limit] != nil
 
-    if parser.ref
+    if v = Text.new(text).fetch_by_ref(parser.ref)
       # Fetch by reference
-      t = Text.new(text)
-      puts Verse.format(t.fetch_by_ref(parser.ref))
+      puts Verse.format(v)
     else
       # Get results          
       search = Search.new(text)
