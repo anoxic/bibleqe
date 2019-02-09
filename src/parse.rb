@@ -26,8 +26,9 @@ class Parse
       end
     end
 
-    @args = args
-    @options = options
+    @options[:text] ||= :kjv
+    @options[:page] ||= 1
+    @options[:limit] ||= 10
   end
 
   def contains_ref(str)
