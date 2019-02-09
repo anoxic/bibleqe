@@ -1,23 +1,18 @@
 class IndexBuilder
   def initialize(name, dir = :texts)
     t = Text.new(name, dir)
-
-    @name           = name
-    @dir            = dir
-    @long_name      = t.name
-    @strip          = t.strip
-    @text           = t.content
-  end
-
-  def put!
-    print self.compile_index
+    @name      = name
+    @dir       = dir
+    @long_name = t.name
+    @strip     = t.strip
+    @text      = t.content
   end
 
   def write!
-    File.open("#{@dir}/#{@name}.ind", "w:UTF-8") { |f| f << self.compile_index }
-    File.open("#{@dir}/#{@name}_toc.ind", "w:UTF-8") { |f| f << self.compile_range }
-    File.open("#{@dir}/#{@name}_words.lst", "w:UTF-8") { |f| f << self.compile_words }
-    File.open("#{@dir}/#{@name}_toc.txt", "w:UTF-8") { |f| f << self.compile_book_names }
+    File.open("#{@dir}/#{@name}.ind", "w:UTF-8")       { |f| f << self.format_index }
+    File.open("#{@dir}/#{@name}_toc.ind", "w:UTF-8")   { |f| f << self.format_range }
+    File.open("#{@dir}/#{@name}_words.lst", "w:UTF-8") { |f| f << self.format_words }
+    File.open("#{@dir}/#{@name}_toc.txt", "w:UTF-8")   { |f| f << self.format_book_names }
     true
   end
 
@@ -41,7 +36,7 @@ class IndexBuilder
     @index = occurances.sort
   end
 
-  def compile_index
+  def format_index
     out = "! BibleQE Index: #{@long_name}\n! version #{BibleQE::version}"
 
     self.index.each do |word, occ|
@@ -66,7 +61,7 @@ class IndexBuilder
     names
   end
 
-  def compile_book_names
+  def format_book_names
     out = ["! BibleQE Text TOC: #{@long_name}","! version #{BibleQE::version}"]
     book_names.map { |i| out << "#{i[0]} #{i[1]}" }
     out.join "\n"
@@ -86,7 +81,7 @@ class IndexBuilder
     chars
   end
 
-  def compile_range
+  def format_range
     out = "! BibleQE Index TOC: #{@long_name}\n! version #{BibleQE::version}"
     self.range.each { |letter, range|
       out << "\n#{letter} #{range[0]}..#{range[1]}"
@@ -100,7 +95,7 @@ class IndexBuilder
     words
   end
 
-  def compile_words
+  def format_words
     self.words.join " "
   end
 end
