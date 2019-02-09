@@ -1,27 +1,27 @@
 class Parse
   attr_reader :args, :options, :ref
 
+  BoolOptions = ['all', 'list', 'show']
+
   def initialize(args = [])
-    options = {}
-    booleans = ['all', 'list', 'show']
+    @args = if args.is_a? String then args.split else args end
+    @options = {}
 
-    args = args.split if args.is_a? String
-
-    if contains_ref(args)
-      @ref = get_ref(args).to_s
+    if contains_ref(@args)
+      @ref = get_ref(@args).to_s
     end
 
-    args.each.with_index do |arg, k|
+    @args.each.with_index do |arg, k|
       if arg.start_with? ':'
         name = arg.delete ':'
 
-        if booleans.include? name
-          options[name.to_sym] = true;
-          args.delete_at(k)
+        if BoolOptions.include? name
+          @options[name.to_sym] = true;
+          @args.delete_at(k)
         else
-          options[name.to_sym] = args[k + 1]
-          args.delete_at(k)
-          args.delete_at(k)
+          @options[name.to_sym] = @args[k + 1]
+          @args.delete_at(k)
+          @args.delete_at(k)
         end
       end
     end
