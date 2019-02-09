@@ -31,8 +31,7 @@ class Parse
   end
 
   def contains_ref(str)
-    return true if get_ref(str)
-    false
+    !! get_ref(str)
   end
 
   def get_ref(str)
