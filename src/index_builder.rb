@@ -27,9 +27,9 @@ class IndexBuilder
     occurances = Hash.new{|h,k| h[k] = String.new}
 
     @text.each do |line|
-      next unless line.match(Verse.reference_pattern)
+      next unless line.match(Verse::ReferencePattern)
 
-      line.slice!(Verse.reference_pattern)
+      line.slice!(Verse::ReferencePattern)
       line.downcase!
       line.delete!(@strip)
 
@@ -56,7 +56,7 @@ class IndexBuilder
     @text.rewind if @text.lineno > 0
 
     @text.map.with_index do |line,lineno|
-      next unless line.match(Verse.reference_pattern)
+      next unless line.match(Verse::ReferencePattern)
 
       unless names[line.slice(/\w+/).to_sym]
         names[line.slice(/\w+/).to_sym] = lineno

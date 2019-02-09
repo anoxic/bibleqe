@@ -37,7 +37,7 @@ class Text
     @content.rewind
 
     @content.each do |l|
-      return [[l.slice!(Verse.reference_pattern), l]] if l.match /^#{ref} /i
+      return [[l.slice!(Verse::ReferencePattern), l]] if l.match /^#{ref} /i
     end
 
     nil
