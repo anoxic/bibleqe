@@ -3,7 +3,7 @@ TODO
 [x] Replace Sinatra with straight rack
 
 Simplify file structure
-[ ] Move interface files to their own spot
+[x] Move interface files to their own spot
     * cli
     * fastcgi
     * http
@@ -15,7 +15,7 @@ Fetch spans of verses
 [ ] Fetch ranges
 
 Towards a web release:
-[ ] Display info about source of Bible text
 [x] More useful help / usage page
+[ ] Display info about source of Bible text
 [ ] Pagination
 [ ] Small mobile optimizations
