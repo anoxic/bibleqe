@@ -7,7 +7,6 @@ require_relative './src/result.rb'
 require_relative './src/shell.rb'
 require_relative './src/parse.rb'
 require_relative './src/verse.rb'
-require_relative './src/string.rb'
 
 if __FILE__ == $0
   Shell.new(ARGV)
