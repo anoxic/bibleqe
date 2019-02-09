@@ -7,9 +7,9 @@ class Index
     IndexBuilder.new(name, dir).write! unless File.exists? "./#{dir}/#{name}_toc.ind"
     IndexBuilder.new(name, dir).write! unless File.exists? "./#{dir}/#{name}_words.lst"
 
-    @index = File.new("./#{dir}/#{name}.ind").readlines
-    @toc = File.new("./#{dir}/#{name}_toc.ind").readlines
-    @words = File.new("./#{dir}/#{name}_words.lst").readlines.join.split
+    @index = File.new("./#{dir}/#{name}.ind", "r:UTF-8").readlines
+    @toc = File.new("./#{dir}/#{name}_toc.ind", "r:UTF-8").readlines
+    @words = File.new("./#{dir}/#{name}_words.lst", "r:UTF-8").readlines.join.split
     @symbol = name
   end
 

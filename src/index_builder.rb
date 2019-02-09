@@ -14,10 +14,10 @@ class IndexBuilder
   end
 
   def write!
-    File.open("#{@dir}/#{@name}.ind", "w") { |f| f << self.compile_index }
-    File.open("#{@dir}/#{@name}_toc.ind", "w") { |f| f << self.compile_range }
-    File.open("#{@dir}/#{@name}_words.lst", "w") { |f| f << self.compile_words }
-    File.open("#{@dir}/#{@name}_toc.txt", "w") { |f| f << self.compile_book_names }
+    File.open("#{@dir}/#{@name}.ind", "w:UTF-8") { |f| f << self.compile_index }
+    File.open("#{@dir}/#{@name}_toc.ind", "w:UTF-8") { |f| f << self.compile_range }
+    File.open("#{@dir}/#{@name}_words.lst", "w:UTF-8") { |f| f << self.compile_words }
+    File.open("#{@dir}/#{@name}_toc.txt", "w:UTF-8") { |f| f << self.compile_book_names }
     true
   end
 

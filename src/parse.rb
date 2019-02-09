@@ -53,7 +53,7 @@ class Parse
   end
 
   def get_short_name(name)
-    @abbrs ||= File.new "./texts/book_abbreviations.txt"
+    @abbrs ||= File.new "./texts/book_abbreviations.txt", "r:UTF-8"
     @abbrs.rewind
 
     name = name.downcase
@@ -74,7 +74,7 @@ class Parse
   end
 
   def get_long_name(abbr)
-    @abbrs ||= File.new "./texts/book_abbreviations.txt"
+    @abbrs ||= File.new "./texts/book_abbreviations.txt", "r:UTF-8"
     @abbrs.rewind
 
     @abbrs.map do |line|

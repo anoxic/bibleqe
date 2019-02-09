@@ -5,7 +5,7 @@ class Text
     unless File.exists? "./#{dir}/#{name}.txt"
       raise LoadError, "Can't find #{name}.txt" 
     end
-    @content = File.new("./#{dir}/#{name}.txt")
+    @content = File.new("./#{dir}/#{name}.txt", "r:UTF-8")
     @symbol = name
   end
 
