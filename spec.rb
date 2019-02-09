@@ -66,9 +66,9 @@ describe Parse do
   end
 end
 
-describe IndexBuilder do
+describe Indexer do
   before :all do
-  	@kjv = IndexBuilder.new(:test)
+  	@kjv = Indexer.new(:test)
   end
   
   it "has a range for 'a'" do

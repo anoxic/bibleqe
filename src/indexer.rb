@@ -1,4 +1,4 @@
-class IndexBuilder
+class Indexer
   def initialize(name, dir = :texts)
     t = Text.new(name, dir)
     @name      = name

@@ -1,7 +1,7 @@
 require_relative './src/bibleqe.rb'
 require_relative './src/text.rb'
 require_relative './src/index.rb'
-require_relative './src/index_builder.rb'
+require_relative './src/indexer.rb'
 require_relative './src/search.rb'
 require_relative './src/result.rb'
 require_relative './src/shell.rb'

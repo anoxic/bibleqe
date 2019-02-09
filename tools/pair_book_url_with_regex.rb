@@ -1,7 +1,7 @@
 require_relative '../bibleqe.rb'
 
 regex = File.new("texts/book_abbreviations.txt.orig")
-books = IndexBuilder.new(:kjv).book_names
+books = Indexer.new(:kjv).book_names
 out   = []
 
 regex.map do |line|
