@@ -70,22 +70,15 @@ class Result
 
   def expand(query)
     expanded = []
-
-    query.each_with_index do |q, k|
-      if q.include?("*") || q.include?("?")
-        q.gsub! /[*?]/, "*"=>".*", "?"=>".?"
-        q = "/" + q + "/"
+    query.map! do |q|
+      next q unless q.match /[*?]/
+      if x = self.regex("/" + q.gsub(/[*?]/, "*"=>".*", "?"=>".?") + "/")
+        expanded << x
+        next false
       end
-
-      if q.start_with? "/"
-        x = self.regex(q)
-        if x != nil
-          query.delete_at(k)
-          expanded << x
-        end
-      end
+      q
     end
-
+    query.select! {|q| q }
     query + expanded
   end
 
@@ -115,5 +108,4 @@ class Result
 
     result.uniq
   end
-
 end
