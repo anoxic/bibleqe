@@ -3,6 +3,7 @@ class Index
 
   def initialize (name, dir = :texts)
     raise LoadError, "Can't find #{name}.txt" unless File.exists? "./#{dir}/#{name}.txt"
+
     Indexer.new(name, dir).write! unless File.exists? "./#{dir}/#{name}.ind"
     Indexer.new(name, dir).write! unless File.exists? "./#{dir}/#{name}_toc.ind"
     Indexer.new(name, dir).write! unless File.exists? "./#{dir}/#{name}_words.lst"

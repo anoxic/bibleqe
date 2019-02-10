@@ -87,7 +87,7 @@ class Result
     regex = Regexp.new(regexp.tr('/',''))
 
     @index.words.each do |word|
-      raise BibleQE::Error, "#{regexp}: matched too many words" if matches.count > 20
+      raise Error, "#{regexp}: matched too many words" if matches.count > 20
       matches << word if word[regex] == word
     end
 
