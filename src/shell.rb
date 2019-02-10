@@ -8,7 +8,7 @@ class Shell
 
     if v = Text.new(options[:text]).fetch_by_ref(parser.ref)
       # Fetch by reference
-      puts Verse.format(v)
+      puts Result.format(v)
     else
       # Get results          
       search = Search.new(options[:text])
