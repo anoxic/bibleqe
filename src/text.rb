@@ -1,4 +1,6 @@
 class Text
+  ReferencePattern = /^\w+ \d+:\d+ /
+
   attr_reader :content, :symbol
 
   def initialize(name, dir = :texts)
@@ -37,7 +39,7 @@ class Text
     @content.rewind
 
     @content.each do |l|
-      return [[l.slice!(Verse::ReferencePattern), l]] if l.match /^#{ref} /i
+      return [[l.slice!(Text::ReferencePattern), l]] if l.match /^#{ref} /i
     end
 
     nil

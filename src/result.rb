@@ -42,7 +42,7 @@ class Result
 
     matches.sort.each do |match|
       match = @text[match]
-      result << [match.slice!(Verse::ReferencePattern), match]
+      result << [match.slice!(Text::ReferencePattern), match]
     end
 
     result
