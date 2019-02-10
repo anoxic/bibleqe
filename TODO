@@ -1,21 +1,65 @@
 TODO
 
-[x] Replace Sinatra with straight rack
+☒ collect milestones for each release
+☐ add tags at those release points
+☒ figure out the mental model of the query flow
+    and how to organize the source into that instead
+    of the current confusing classes structure
 
-Simplify file structure
-[x] Move interface files to their own spot
-    * cli
-    * fastcgi
-    * http
-[x] Remove old scripts
-[x] Move source files out of lib/ to somewhere better
+☐ Move methods from Verse into Result
 
-Fetch spans of verses
-[ ] Fetch whole chapters
-[ ] Fetch ranges
+☐ Update README (new file structure, other things)
 
-Towards a web release:
-[x] More useful help / usage page
-[ ] Display info about source of Bible text
-[ ] Pagination
-[ ] Small mobile optimizations
+
+ROADMAP
+
+Version 0.1
+☒ Basic indexing and lookup
+
+Version 0.2
+☒ Basic web interface thrown together with sinatra,sass,haml
+
+Version 0.3
+☒ More useful help / usage page
+☐ Reformed into a more lightweight terminal and rack app
+☐ Fewer dependencies
+☐ Limit regex to only .* and .?
+☐ Fetch chapters and verses
+☐ Fetch verse ranges
+☐ Pagination
+☐ Small mobile optimizations
+
+Version 0.4
+☐ Reworked program structure intended to be smaller with a clearer structure
+  ☐ Move Search and querying code from Parse, Search, and Result.
+    Should use only four classes (index,text,query,result)
+      |
+      | indexes,texts = Index.load_all!,Text.load_all!
+      | terms,options = Query.parse(q) 
+      | result = Query.process(terms, indexes[options[:text]])
+      | render result.fetch(texts[options[:text]])
+      |
+  ☐ Query and result maybe should be modules
+  ☐ Only Text and Indexer should ever look at ReferencePattern
+
+
+Version 0.5
+☐ Use superset of Wharton text format
+☐ Display info about source of Bible text
+
+Possible Future Updates
+☐ Re-work indexes to have a different relationship to stop-words, and word prefix/suffixes
+☐ Maybe scanf will provide better lookup than current loop+regex method
+☐ Add a "similar words" feature that ignores word prefixes and suffixes
+☐ Possibly C implementation of indexer and query engine
+☐ Include apocrypha
+☐ Add more versions: RNKJV, The Scriptures, Mechon-Mamre, NASB, NIV (may have to keep texts in a private repository)
+☐ Add KJV translators notes
+☐ Use a safer regex engine
+☐ Possibly create native desktop apps 
+☐ Web API inteface with json or xml output
+☐ Hebrew-language web interface
+☐ Integrate strongs numbers into KJV and NIV versions
+☐ Use strongs numbers to lookup source words or recommend similar words
+
+
