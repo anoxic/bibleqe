@@ -1,7 +1,7 @@
 TODO
 
 ☒ collect milestones for each release
-☐ add tags at those release points
+☒ add tags at those release points
 ☒ figure out the mental model of the query flow
     and how to organize the source into that instead
     of the current confusing classes structure
