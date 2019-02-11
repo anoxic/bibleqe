@@ -21,13 +21,13 @@ Version 0.2
 
 Version 0.3
 ☒ More useful help / usage page
-☐ Reformed into a more lightweight terminal and rack app
-☐ Fewer dependencies
-☐ Limit regex to only .* and .?
+☒ Reformed into a more lightweight terminal and rack app
 ☐ Fetch chapters and verses
 ☐ Fetch verse ranges
 ☐ Pagination
 ☐ Small mobile optimizations
+☐ Fewer dependencies
+☐ Limit regex to only .* and .?
 
 Version 0.4
 ☐ Reworked program structure intended to be smaller with a clearer structure
