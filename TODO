@@ -42,7 +42,6 @@ Version 0.4
   ☐ Query and result maybe should be modules
   ☐ Only Text and Indexer should ever look at ReferencePattern
 
-
 Version 0.5
 ☐ Use superset of Wharton text format
 ☐ Display info about source of Bible text
@@ -61,5 +60,3 @@ Possible Future Updates
 ☐ Hebrew-language web interface
 ☐ Integrate strongs numbers into KJV and NIV versions
 ☐ Use strongs numbers to lookup source words or recommend similar words
-
-
