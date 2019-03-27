@@ -46,7 +46,7 @@ Version 0.5
 ☐ Use superset of Wharton text format
 ☐ Display info about source of Bible text
 
-Possible Future Updates
+Future Ideas
 ☐ Re-work indexes to have a different relationship to stop-words, and word prefix/suffixes
 ☐ Maybe scanf will provide better lookup than current loop+regex method
 ☐ Add a "similar words" feature that ignores word prefixes and suffixes
