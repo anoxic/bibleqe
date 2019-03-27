@@ -22,6 +22,7 @@ Version 0.2
 Version 0.3
 ☒ More useful help / usage page
 ☒ Reformed into a more lightweight terminal and rack app
+☐ Fully working http interface on OpenBSD httpd vs the current apache/phusion/ubuntu stack
 ☐ Fetch chapters and verses
 ☐ Fetch verse ranges
 ☐ Pagination
