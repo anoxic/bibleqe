@@ -27,7 +27,7 @@ Version 0.3
 ☐ Pagination
 ☐ Small mobile optimizations
 ☐ Fewer dependencies
-☐ Limit regex to only .* and .?
+☐ Limit wildcard to only allow .* and .? in the resulting regex
 
 Version 0.4
 ☐ Reworked program structure intended to be smaller with a clearer structure
